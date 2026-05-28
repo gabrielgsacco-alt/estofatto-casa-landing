@@ -550,25 +550,25 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
             </div>
 
             {/* Cards de Avaliações */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
               {REVIEWS.map((review) => (
-                <div key={review.id} className="bg-card border border-border p-8 flex flex-col justify-between space-y-6 relative group hover:border-primary/30 transition-colors duration-300">
-                  <div className="space-y-4">
+                <div key={review.id} className="bg-card border border-border p-6 flex flex-col justify-between space-y-4 relative group hover:border-primary/30 transition-colors duration-300">
+                  <div className="space-y-3">
                     
                     {/* Estrelas */}
                     <div className="flex space-x-1 text-primary">
                       {[...Array(review.rating)].map((_, i) => (
-                        <Star key={i} size={14} fill="currentColor" />
+                        <Star key={i} size={12} fill="currentColor" />
                       ))}
                     </div>
                     
                     {/* Texto do Depoimento */}
-                    <p className="text-xs md:text-sm text-muted-foreground leading-relaxed italic">
+                    <p className="text-xs text-muted-foreground leading-relaxed italic">
                       "{review.text}"
                     </p>
                   </div>
 
-                  <div className="pt-6 border-t border-border/40 flex items-center justify-between">
+                  <div className="pt-4 border-t border-border/40 flex flex-col justify-between space-y-1">
                     <div>
                       <h4 className="text-xs font-bold tracking-wider uppercase text-foreground">{review.author}</h4>
                       <p className="text-[10px] text-muted-foreground">{review.role}</p>

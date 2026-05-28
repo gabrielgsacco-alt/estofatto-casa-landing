@@ -25,26 +25,34 @@ export const IMAGES = {
 export const REVIEWS = [
   {
     id: 1,
-    author: "Juliana Medeiros",
-    role: "Arquiteta e Urbanista",
+    author: "Mariana Costa",
+    role: "Moradora do Chácara Cachoeira",
     rating: 5,
-    text: "A Estofatto Casa é minha parceira indispensável. Encontro peças lindas, com excelente acabamento e um preço super justo pela qualidade que entregam. Meus clientes de classe média e média-alta adoram o custo-benefício.",
-    date: "Há 2 semanas"
+    text: "Eu estava quase fechando um sofá em uma loja de grife super famosa aqui de Campo Grande, mas o preço estava absurdo por causa de comissões de projeto. Uma amiga me indicou a Estofatto Casa. Encontrei um modelo com o mesmo design moderno, estrutura idêntica em madeira maciça e tecido de altíssima qualidade, por praticamente metade do preço. Valeu cada centavo!",
+    date: "Há 1 semana"
   },
   {
     id: 2,
-    author: "Roberto Albuquerque",
-    role: "Proprietário no Damha",
+    author: "Thiago & Aline Ramos",
+    role: "Clientes do Carandá Bosque",
     rating: 5,
-    text: "Excelente atendimento! Estávamos procurando um sofá confortável e bonito para a nossa sala de estar. A equipe nos ajudou a escolher o tamanho ideal e a entrega própria em Campo Grande foi super cuidadosa.",
-    date: "Há 1 mês"
+    text: "Fizemos questão de pesquisar bastante antes de mobiliar nossa sala. Fomos em lojas super caras e a qualidade da Estofatto é exatamente a mesma, mas sem aquela 'gourmetização' que encarece o produto. O atendimento da Elisabete foi super honesto, sem empurrar coisas caras. O sofá de R$ 7.500 que compramos parece que custou R$ 20.000.",
+    date: "Há 3 semanas"
   },
   {
     id: 3,
-    author: "Ana Beatriz Nogueira",
-    role: "Designer de Interiores",
+    author: "Juliana Medeiros",
+    role: "Arquiteta e Urbanista",
     rating: 5,
-    text: "O acervo de design de autor é espetacular. Peças que trazem alma e exclusividade para o ambiente. Além disso, a segurança de saber que a logística é própria e extremamente cuidadosa faz toda a diferença para nós, profissionais.",
-    date: "Há 3 meses"
+    text: "Como arquiteta, prezo muito pela qualidade técnica dos móveis que indico. A Estofatto Casa é fantástica porque trabalha com venda direta, sem taxas embutidas de intermediação. Consigo oferecer aos meus clientes de classe média e média-alta um projeto com cara de revista, móveis extremamente duráveis e confortáveis, mas dentro de um orçamento muito mais realista.",
+    date: "Há 1 mês"
+  },
+  {
+    id: 4,
+    author: "Ricardo Fontes",
+    role: "Morador do Rita Vieira",
+    rating: 5,
+    text: "Excelente custo-benefício. Comprei uma mesa de jantar com as cadeiras e um estofado para a sala de TV. A estrutura é super firme, espuma de ótima densidade que não deforma. O preço é muito justo e a qualidade bate de frente com qualquer marca famosa do shopping.",
+    date: "Há 2 meses"
   }
 ];
