@@ -94,9 +94,10 @@ export default function Home() {
     const arquitetoFormatado = data.arquiteto === "sim" ? "Sim, possuo acompanhamento profissional" : "Não, gostaria de receber curadoria direta";
 
     const investimentoFormatado = {
-      baixo: "R$ 15.000 a R$ 30.000",
-      medio: "R$ 30.000 a R$ 50.000",
-      alto: "Acima de R$ 50.000 (Mobiliário Premium)"
+      popular: "Até R$ 5.000",
+      medio_baixo: "R$ 5.000 a R$ 10.000",
+      medio_alto: "R$ 10.000 a R$ 20.000",
+      alto: "Acima de R$ 20.000"
     }[data.investimento] || data.investimento;
 
     // Criar texto estruturado e extremamente profissional para o WhatsApp
@@ -145,27 +146,27 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
       <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/40 transition-all duration-300">
         <div className="container py-4 flex items-center justify-between">
           <div className="flex flex-col">
-            <span className="font-serif text-xl md:text-2xl tracking-[0.2em] uppercase text-foreground">
+            <span className="font-serif text-xl md:text-2xl tracking-[0.15em] uppercase text-foreground">
               Estofatto Casa
             </span>
-            <span className="text-[9px] tracking-[0.3em] uppercase text-muted-foreground -mt-1 pl-[2px]">
-              Alta Curadoria • Campo Grande
+            <span className="text-[9px] tracking-[0.2em] uppercase text-muted-foreground -mt-1 pl-[2px]">
+              Móveis e Estofados • Campo Grande
             </span>
           </div>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center space-x-8 text-xs tracking-widest uppercase">
-            <a href="#exclusividade" className="hover:text-primary transition-colors duration-200">Exclusividade</a>
-            <a href="#acervo" className="hover:text-primary transition-colors duration-200">O Acervo</a>
+            <nav className="hidden md:flex items-center space-x-8 text-xs tracking-widest uppercase">
+            <a href="#exclusividade" className="hover:text-primary transition-colors duration-200">Diferenciais</a>
+            <a href="#acervo" className="hover:text-primary transition-colors duration-200">Produtos</a>
             <a href="#tradicao" className="hover:text-primary transition-colors duration-200">Tradição & Logística</a>
-            <a href="#depoimentos" className="hover:text-primary transition-colors duration-200">Avaliações</a>
+            <a href="#depoimentos" className="hover:text-primary transition-colors duration-200">Depoimentos</a>
             <Button 
               variant="outline" 
               size="sm" 
               onClick={scrollToForm}
               className="border-primary/40 text-primary hover:bg-primary/5 text-xs tracking-widest uppercase px-5 py-4"
             >
-              Iniciar Curadoria
+              Falar com Consultor
             </Button>
           </nav>
 
@@ -187,14 +188,14 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
               onClick={() => setMobileMenuOpen(false)}
               className="text-sm tracking-widest uppercase py-2 border-b border-border/30"
             >
-              Exclusividade
+              Diferenciais
             </a>
             <a 
               href="#acervo" 
               onClick={() => setMobileMenuOpen(false)}
               className="text-sm tracking-widest uppercase py-2 border-b border-border/30"
             >
-              O Acervo
+              Produtos
             </a>
             <a 
               href="#tradicao" 
@@ -208,13 +209,13 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
               onClick={() => setMobileMenuOpen(false)}
               className="text-sm tracking-widest uppercase py-2 border-b border-border/30"
             >
-              Avaliações
+              Depoimentos
             </a>
             <Button 
               onClick={scrollToForm}
               className="w-full bg-primary text-primary-foreground hover:bg-primary/90 text-xs tracking-widest uppercase py-5"
             >
-              Solicitar Consultoria VIP
+              Falar com Especialista
             </Button>
           </div>
         )}
@@ -230,17 +231,17 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
             <div className="lg:col-span-5 space-y-8 z-10">
               <div className="inline-flex items-center space-x-2 bg-primary/5 px-3 py-1 border border-primary/10">
                 <Sparkles size={14} className="text-primary" />
-                <span className="text-[10px] tracking-[0.2em] uppercase text-primary font-semibold">
-                  Mobiliário de Alta Categoria
+                <span className="text-[10px] tracking-[0.15em] uppercase text-primary font-semibold">
+                  Design & Conforto para sua Casa
                 </span>
               </div>
               
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-light leading-[1.15] text-foreground tracking-tight">
-                O ápice do design e da sofisticação em <span className="font-normal italic text-primary">Campo Grande</span>.
+                Design assinado e conforto sob medida em <span className="font-normal italic text-primary">Campo Grande</span>.
               </h1>
               
               <p className="text-sm md:text-base text-muted-foreground leading-relaxed max-w-lg">
-                Curadoria exclusiva de móveis de alto padrão sob medida para arquiteturas exigentes. Peças com escala impecável, texturas nobres e presença monumental para transformar sua casa em uma obra de arte viva.
+                Móveis e estofados selecionados com excelente acabamento, durabilidade e o conforto que a sua família merece. Encontre a peça ideal com o tamanho e a proporção perfeita para o seu ambiente.
               </p>
               
               <div className="pt-4 flex flex-col sm:flex-row gap-4">
@@ -248,7 +249,7 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
                   onClick={scrollToForm}
                   className="bg-primary text-primary-foreground hover:bg-primary/90 text-xs tracking-widest uppercase px-8 py-6 shadow-sm group"
                 >
-                  Solicitar Consultoria para Meu Projeto
+                  Falar com Consultor de Vendas
                   <ArrowRight size={14} className="ml-2 transition-transform duration-200 group-hover:translate-x-1" />
                 </Button>
               </div>
@@ -268,10 +269,10 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
               {/* Legenda Arquitetônica Sutil */}
               <div className="absolute bottom-4 left-4 bg-background/90 backdrop-blur-sm border border-border/40 px-4 py-3 max-w-[280px]">
                 <p className="text-[10px] tracking-widest uppercase text-muted-foreground font-semibold mb-1">
-                  Estudo de Proporção
+                  Proporção e Harmonia
                 </p>
                 <p className="text-[11px] leading-relaxed text-foreground font-serif italic">
-                  "Sofá de 2.40m perfeitamente escalado para uma parede de 3.90m. Harmonia geométrica absoluta."
+                  "Encontre o estofado no tamanho exato para a sua sala, garantindo o melhor aproveitamento de espaço."
                 </p>
               </div>
             </div>
@@ -299,22 +300,22 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
 
               {/* Texto de Proposta de Valor */}
               <div className="lg:col-span-7 order-1 lg:order-2 space-y-8">
-                <div className="text-xs tracking-[0.3em] uppercase text-primary font-semibold flex items-center space-x-2">
+                <div className="text-xs tracking-[0.2em] uppercase text-primary font-semibold flex items-center space-x-2">
                   <span>01</span>
                   <span className="h-[1px] w-8 bg-primary/30" />
-                  <span>A Filosofia do Detalhe</span>
+                  <span>Qualidade e Acabamento</span>
                 </div>
                 
                 <h2 className="text-3xl md:text-4xl font-serif font-light leading-tight text-foreground">
-                  A precisão da escala. A nobreza da matéria-prima. <span className="italic font-normal text-primary">A perfeição do encaixe.</span>
+                  Matérias-primas selecionadas e <span className="italic font-normal text-primary">acabamento de alto padrão.</span>
                 </h2>
                 
                 <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
-                  O verdadeiro luxo não se anuncia; ele é percebido no toque de um linho belga de alta gramatura, no encaixe milimétrico de uma marcenaria em madeira maciça e na proporção exata desenhada para o seu ambiente. 
+                  Trabalhamos com móveis produzidos com espumas de alta densidade, tecidos resistentes e confortáveis, e estruturas de madeira maciça que garantem alta durabilidade.
                 </p>
                 
                 <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
-                  Na <strong>Estofatto Casa</strong>, acreditamos que o mobiliário deve servir à arquitetura. Cada peça do nosso acervo é selecionada para se integrar com exatidão matemática e harmonia estética ao projeto do seu arquiteto ou designer de interiores.
+                  Na <strong>Estofatto Casa</strong>, nós ajudamos você a encontrar o móvel que melhor se adapta à sua rotina e ao seu espaço. Oferecemos um atendimento consultivo completo para garantir que sua escolha traga beleza e funcionalidade ao seu lar.
                 </p>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4 border-t border-border/60">
@@ -323,8 +324,8 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
                       <Check size={12} />
                     </div>
                     <div>
-                      <h4 className="text-xs font-semibold tracking-wider uppercase text-foreground mb-1">Escala Sob Medida</h4>
-                      <p className="text-xs text-muted-foreground">Proporções calculadas para harmonizar com a volumetria do seu espaço.</p>
+                      <h4 className="text-xs font-semibold tracking-wider uppercase text-foreground mb-1">Tamanho Sob Medida</h4>
+                      <p className="text-xs text-muted-foreground">Móveis com opções de medidas para se ajustar perfeitamente à sua sala.</p>
                     </div>
                   </div>
                   <div className="flex items-start space-x-3">
@@ -332,8 +333,8 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
                       <Check size={12} />
                     </div>
                     <div>
-                      <h4 className="text-xs font-semibold tracking-wider uppercase text-foreground mb-1">Texturas Sensoriais</h4>
-                      <p className="text-xs text-muted-foreground">Tecidos nobres e acabamentos naturais que elevam a experiência do toque.</p>
+                      <h4 className="text-xs font-semibold tracking-wider uppercase text-foreground mb-1">Tecidos Resistentes</h4>
+                      <p className="text-xs text-muted-foreground">Grande variedade de linhos, couros e tecidos fáceis de limpar para o dia a dia.</p>
                     </div>
                   </div>
                 </div>
@@ -350,11 +351,11 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
             
             {/* Header do Acervo */}
             <div className="text-center max-w-2xl mx-auto space-y-4 mb-16 md:mb-24">
-              <div className="text-xs tracking-[0.3em] uppercase text-primary font-semibold">
-                O Acervo Estofatto Casa
+              <div className="text-xs tracking-[0.2em] uppercase text-primary font-semibold">
+                Nossas Coleções
               </div>
               <h2 className="text-3xl md:text-4xl font-serif font-light text-foreground">
-                Coleções autorais selecionadas para <span className="italic font-normal text-primary">ambientes singulares</span>.
+                Móveis pensados para trazer beleza e <span className="italic font-normal text-primary">muito conforto</span>.
               </h2>
               <div className="h-[1px] w-16 bg-primary/30 mx-auto mt-4" />
             </div>
@@ -374,12 +375,12 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
                     I. Living
                   </div>
                 </div>
-                <div className="space-y-3">
+                  <div className="space-y-3">
                   <h3 className="text-xl font-serif text-foreground group-hover:text-primary transition-colors duration-200">
                     Living & Estofados
                   </h3>
                   <p className="text-xs text-muted-foreground leading-relaxed">
-                    Sofás modulares, poltronas de contornos esculturais e chaises de alta costura. Projetados para ancorar salas de estar monumentais com conforto supremo e elegância atemporal.
+                    Sofás confortáveis, poltronas aconchegantes e modulares versáteis. Desenhados para salas de TV e estar com o máximo de aconchego e durabilidade.
                   </p>
                 </div>
               </div>
@@ -389,19 +390,19 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
                 <div className="relative overflow-hidden border border-border aspect-[3/4]">
                   <img 
                     src={IMAGES.collection.jantar} 
-                    alt="Coleção de Jantar e Recepção de luxo Estofatto Casa" 
+                    alt="Coleção de Jantar Estofatto Casa" 
                     className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
                   />
                   <div className="absolute top-4 left-4 bg-background/90 backdrop-blur-sm border border-border/30 px-3 py-1 text-[10px] tracking-widest uppercase">
-                    II. Recepção
+                    II. Jantar
                   </div>
                 </div>
                 <div className="space-y-3">
                   <h3 className="text-xl font-serif text-foreground group-hover:text-primary transition-colors duration-200">
-                    Jantar & Recepção
+                    Salas de Jantar
                   </h3>
                   <p className="text-xs text-muted-foreground leading-relaxed">
-                    Mesas de jantar esculpidas em pedras exóticas e madeiras nobres, acompanhadas por cadeiras de ergonomia impecável. O cenário perfeito para banquetes memoráveis.
+                    Mesas de jantar elegantes e cadeiras ergonômicas e estofadas. Perfeitas para reunir a família e amigos com muito conforto.
                   </p>
                 </div>
               </div>
@@ -411,19 +412,19 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
                 <div className="relative overflow-hidden border border-border aspect-[3/4]">
                   <img 
                     src={IMAGES.collection.autor} 
-                    alt="Mobiliário assinado por designers consagrados na Estofatto Casa" 
+                    alt="Mobiliário com design contemporâneo na Estofatto Casa" 
                     className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
                   />
                   <div className="absolute top-4 left-4 bg-background/90 backdrop-blur-sm border border-border/30 px-3 py-1 text-[10px] tracking-widest uppercase">
-                    III. Exclusivo
+                    III. Design
                   </div>
                 </div>
                 <div className="space-y-3">
                   <h3 className="text-xl font-serif text-foreground group-hover:text-primary transition-colors duration-200">
-                    Design de Autor
+                    Móveis de Design
                   </h3>
                   <p className="text-xs text-muted-foreground leading-relaxed">
-                    Peças assinadas por grandes nomes do design nacional e internacional. Mobiliários com status de obra de arte, que conferem valor histórico e identidade única ao seu lar.
+                    Aparadores, buffets e mesas de apoio com design contemporâneo que trazem personalidade e complementam a decoração da sua casa.
                   </p>
                 </div>
               </div>
@@ -437,7 +438,7 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
                 variant="outline"
                 className="border-primary text-primary hover:bg-primary hover:text-primary-foreground text-xs tracking-widest uppercase px-8 py-6 transition-all duration-300"
               >
-                Conhecer Acervo Completo via Consultoria VIP
+                Falar com Consultor de Vendas
               </Button>
             </div>
 
@@ -452,18 +453,18 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
               
               {/* Texto de Tradição */}
               <div className="lg:col-span-6 space-y-8">
-                <div className="text-xs tracking-[0.3em] uppercase text-primary font-semibold flex items-center space-x-2">
+                <div className="text-xs tracking-[0.2em] uppercase text-primary font-semibold flex items-center space-x-2">
                   <span>02</span>
                   <span className="h-[1px] w-8 bg-primary/30" />
-                  <span>Tradição & Segurança</span>
+                  <span>Tradição & Confiança</span>
                 </div>
                 
                 <h2 className="text-3xl md:text-4xl font-serif font-light leading-tight text-foreground">
-                  Mais de três décadas escrevendo a história do <span className="italic font-normal text-primary">morar bem no MS</span>.
+                  Mais de 30 anos de tradição em <span className="italic font-normal text-primary">Campo Grande</span>.
                 </h2>
                 
                 <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
-                  A Estofatto Casa consolida mais de 30 anos de atuação impecável no mercado de altíssimo padrão. Nossa trajetória é pautada pelo respeito absoluto ao cliente, curadoria rigorosa de marcas parceiras e um atendimento consultivo que entende a fundo as necessidades de cada projeto.
+                  A Estofatto Casa é referência em Campo Grande e Mato Grosso do Sul pela qualidade de seus produtos e pelo atendimento próximo e transparente. São mais de três décadas ajudando famílias a realizarem o sonho de ter uma casa linda e aconchegante.
                 </p>
 
                 <div className="space-y-6 pt-6 border-t border-border/60">
@@ -472,9 +473,9 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
                       <Truck size={18} />
                     </div>
                     <div>
-                      <h3 className="text-sm font-semibold tracking-wider uppercase text-foreground mb-1">Frota Logística Própria</h3>
+                      <h3 className="text-sm font-semibold tracking-wider uppercase text-foreground mb-1">Entrega e Montagem Própria</h3>
                       <p className="text-xs text-muted-foreground leading-relaxed">
-                        Não terceirizamos a entrega do seu sonho. Possuímos frota de caminhões própria, climatizada e equipada com materiais de proteção de alta densidade. Nossa equipe de montagem é interna, altamente treinada e especializada em manusear peças de alta complexidade.
+                        Garantimos a segurança do seu móvel com frota de entrega própria e montadores internos altamente qualificados. Cuidamos de cada detalhe, desde o transporte até a montagem final na sua casa.
                       </p>
                     </div>
                   </div>
@@ -484,9 +485,9 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
                       <ShieldCheck size={18} />
                     </div>
                     <div>
-                      <h3 className="text-sm font-semibold tracking-wider uppercase text-foreground mb-1">Cobertura em todo o Mato Grosso do Sul</h3>
+                      <h3 className="text-sm font-semibold tracking-wider uppercase text-foreground mb-1">Atendimento em todo o Mato Grosso do Sul</h3>
                       <p className="text-xs text-muted-foreground leading-relaxed">
-                        Sediados estrategicamente em Campo Grande, MS, garantimos entrega impecável e montagem cirúrgica em qualquer cidade do estado, com prazos rigorosamente cumpridos e seguro total de carga.
+                        Entregamos e montamos com segurança em todas as cidades do estado do Mato Grosso do Sul, com agilidade e compromisso com o prazo combinado.
                       </p>
                     </div>
                   </div>
@@ -522,11 +523,11 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
             
             {/* Header de Depoimentos */}
             <div className="text-center max-w-2xl mx-auto space-y-4 mb-16 md:mb-24">
-              <div className="text-xs tracking-[0.3em] uppercase text-primary font-semibold">
-                Reconhecimento
+              <div className="text-xs tracking-[0.2em] uppercase text-primary font-semibold">
+                Quem Compra Recomenda
               </div>
               <h2 className="text-3xl md:text-4xl font-serif font-light text-foreground">
-                A opinião de quem compartilha do nosso <span className="italic font-normal text-primary">padrão de exigência</span>.
+                O que dizem os nossos <span className="italic font-normal text-primary">clientes</span>
               </h2>
               <div className="h-[1px] w-16 bg-primary/30 mx-auto mt-4" />
             </div>
@@ -588,14 +589,14 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
               
               {/* Header do Formulário */}
               <div className="text-center space-y-4">
-                <div className="text-xs tracking-[0.3em] uppercase text-primary font-semibold">
-                  Curadoria Exclusiva
+                <div className="text-xs tracking-[0.2em] uppercase text-primary font-semibold">
+                  Fale com um Especialista
                 </div>
                 <h2 className="text-3xl md:text-4xl font-serif font-light text-foreground">
-                  Inicie a curadoria do seu <span className="italic font-normal text-primary">projeto residencial</span>.
+                  Planeje a escolha do seu <span className="italic font-normal text-primary">mobiliário</span>.
                 </h2>
                 <p className="text-xs md:text-sm text-muted-foreground max-w-lg mx-auto leading-relaxed">
-                  Preencha o questionário de qualificação abaixo para receber uma consultoria exclusiva de interiores com nossos especialistas seniores: <strong>Elisabete, Gabriel ou Bianca</strong>.
+                  Preencha o formulário abaixo para receber um atendimento personalizado e consultivo com nossos especialistas em vendas: <strong>Elisabete, Gabriel ou Bianca</strong>.
                 </p>
                 <div className="h-[1px] w-16 bg-primary/30 mx-auto mt-4" />
               </div>
@@ -658,7 +659,7 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
                     )}
                   </div>
 
-                  {/* Campo 5 [FILTRO CRÍTICO]: Previsão de Investimento */}
+                  {/* Campo 5 [FILTRO CRÍTICO AJUSTADO PARA TICKET MÉDIO DE R$ 7.000] */}
                   <div className="space-y-2">
                     <Label htmlFor="investimento" className="text-xs tracking-widest uppercase font-semibold text-foreground">
                       Previsão de investimento para o mobiliário deste ambiente *
@@ -668,9 +669,10 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
                         <SelectValue placeholder="Selecione a faixa de investimento..." />
                       </SelectTrigger>
                       <SelectContent className="bg-background border border-border">
-                        <SelectItem value="baixo">R$ 15.000 a R$ 30.000</SelectItem>
-                        <SelectItem value="medio">R$ 30.000 a R$ 50.000</SelectItem>
-                        <SelectItem value="alto">Acima de R$ 50.000 (Mobiliário Premium)</SelectItem>
+                        <SelectItem value="popular">Até R$ 5.000</SelectItem>
+                        <SelectItem value="medio_baixo">R$ 5.000 a R$ 10.000</SelectItem>
+                        <SelectItem value="medio_alto">R$ 10.000 a R$ 20.000</SelectItem>
+                        <SelectItem value="alto">Acima de R$ 20.000</SelectItem>
                       </SelectContent>
                     </Select>
                     {errors.investimento && (
@@ -727,19 +729,19 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
                   <Button 
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full md:w-auto bg-primary text-primary-foreground hover:bg-primary/95 text-xs tracking-[0.2em] uppercase px-12 py-6 rounded-none transition-all duration-300 shadow-md disabled:opacity-50"
+                    className="w-full md:w-auto bg-primary text-primary-foreground hover:bg-primary/95 text-xs tracking-[0.15em] uppercase px-12 py-6 rounded-none transition-all duration-300 shadow-md disabled:opacity-50"
                   >
                     {isSubmitting ? (
                       <span className="flex items-center justify-center space-x-2">
                         <span className="animate-spin rounded-full h-4 w-4 border-b-2 border-primary-foreground" />
-                        <span>Processando Credenciais VIP...</span>
+                        <span>Enviando dados...</span>
                       </span>
                     ) : (
-                      "Solicitar Análise e Consultoria VIP"
+                      "Solicitar Atendimento e Consultoria de Vendas"
                     )}
                   </Button>
                   <p className="text-[10px] text-muted-foreground mt-3 tracking-wider uppercase">
-                    Acesso Restrito • Seus dados estão protegidos sob sigilo absoluto.
+                    Seus dados estão seguros de acordo com a LGPD.
                   </p>
                 </div>
 
@@ -767,7 +769,7 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
                 </span>
               </div>
               <p className="text-xs leading-relaxed text-muted-foreground/80 max-w-sm">
-                Mais de 30 anos selecionando e entregando o melhor do mobiliário de alto padrão no Mato Grosso do Sul. Especialistas em escala, proporção e materiais nobres.
+                Mais de 30 anos selecionando e entregando móveis e estofados de qualidade no Mato Grosso do Sul. Especialistas em conforto, durabilidade e design.
               </p>
             </div>
 
@@ -780,7 +782,7 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
               <p className="leading-relaxed">
                 Av. Afonso Pena, 4500 • Jardim dos Estados<br />
                 Campo Grande - MS • CEP 79020-001<br />
-                <span className="text-primary font-semibold">Atendimento presencial e consultoria com hora marcada.</span>
+                <span className="text-primary font-semibold">Venha nos visitar ou agende um horário com nossos consultores.</span>
               </p>
             </div>
 
@@ -832,7 +834,7 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
       <div className="fixed bottom-6 right-6 z-50 group">
         {/* Balão de Dica de Texto Sofisticado */}
         <div className="absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-background border border-border px-4 py-2 text-[10px] tracking-widest uppercase text-foreground shadow-sm whitespace-nowrap opacity-0 translate-x-2 pointer-events-none group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
-          Fale com um Consultor VIP
+          Fale Conosco no WhatsApp
         </div>
         
         {/* Botão de WhatsApp em tom Oliva Profundo e Bronze do design Quiet Luxury */}

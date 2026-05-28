@@ -28,7 +28,7 @@ export const REVIEWS = [
     author: "Juliana Medeiros",
     role: "Arquiteta e Urbanista",
     rating: 5,
-    text: "A Estofatto Casa é minha parceira indispensável em projetos de alto padrão. A precisão na escala dos estofados e a qualidade incomparável dos tecidos garantem que o resultado final seja exatamente como planejado no projeto 3D.",
+    text: "A Estofatto Casa é minha parceira indispensável. Encontro peças lindas, com excelente acabamento e um preço super justo pela qualidade que entregam. Meus clientes de classe média e média-alta adoram o custo-benefício.",
     date: "Há 2 semanas"
   },
   {
@@ -36,7 +36,7 @@ export const REVIEWS = [
     author: "Roberto Albuquerque",
     role: "Proprietário no Damha",
     rating: 5,
-    text: "Atendimento de altíssimo nível. Estávamos procurando um sofá de proporções específicas para nosso living com pé-direito duplo. A curadoria da equipe foi cirúrgica, e a entrega própria deles em Campo Grande foi impecável.",
+    text: "Excelente atendimento! Estávamos procurando um sofá confortável e bonito para a nossa sala de estar. A equipe nos ajudou a escolher o tamanho ideal e a entrega própria em Campo Grande foi super cuidadosa.",
     date: "Há 1 mês"
   },
   {
