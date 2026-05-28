@@ -22,6 +22,37 @@ export const IMAGES = {
   showroom: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1600",
 };
 
+export const REELS_VIDEOS = [
+  {
+    id: 1,
+    title: "Teste de Conforto: Sofá Plural",
+    description: "Cliente experimentando a maciez e a densidade da espuma D33 no showroom.",
+    thumbnail: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&q=80&w=600",
+    videoUrl: "https://assets.mixkit.co/videos/preview/mixkit-living-room-with-a-comfortable-sofa-42354-large.mp4" // Vídeo placeholder elegante e leve
+  },
+  {
+    id: 2,
+    title: "O Queridinho da Classe Média",
+    description: "Demonstração do Sofá Retrátil de 2.40m: Conforto de cinema por um preço justo.",
+    thumbnail: "https://images.unsplash.com/photo-1484101403633-562f891dc89a?auto=format&fit=crop&q=80&w=600",
+    videoUrl: "https://assets.mixkit.co/videos/preview/mixkit-young-woman-resting-on-a-couch-at-home-42353-large.mp4"
+  },
+  {
+    id: 3,
+    title: "Detalhes de Costura e Acabamento",
+    description: "Close-up na costura reforçada e na textura do linho antimanchas.",
+    thumbnail: "https://images.unsplash.com/photo-1540518614846-7eded433c457?auto=format&fit=crop&q=80&w=600",
+    videoUrl: "https://assets.mixkit.co/videos/preview/mixkit-hands-of-a-tailor-working-with-fabric-and-sewing-machine-41710-large.mp4"
+  },
+  {
+    id: 4,
+    title: "Entrega e Montagem na Prática",
+    description: "Nossa equipe própria montando com cuidado na casa de um cliente no Jardim dos Estados.",
+    thumbnail: "https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?auto=format&fit=crop&q=80&w=600",
+    videoUrl: "https://assets.mixkit.co/videos/preview/mixkit-delivery-man-carrying-a-cardboard-box-43184-large.mp4"
+  }
+];
+
 export const REVIEWS = [
   {
     id: 1,
