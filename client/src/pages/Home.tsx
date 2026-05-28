@@ -313,9 +313,17 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
                 <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
                   Trabalhamos com móveis produzidos com espumas de alta densidade, tecidos resistentes e confortáveis, e estruturas de madeira maciça que garantem alta durabilidade.
                 </p>
+
+                <p className="text-sm md:text-base text-muted-foreground leading-relaxed font-semibold text-primary">
+                  O mesmo design e qualidade das grifes mais caras do país, com uma proposta comercial inteligente.
+                </p>
                 
                 <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
-                  Na <strong>Estofatto Casa</strong>, nós ajudamos você a encontrar o móvel que melhor se adapta à sua rotina e ao seu espaço. Oferecemos um atendimento consultivo completo para garantir que sua escolha traga beleza e funcionalidade ao seu lar.
+                  Conseguimos oferecer o mesmo padrão de acabamento e durabilidade de marcas que cobram o dobro porque operamos em um <strong>modelo de negociação direta</strong>. Diferente do mercado tradicional de decoração, não embutimos taxas invisíveis de intermediação, comissões corporativas ou custos de representação comercial no preço do seu móvel. Você paga estritamente pelo design e pela matéria-prima da peça.
+                </p>
+
+                <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+                  Na <strong>Estofatto Casa</strong>, nós ajudamos você a encontrar o móvel que melhor se adapta à sua rotina e ao seu espaço, oferecendo um atendimento consultivo focado em entregar a máxima qualidade pelo valor mais justo de Campo Grande.
                 </p>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4 border-t border-border/60">
@@ -335,6 +343,15 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
                     <div>
                       <h4 className="text-xs font-semibold tracking-wider uppercase text-foreground mb-1">Tecidos Resistentes</h4>
                       <p className="text-xs text-muted-foreground">Grande variedade de linhos, couros e tecidos fáceis de limpar para o dia a dia.</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-3 sm:col-span-2">
+                    <div className="p-1 bg-primary/5 text-primary border border-primary/10 mt-0.5">
+                      <Check size={12} />
+                    </div>
+                    <div>
+                      <h4 className="text-xs font-semibold tracking-wider uppercase text-foreground mb-1">Preço Justo Sem Taxas Invisíveis</h4>
+                      <p className="text-xs text-muted-foreground">Eliminamos comissões de intermediação e parcerias embutidas. O preço que você vê reflete unicamente a alta qualidade do produto.</p>
                     </div>
                   </div>
                 </div>
