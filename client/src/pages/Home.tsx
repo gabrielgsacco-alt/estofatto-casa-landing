@@ -46,6 +46,13 @@ const formSchema = z.object({
 
 type FormValues = z.infer<typeof formSchema>;
 
+// Lista de consultores seniores com seus respectivos números fictícios de WhatsApp (podem ser alterados facilmente)
+const CONSULTORES = [
+  { nome: "Elisabete", telefone: "5567999990001" },
+  { nome: "Gabriel", telefone: "5567999990002" },
+  { nome: "Bianca", telefone: "5567999990003" }
+];
+
 export default function Home() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -68,20 +75,59 @@ export default function Home() {
 
   const onSubmit = async (data: FormValues) => {
     setIsSubmitting(true);
-    // Simular envio de API
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    setIsSubmitting(false);
     
+    // Simular processamento local rápido
+    await new Promise((resolve) => setTimeout(resolve, 800));
+    setIsSubmitting(false);
+
+    // Selecionar consultor de forma aleatória/rodízio para atendimento
+    const consultorSelecionado = CONSULTORES[Math.floor(Math.random() * CONSULTORES.length)];
+
+    // Formatar respostas amigáveis para a mensagem
+    const faseFormatada = {
+      planejamento: "Planejamento / Estudos Iniciais",
+      obras: "Em Obras Estruturais",
+      acabamento: "Fase de Acabamento / Decoração",
+      renovacao: "Renovação Pontual de Ambientes"
+    }[data.faseProjeto] || data.faseProjeto;
+
+    const arquitetoFormatado = data.arquiteto === "sim" ? "Sim, possuo acompanhamento profissional" : "Não, gostaria de receber curadoria direta";
+
+    const investimentoFormatado = {
+      baixo: "R$ 15.000 a R$ 30.000",
+      medio: "R$ 30.000 a R$ 50.000",
+      alto: "Acima de R$ 50.000 (Mobiliário Premium)"
+    }[data.investimento] || data.investimento;
+
+    // Criar texto estruturado e extremamente profissional para o WhatsApp
+    const mensagemWhatsApp = `Olá, gostaria de iniciar a Curadoria do meu Projeto com a Estofatto Casa.
+
+Aqui estão os detalhes do meu projeto para análise:
+
+*Nome Completo:* ${data.nome}
+*WhatsApp:* ${data.whatsapp}
+*Fase do Projeto:* ${faseFormatada}
+*Acompanhamento de Profissional:* ${arquitetoFormatado}
+*Previsão de Investimento:* ${investimentoFormatado}
+
+*Descrição do Ambiente:*
+${data.descricao}
+
+_Solicitação enviada via Landing Page Estofatto Casa_`;
+
+    // Gerar link do WhatsApp API
+    const linkWhatsApp = `https://api.whatsapp.com/send?phone=${consultorSelecionado.telefone}&text=${encodeURIComponent(mensagemWhatsApp)}`;
+
     // Toast de sucesso sofisticado e personalizado
-    toast.success("Curadoria Solicitada com Sucesso", {
-      description: "Nossos especialistas seniores (Elisabete, Gabriel ou Bianca) entrarão em contato em até 24 horas úteis via WhatsApp.",
-      duration: 8000,
+    toast.success("Curadoria Iniciada com Sucesso!", {
+      description: `Você está sendo direcionado para o atendimento exclusivo com ${consultorSelecionado.nome}.`,
+      duration: 6000,
     });
+
+    // Abrir WhatsApp em nova aba
+    window.open(linkWhatsApp, "_blank");
     
     reset();
-    
-    // Rolar suavemente de volta para o topo ou confirmação
-    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const scrollToForm = () => {
@@ -781,6 +827,27 @@ export default function Home() {
           </div>
         </div>
       </footer>
+
+      {/* BOTÃO FLUTUANTE DO WHATSAPP (Quiet Luxury Style) */}
+      <div className="fixed bottom-6 right-6 z-50 group">
+        {/* Balão de Dica de Texto Sofisticado */}
+        <div className="absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-background border border-border px-4 py-2 text-[10px] tracking-widest uppercase text-foreground shadow-sm whitespace-nowrap opacity-0 translate-x-2 pointer-events-none group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+          Fale com um Consultor VIP
+        </div>
+        
+        {/* Botão de WhatsApp em tom Oliva Profundo e Bronze do design Quiet Luxury */}
+        <a
+          href="https://api.whatsapp.com/send?phone=5567999990001&text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20uma%20consultoria%20exclusiva%20com%20um%20especialista%20da%20Estofatto%20Casa."
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center justify-center w-14 h-14 bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg border border-primary-foreground/10 transition-all duration-300 hover:scale-105 active:scale-95 relative"
+          aria-label="Fale conosco no WhatsApp"
+        >
+          {/* Efeito de pulso sutil no fundo */}
+          <span className="absolute inset-0 bg-primary/20 animate-ping -z-10" />
+          <Phone size={20} className="stroke-[2]" />
+        </a>
+      </div>
 
     </div>
   );
