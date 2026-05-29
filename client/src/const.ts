@@ -5,15 +5,15 @@
  */
 
 export const IMAGES = {
-  // FOLD 1: Majestic living room, focus on a high-end 2.40m luxury sofa, perfectly scaled against a 3.90m wall. Cinematic lighting, premium fabric texture. ZERO people.
-  heroSofa: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=1600",
+  // FOLD 1: Showroom real da Estofatto Casa com sofá cinza claro, móveis de madeira e acabamento premium
+  heroSofa: "/manus-storage/IMG_3140_a28f3515.jpg",
 
   // FOLD 2: Macro close-up of premium textures (linen fabric, solid wood joinery).
   textureDetail: "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&q=80&w=1000",
 
   // FOLD 3: The Curated Collection
   collection: {
-    living: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=800", // Living & Estofados
+    living: "/manus-storage/IMG_3140_a28f3515.jpg", // Living & Estofados - foto real do showroom
     jantar: "https://images.unsplash.com/photo-1615529182904-14819c35db37?auto=format&fit=crop&q=80&w=800", // Jantar & Recepção
     autor: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&q=80&w=800",  // Design de Autor
   },

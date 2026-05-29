@@ -876,7 +876,7 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
               </p>
               <div className="flex space-x-4 pt-2">
                 <a 
-                  href="https://instagram.com" 
+                  href="https://www.instagram.com/estofattocasacg/" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="p-2 bg-background border border-border text-foreground hover:text-primary hover:border-primary/40 transition-colors duration-200"
