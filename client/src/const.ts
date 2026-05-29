@@ -8,8 +8,8 @@ export const IMAGES = {
   // FOLD 1: Showroom real da Estofatto Casa com sofá cinza claro, móveis de madeira e acabamento premium
   heroSofa: "/manus-storage/IMG_3140_a28f3515.jpg",
 
-  // FOLD 2: Macro close-up of premium textures (linen fabric, solid wood joinery).
-  textureDetail: "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&q=80&w=1000",
+  // FOLD 2: Detalhe de acabamento - poltronas de couro marrom e sofá cinza com ambientação sofisticada
+  textureDetail: "/manus-storage/IMG_1659_a556da71.JPG",
 
   // FOLD 3: The Curated Collection
   collection: {
