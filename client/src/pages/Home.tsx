@@ -32,7 +32,7 @@ import {
   SelectValue 
 } from "@/components/ui/select";
 import { toast } from "sonner";
-import { IMAGES, REVIEWS, REELS_VIDEOS } from "../const";
+import { IMAGES, REVIEWS, REELS_VIDEOS, CONTACT_INFO } from "../const";
 
 // Esquema de validação com Zod para o Formulário de Qualificação de Alto Padrão
 const formSchema = z.object({
@@ -46,11 +46,11 @@ const formSchema = z.object({
 
 type FormValues = z.infer<typeof formSchema>;
 
-// Lista de consultores seniores com seus respectivos números fictícios de WhatsApp (podem ser alterados facilmente)
+// Lista de consultores seniores com seus respectivos números de WhatsApp
 const CONSULTORES = [
-  { nome: "Elisabete", telefone: "5567999990001" },
-  { nome: "Gabriel", telefone: "5567999990002" },
-  { nome: "Bianca", telefone: "5567999990003" }
+  { telefone: "5567999990001" },
+  { telefone: "5567999990002" },
+  { telefone: "5567999990003" }
 ];
 
 export default function Home() {
@@ -122,7 +122,7 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
 
     // Toast de sucesso sofisticado e personalizado
     toast.success("Curadoria Iniciada com Sucesso!", {
-      description: `Você está sendo direcionado para o atendimento exclusivo com ${consultorSelecionado.nome}.`,
+      description: "Você está sendo direcionado para o atendimento exclusivo com um de nossos consultores.",
       duration: 6000,
     });
 
@@ -857,8 +857,8 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
                 <span>Showroom Campo Grande</span>
               </h4>
               <p className="leading-relaxed">
-                Av. Afonso Pena, 4500 • Jardim dos Estados<br />
-                Campo Grande - MS • CEP 79020-001<br />
+                Rua 13 de Maio, 1459 • Centro<br />
+                Campo Grande - MS • CEP 79004-422<br />
                 <span className="text-primary font-semibold">Venha nos visitar ou agende um horário com nossos consultores.</span>
               </p>
             </div>
@@ -870,13 +870,13 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
                 <span>Horário de Funcionamento</span>
               </h4>
               <p className="leading-relaxed mb-4">
-                Segunda a Sexta: 08h às 18h<br />
-                Sábado: 08h às 12h<br />
-                Domingo e Feriados: Fechado
+                Segunda a Sexta: 08:30 às 18:00<br />
+                Sábado: 08:00 às 12:30<br />
+                Domingo: Fechado
               </p>
               <div className="flex space-x-4 pt-2">
                 <a 
-                  href="https://www.instagram.com/estofattocasacg/" 
+                  href={CONTACT_INFO.instagram} 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="p-2 bg-background border border-border text-foreground hover:text-primary hover:border-primary/40 transition-colors duration-200"

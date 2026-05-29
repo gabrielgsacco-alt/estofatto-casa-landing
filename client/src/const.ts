@@ -18,8 +18,24 @@ export const IMAGES = {
     autor: "/manus-storage/IMG_9715_0c33e132.webp",  // Design de Autor - detalhe da poltrona com tecido e madeira
   },
 
-  // FOLD 4: Imposing physical showroom architecture. No people.
-  showroom: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1600",
+  // FOLD 4: Fachada real do showroom Estofatto Casa
+  showroom: "/manus-storage/IMG_0641_95710857.JPG",
+};
+
+// Informações de contato e localização do showroom
+export const CONTACT_INFO = {
+  address: "Rua 13 de Maio, 1459",
+  neighborhood: "Centro",
+  city: "Campo Grande",
+  state: "MS",
+  cep: "79004-422",
+  phone: "(67) 3325-9999", // Substitua pelo telefone real
+  instagram: "https://www.instagram.com/estofattocasacg/",
+  hours: {
+    weekday: "08:30 - 18:00",
+    saturday: "08:00 - 12:30",
+    sunday: "Fechado",
+  },
 };
 
 export const REELS_VIDEOS = [
@@ -67,7 +83,7 @@ export const REVIEWS = [
     author: "Thiago & Aline Ramos",
     role: "Clientes do Carandá Bosque",
     rating: 5,
-    text: "Fizemos questão de pesquisar bastante antes de mobiliar nossa sala. Fomos em lojas super caras e a qualidade da Estofatto é exatamente a mesma, mas sem aquela 'gourmetização' que encarece o produto. O atendimento da Elisabete foi super honesto, sem empurrar coisas caras. O sofá de R$ 7.500 que compramos parece que custou R$ 20.000.",
+    text: "Fizemos questão de pesquisar bastante antes de mobiliar nossa sala. Fomos em lojas super caras e a qualidade da Estofatto é exatamente a mesma, mas sem aquela 'gourmetização' que encarece o produto. O atendimento foi super honesto, sem empurrar coisas caras. O sofá de R$ 7.500 que compramos parece que custou R$ 20.000.",
     date: "Há 3 semanas"
   },
   {
@@ -75,7 +91,7 @@ export const REVIEWS = [
     author: "Juliana Medeiros",
     role: "Arquiteta e Urbanista",
     rating: 5,
-    text: "Como arquiteta, prezo muito pela qualidade técnica dos móveis que indico. A Estofatto Casa é fantástica porque trabalha com venda direta, sem taxas embutidas de intermediação. Consigo oferecer aos meus clientes de classe média e média-alta um projeto com cara de revista, móveis extremamente duráveis e confortáveis, mas dentro de um orçamento muito mais realista.",
+    text: "Como arquiteta, prezo muito pela qualidade técnica dos móveis que indico. A Estofatto Casa é fantástica porque trabalha com venda direta, sem taxas embutidas de intermediação. Consigo oferecer aos meus clientes um projeto com cara de revista, móveis extremamente duráveis e confortáveis, mas dentro de um orçamento muito mais realista.",
     date: "Há 1 mês"
   },
   {
