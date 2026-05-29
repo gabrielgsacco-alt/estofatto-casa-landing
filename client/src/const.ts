@@ -14,8 +14,8 @@ export const IMAGES = {
   // FOLD 3: The Curated Collection
   collection: {
     living: "/manus-storage/IMG_3140_a28f3515.jpg", // Living & Estofados - foto real do showroom
-    jantar: "https://images.unsplash.com/photo-1615529182904-14819c35db37?auto=format&fit=crop&q=80&w=800", // Jantar & Recepção
-    autor: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&q=80&w=800",  // Design de Autor
+    jantar: "/manus-storage/26f033d6-e9d4-4940-9fd6-00a98c6d18ad_9f2001dc.webp", // Jantar & Recepção - mesa de madeira com cadeiras estofadas
+    autor: "/manus-storage/IMG_9715_0c33e132.webp",  // Design de Autor - detalhe da poltrona com tecido e madeira
   },
 
   // FOLD 4: Imposing physical showroom architecture. No people.
