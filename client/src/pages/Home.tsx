@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { 
   ArrowRight, 
+  ArrowUp,
   MapPin, 
   Phone, 
   Clock, 
@@ -58,6 +59,7 @@ export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeVideo, setActiveVideo] = useState<string | null>(null);
   const [visibleReviews, setVisibleReviews] = useState<Set<number>>(new Set());
+  const [showScrollTop, setShowScrollTop] = useState(false);
   const reviewsRef = useRef<HTMLDivElement>(null);
 
   const {
@@ -163,6 +165,24 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
 
     return () => observer.disconnect();
   }, []);
+
+  // Listener de scroll para mostrar/esconder botao de voltar ao topo
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 400);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Funcao para voltar ao topo suavemente
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  };
 
 
   return (
@@ -934,6 +954,18 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
           <Phone size={20} className="stroke-[2]" />
         </a>
       </div>
+
+      {/* BOTAO DE VOLTAR AO TOPO */}
+      {showScrollTop && (
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-8 right-8 z-40 p-3 bg-primary text-primary-foreground border border-primary/40 hover:bg-primary/90 transition-all duration-300 opacity-100 animate-fade-in shadow-lg"
+          aria-label="Voltar ao topo"
+          title="Voltar ao topo"
+        >
+          <ArrowUp size={20} className="stroke-[2]" />
+        </button>
+      )}
 
     </div>
   );
