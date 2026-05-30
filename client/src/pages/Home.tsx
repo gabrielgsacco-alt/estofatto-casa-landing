@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -57,6 +57,8 @@ export default function Home() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeVideo, setActiveVideo] = useState<string | null>(null);
+  const [visibleReviews, setVisibleReviews] = useState<Set<number>>(new Set());
+  const reviewsRef = useRef<HTMLDivElement>(null);
 
   const {
     register,
@@ -139,6 +141,29 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
     }
     setMobileMenuOpen(false);
   };
+
+  // Intersection Observer para animacoes dos depoimentos
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const reviewId = parseInt(entry.target.getAttribute("data-review-id") || "0");
+            setVisibleReviews((prev) => new Set(prev).add(reviewId));
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
+    );
+
+    if (reviewsRef.current) {
+      const reviewCards = reviewsRef.current.querySelectorAll("[data-review-id]");
+      reviewCards.forEach((card) => observer.observe(card));
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
 
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground font-sans">
@@ -553,9 +578,22 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
             </div>
 
             {/* Cards de Avaliações */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-              {REVIEWS.map((review) => (
-                <div key={review.id} className="bg-card border border-border p-6 flex flex-col justify-between space-y-4 relative group hover:border-primary/30 transition-colors duration-300">
+            <div ref={reviewsRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+              {REVIEWS.map((review) => {
+                const isVisible = visibleReviews.has(review.id);
+                return (
+                <div 
+                  key={review.id} 
+                  data-review-id={review.id}
+                  className={`bg-card border border-border p-6 flex flex-col justify-between space-y-4 relative group hover:border-primary/30 transition-all duration-500 ${
+                    isVisible 
+                      ? 'opacity-100 translate-y-0' 
+                      : 'opacity-0 translate-y-8'
+                  }`}
+                  style={{
+                    transitionDelay: isVisible ? `${review.id * 100}ms` : '0ms'
+                  }}
+                >
                   <div className="space-y-3">
                     
                     {/* Estrelas */}
@@ -579,7 +617,8 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
                     <span className="text-[9px] text-muted-foreground tracking-widest uppercase">{review.date}</span>
                   </div>
                 </div>
-              ))}
+              );
+              })}
             </div>
 
             {/* Google My Business Badge Sutil */}
