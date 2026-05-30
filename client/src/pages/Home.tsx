@@ -467,64 +467,7 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
         {/* FOLD 4: 30 YEARS OF TRADITION & LOGISTICS (Trust & Security) */}
         <section id="tradicao" className="py-20 md:py-32 bg-card border-b border-border/40">
           <div className="container">
-            {/* SEÇÃO REELS / VÍDEOS CURTOS DO INSTAGRAM */}
-            <div className="mb-20 space-y-8">
-              <div className="text-center max-w-2xl mx-auto space-y-3">
-                <div className="text-xs tracking-[0.2em] uppercase text-primary font-semibold">
-                  Estofatto na Prática
-                </div>
-                <h3 className="text-2xl md:text-3xl font-serif font-light text-foreground">
-                  Veja a qualidade e o conforto com seus <span className="italic font-normal text-primary">próprios olhos</span>
-                </h3>
-                <p className="text-xs text-muted-foreground">
-                  Clientes reais experimentando nossos estofados e conferindo o acabamento direto no nosso showroom.
-                </p>
-              </div>
 
-              {/* Grid/Carrossel de Reels */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-                {REELS_VIDEOS.map((video) => (
-                  <div 
-                    key={video.id} 
-                    onClick={() => setActiveVideo(video.videoUrl)}
-                    className="group relative aspect-[9/16] bg-black border border-border overflow-hidden cursor-pointer shadow-sm hover:shadow-md transition-all duration-300"
-                  >
-                    {/* Imagem de Capa */}
-                    <img 
-                      src={video.thumbnail} 
-                      alt={video.title} 
-                      className="w-full h-full object-cover opacity-85 group-hover:opacity-75 transition-opacity duration-300"
-                    />
-
-                    {/* Gradiente de Escurecimento Sutil */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-
-                    {/* Botão de Play Centralizado */}
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-12 h-14 bg-background/90 backdrop-blur-sm flex items-center justify-center rounded-none border border-border shadow-md group-hover:scale-110 group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary transition-all duration-300">
-                        {/* Ícone de Play Clássico */}
-                        <svg className="w-4 h-4 fill-current ml-0.5" viewBox="0 0 24 24">
-                          <path d="M8 5v14l11-7z" />
-                        </svg>
-                      </div>
-                    </div>
-
-                    {/* Textos Informativos */}
-                    <div className="absolute bottom-0 left-0 w-full p-4 space-y-1 text-white">
-                      <span className="inline-block bg-primary text-primary-foreground text-[8px] tracking-widest uppercase px-1.5 py-0.5 font-semibold">
-                        Reels
-                      </span>
-                      <h4 className="text-xs font-bold leading-snug group-hover:text-primary-foreground transition-colors duration-200">
-                        {video.title}
-                      </h4>
-                      <p className="text-[9px] text-gray-300 line-clamp-2 leading-relaxed">
-                        {video.description}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
               
@@ -673,7 +616,7 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
                   Planeje a escolha do seu <span className="italic font-normal text-primary">mobiliário</span>.
                 </h2>
                 <p className="text-xs md:text-sm text-muted-foreground max-w-lg mx-auto leading-relaxed">
-                  Preencha o formulário abaixo para receber um atendimento personalizado e consultivo com nossos especialistas em vendas: <strong>Elisabete, Gabriel ou Bianca</strong>.
+                  Preencha o formulário abaixo para receber um atendimento personalizado e consultivo com nossos especialistas em vendas.
                 </p>
                 <div className="h-[1px] w-16 bg-primary/30 mx-auto mt-4" />
               </div>
