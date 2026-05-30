@@ -574,7 +574,7 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
                   <div className="pt-4 border-t border-border/40 flex flex-col justify-between space-y-1">
                     <div>
                       <h4 className="text-xs font-bold tracking-wider uppercase text-foreground">{review.author}</h4>
-                      <p className="text-[10px] text-muted-foreground">{review.role}</p>
+                      <p className="text-[10px] text-muted-foreground" style={{fontSize: '12px', fontWeight: '700'}}>{review.role}</p>
                     </div>
                     <span className="text-[9px] text-muted-foreground tracking-widest uppercase">{review.date}</span>
                   </div>
@@ -585,7 +585,7 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
             {/* Google My Business Badge Sutil */}
             <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4 text-xs text-muted-foreground border-t border-border/40 pt-8">
               <div className="flex items-center space-x-2">
-                <span className="font-bold text-foreground">Excelente 4.9 de 5</span>
+                <span className="font-bold text-foreground">Excelente 4.8 de 5</span>
                 <div className="flex text-primary">
                   {[...Array(5)].map((_, i) => <Star key={i} size={12} fill="currentColor" />)}
                 </div>
