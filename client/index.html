@@ -38,8 +38,7 @@
     <link rel="preload" as="image" href="/manus-storage/IMG_3140_a28f3515.jpg" type="image/jpeg" />
     <link rel="preload" as="image" href="/manus-storage/IMG_3140_a28f3515.webp" type="image/webp" />
     <link rel="preload" as="image" href="/manus-storage/IMG_3140_a28f3515.avif" type="image/avif" />
-    <!-- Preload de CSS crítico -->
-    <link rel="preload" as="style" href="/css/main.css" />
+    <!-- Preload de CSS crítico removido (CSS é injetado pelo Vite) -->
     <!-- Google Fonts com font-display=swap para evitar FOUT -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -202,11 +201,6 @@
     /></noscript>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx" defer></script>
-    <script
-      defer
-      src="%VITE_ANALYTICS_ENDPOINT%/umami"
-      data-website-id="%VITE_ANALYTICS_WEBSITE_ID%"
-      data-domains="estofattocasa.com.br"
-    ></script>
+    <!-- Umami Analytics removido: causa erros de tipo MIME e 404 -->
   </body>
 </html>
