@@ -61,46 +61,83 @@
       type="font/woff2"
       crossorigin
     />
-    <!-- Google Analytics 4 (defer para não bloquear renderização) -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"
-    ></script>
+    <!-- Carregamento Inteligente e Diferido de Scripts de Terceiros (GA4 e Facebook Pixel) -->
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-      gtag("config", "G-XXXXXXXXXX", { send_page_view: false });
-    </script>
-    <!-- Facebook Pixel (async para não bloquear renderização) -->
-    <script async>
-      !(function (f, b, e, v, n, t, s) {
-        if (f.fbq) return;
-        n = f.fbq = function () {
-          n.callMethod
-            ? n.callMethod.apply(n, arguments)
-            : n.queue.push(arguments);
-        };
-        if (!f._fbq) f._fbq = n;
-        n.push = n;
-        n.loaded = !0;
-        n.version = "2.0";
-        n.queue = [];
-        t = b.createElement(e);
-        t.async = !0;
-        t.src = v;
-        s = b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t, s);
-      })(
-        window,
-        document,
-        "script",
-        "https://connect.facebook.net/en_US/fbevents.js"
-      );
-      fbq("init", "1698423457965661");
-      fbq("track", "PageView");
+      (function() {
+        var initialized = false;
+
+        function loadThirdPartyScripts() {
+          if (initialized) return;
+          initialized = true;
+
+          // Remover ouvintes de evento para evitar chamadas duplicadas
+          triggerEvents.forEach(function(event) {
+            window.removeEventListener(event, loadThirdPartyScripts, { passive: true });
+          });
+
+          // 1. Carregar Google Analytics 4
+          var gaScript = document.createElement('script');
+          gaScript.async = true;
+          gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX';
+          document.head.appendChild(gaScript);
+
+          window.dataLayer = window.dataLayer || [];
+          window.gtag = function() { window.dataLayer.push(arguments); };
+          window.gtag('js', new Date());
+          window.gtag('config', 'G-XXXXXXXXXX', { send_page_view: true });
+
+          // 2. Carregar Facebook Pixel
+          !(function (f, b, e, v, n, t, s) {
+            if (f.fbq) return;
+            n = f.fbq = function () {
+              n.callMethod
+                ? n.callMethod.apply(n, arguments)
+                : n.queue.push(arguments);
+            };
+            if (!f._fbq) f._fbq = n;
+            n.push = n;
+            n.loaded = !0;
+            n.version = "2.0";
+            n.queue = [];
+            t = b.createElement(e);
+            t.async = !0;
+            t.src = v;
+            s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s);
+          })(
+            window,
+            document,
+            "script",
+            "https://connect.facebook.net/en_US/fbevents.js"
+          );
+          fbq("init", "1698423457965661");
+          fbq("track", "PageView");
+        }
+
+        // Eventos que indicam interação real do usuário
+        var triggerEvents = ['click', 'mousedown', 'keydown', 'touchstart', 'scroll'];
+
+        // Se o navegador suportar requestIdleCallback, agendamos o carregamento em background após 3.5 segundos de inatividade
+        // Caso contrário, usamos um setTimeout de segurança de 4 segundos.
+        var idleTimeout = setTimeout(loadThirdPartyScripts, 4000);
+
+        if ('requestIdleCallback' in window) {
+          window.requestIdleCallback(function() {
+            // Aguarda o navegador ficar livre, mas se o usuário interagir antes, carrega imediatamente
+            setTimeout(function() {
+              if (!initialized) {
+                clearTimeout(idleTimeout);
+                loadThirdPartyScripts();
+              }
+            }, 3000);
+          }, { timeout: 6000 });
+        }
+
+        // Registrar ouvintes para carregar instantaneamente em qualquer interação do usuário
+        triggerEvents.forEach(function(event) {
+          window.addEventListener(event, loadThirdPartyScripts, { passive: true });
+        });
+      })();
     </script>
     <!-- Schema Markup LocalBusiness -->
     <script type="application/ld+json">
