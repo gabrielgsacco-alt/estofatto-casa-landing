@@ -93,26 +93,13 @@ export const ReviewsSection: React.FC = () => {
           </div>
         </div>
         
-        {/* Avaliação e CTA */}
-        <div className="flex flex-col md:flex-row items-center gap-6 md:gap-8">
-          <div className="text-center">
-            <div className="flex items-center gap-1.5 justify-center mb-2">
-              <span className="text-4xl font-black text-white">4.9</span>
-              <div className="flex gap-0.5">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} size={18} fill="white" className="stroke-white" />
-                ))}
-              </div>
-            </div>
-            <p className="text-xs text-white/80 font-semibold tracking-wider uppercase">
-              120+ avaliações
-            </p>
-          </div>
+        {/* CTA para Google Maps */}
+        <div className="flex justify-center">
           <a 
-            href="https://www.google.com/maps/place/Estofatto+Casa+-+Loja+de+m%C3%B3veis+em+Campo+Grande+MS" 
+            href="https://www.google.com/maps/place/Estofatto+Casa+-+Loja+de+m%C3%B3veis+em+Campo+Grande+MS/data=!4m2!3m1!1s0x0:0x1c49450723dbd5b3?sa=X&ved=1t:2428&ictx=111&cshid=1780340855246497" 
             target="_blank" 
             rel="noopener noreferrer"
-            aria-label="Ver avaliações Estofatto Casa no Google Maps - abre em nova aba"
+            aria-label="Ver perfil Estofatto Casa no Google Maps - abre em nova aba"
             className="px-6 py-3 bg-white text-[#8B3A3A] text-xs font-black tracking-widest uppercase hover:bg-gray-100 transition-all duration-200 shadow-md hover:shadow-lg active:scale-95"
           >
             Ver no Google Maps
