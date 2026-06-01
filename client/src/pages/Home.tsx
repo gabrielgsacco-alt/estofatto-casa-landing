@@ -303,6 +303,7 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
               size="sm" 
               onClick={scrollToForm}
               className="border-primary/40 text-primary hover:bg-primary/5 text-xs tracking-widest uppercase px-5 py-4"
+              aria-label="Ir para formulário de contato"
             >
               Falar com Consultor
             </Button>
@@ -1096,7 +1097,7 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
         <button
           onClick={scrollToTop}
           className="fixed bottom-8 right-8 z-40 p-3 bg-primary text-primary-foreground border border-primary/40 hover:bg-primary/90 transition-all duration-300 opacity-100 animate-fade-in shadow-lg"
-          aria-label="Voltar ao topo"
+          aria-label="Voltar ao topo da página"
           title="Voltar ao topo"
         >
           <ArrowUp size={20} className="stroke-[2]" />
