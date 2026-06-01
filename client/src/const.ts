@@ -109,7 +109,7 @@ export const FAQ_ITEMS = [
   {
     id: "faq-1",
     question: "Como funciona o frete e a entrega dos móveis em Campo Grande e no MS?",
-    answer: "Para garantir a máxima segurança e integridade do seu mobiliário, nós utilizamos frota de entrega própria e equipe de montadores internos altamente qualificados. Entregamos e montamos em toda a cidade de Campo Grande e em todas as cidades do estado do Mato Grosso do Sul. O valor do frete varia de acordo com a sua localidade e o volume do pedido, sendo calculado de forma transparente pelo nosso consultor durante o atendimento."
+    answer: "Entregamos e montamos em toda a cidade de Campo Grande e em todas as cidades do estado do Mato Grosso do Sul. O valor do frete varia de acordo com a sua localidade e o volume do pedido, sendo calculado de forma transparente pelo nosso consultor durante o atendimento."
   },
   {
     id: "faq-2",
