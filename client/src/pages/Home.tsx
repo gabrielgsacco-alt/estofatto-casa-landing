@@ -731,7 +731,7 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
             {/* Google My Business Badge Sutil */}
             <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4 text-xs text-muted-foreground border-t border-border/40 pt-8">
               <div className="flex items-center space-x-2">
-                <span className="font-bold text-foreground">Excelente 4.8 de 5</span>
+                <span className="font-bold text-foreground">Excelente 4.5 de 5</span>
                 <div className="flex text-primary">
                   {[...Array(5)].map((_, i) => <Star key={i} size={12} fill="currentColor" />)}
                 </div>
