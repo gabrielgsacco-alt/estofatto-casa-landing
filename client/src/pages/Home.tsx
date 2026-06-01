@@ -35,6 +35,13 @@ import {
 import { toast } from "sonner";
 import { IMAGES, REVIEWS, REELS_VIDEOS, CONTACT_INFO } from "../const";
 
+// Funcao para rastrear eventos no Google Analytics
+const trackEvent = (eventName: string, eventData?: Record<string, any>) => {
+  if (typeof window !== 'undefined' && (window as any).gtag) {
+    (window as any).gtag('event', eventName, eventData || {});
+  }
+};
+
 // Esquema de validação com Zod para o Formulário de Qualificação de Alto Padrão
 const formSchema = z.object({
   nome: z.string().min(3, "Por favor, insira seu nome completo."),
@@ -127,6 +134,16 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
     // Gerar link do WhatsApp API
     const linkWhatsApp = `https://api.whatsapp.com/send?phone=${consultorSelecionado.telefone}&text=${encodeURIComponent(mensagemWhatsApp)}`;
 
+    // Rastrear evento de envio de formulario no Google Analytics
+    trackEvent('form_submission', {
+      event_category: 'engagement',
+      event_label: 'qualification_form',
+      investment_range: data.investimento,
+      project_phase: data.faseProjeto,
+      has_architect: data.arquiteto,
+      value: 1
+    });
+
     // Mostrar mensagem de sucesso com animacao
     setSuccessMessage(`Olá ${data.nome}! Sua solicitação foi enviada com sucesso.`);
     setFormSuccess(true);
@@ -135,6 +152,13 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
     toast.success("Curadoria Iniciada com Sucesso!", {
       description: "Você está sendo direcionado para o atendimento exclusivo com um de nossos consultores.",
       duration: 6000,
+    });
+
+    // Rastrear clique no WhatsApp
+    trackEvent('whatsapp_click', {
+      event_category: 'engagement',
+      event_label: 'whatsapp_redirect',
+      value: 1
     });
 
     // Abrir WhatsApp em nova aba
@@ -148,6 +172,13 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
   };
 
   const scrollToForm = () => {
+    // Rastrear clique no botao de scroll para formulario
+    trackEvent('scroll_to_form_click', {
+      event_category: 'engagement',
+      event_label: 'cta_button',
+      value: 1
+    });
+    
     const element = document.getElementById("qualificar");
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
@@ -189,6 +220,13 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
 
   // Funcao para voltar ao topo suavemente
   const scrollToTop = () => {
+    // Rastrear clique no botao de scroll to top
+    trackEvent('scroll_to_top_click', {
+      event_category: 'engagement',
+      event_label: 'scroll_to_top_button',
+      value: 1
+    });
+    
     window.scrollTo({
       top: 0,
       behavior: "smooth"
