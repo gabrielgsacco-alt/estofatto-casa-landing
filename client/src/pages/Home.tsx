@@ -321,7 +321,7 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
               size="sm" 
               onClick={scrollToForm}
               className="border-primary/40 text-primary hover:bg-primary/5 text-xs tracking-widest uppercase px-5 py-4"
-              aria-label="Ir para formulário de contato"
+              aria-label="Ir para formulário de qualificação com consultor"
             >
               Falar com Consultor
             </Button>
@@ -370,6 +370,7 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
             </a>
             <Button 
               onClick={scrollToForm}
+              aria-label="Ir para formulário de qualificação com especialista"
               className="w-full bg-primary text-primary-foreground hover:bg-primary/90 text-xs tracking-widest uppercase py-5"
             >
               Falar com Especialista
@@ -404,6 +405,7 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
               <div className="pt-4 flex flex-col sm:flex-row gap-4">
                 <Button 
                   onClick={scrollToForm}
+                  aria-label="Ir para formulário de qualificação com consultor de vendas"
                   className="bg-primary text-primary-foreground hover:bg-primary/90 text-xs tracking-widest uppercase px-8 py-6 shadow-sm group"
                 >
                   Falar com Consultor de Vendas
@@ -908,6 +910,7 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
                   setCookieConsent(false);
                   localStorage.setItem('cookieConsent', JSON.stringify(false));
                 }}
+                aria-label="Rejeitar cookies e tecnologias de rastreamento"
                 className="flex-1 sm:flex-none px-4 py-2 text-xs font-medium border border-border text-foreground hover:bg-muted transition-colors"
               >
                 Rejeitar
@@ -917,6 +920,7 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
                   setCookieConsent(true);
                   localStorage.setItem('cookieConsent', JSON.stringify(true));
                 }}
+                aria-label="Aceitar cookies e tecnologias de rastreamento"
                 className="flex-1 sm:flex-none px-4 py-2 text-xs font-medium bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
               >
                 Aceitar

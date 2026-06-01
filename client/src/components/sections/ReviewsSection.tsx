@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Star, ShieldCheck } from "lucide-react";
+import { Star, ShieldCheck, Award } from "lucide-react";
 import { REVIEWS } from "@/const";
 
 export const ReviewsSection: React.FC = () => {
@@ -32,49 +32,65 @@ export const ReviewsSection: React.FC = () => {
   }, []);
 
   return (
-    <div className="space-y-8">
-      {/* Widget de Selo de Confiança Google */}
-      <div className="bg-card border border-border p-6 flex flex-col md:flex-row items-center justify-between gap-6">
-        <div className="flex items-center gap-4">
-          <div className="w-12 h-12 bg-[#4285F4]/10 rounded-full flex items-center justify-center text-[#4285F4]">
-            <svg viewBox="0 0 24 24" className="w-6 h-6 fill-current">
+    <div className="space-y-12">
+      {/* Widget de Selo de Confiança Google - Redesenhado com Contraste Alto */}
+      <div className="bg-gradient-to-r from-[#4285F4] to-[#1a73e8] border-2 border-[#1a73e8] p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-8 shadow-lg">
+        <div className="flex items-center gap-6">
+          {/* Ícone do Google com destaque */}
+          <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-md flex-shrink-0">
+            <svg viewBox="0 0 24 24" className="w-8 h-8 fill-[#4285F4]" aria-hidden="true">
               <path d="M12.24 10.285V13.4h6.887c-.275 1.565-1.88 4.604-6.887 4.604-4.33 0-7.866-3.577-7.866-8s3.536-8 7.866-8c2.46 0 4.105 1.025 5.047 1.926l2.427-2.334C18.155 2.185 15.427 1 12.24 1 5.48 1 0 6.48 0 13.2s5.48 12.2 12.24 12.2c7.055 0 11.75-4.96 11.75-11.94 0-.8-.085-1.41-.19-1.975H12.24z"/>
             </svg>
           </div>
-          <div>
-            <div className="flex items-center gap-2">
-              <h3 className="text-sm font-bold tracking-wider uppercase text-foreground">Avaliações no Google</h3>
-              <span className="flex items-center gap-1 text-[10px] bg-emerald-500/10 text-emerald-500 px-2 py-0.5 font-bold tracking-widest uppercase">
-                <ShieldCheck size={10} /> Verificado
+          
+          <div className="flex-1">
+            <div className="flex items-center gap-3 mb-2">
+              <h2 className="text-lg md:text-xl font-black tracking-wider uppercase text-white">
+                Avaliações no Google
+              </h2>
+              <span className="flex items-center gap-1.5 text-xs bg-white text-[#1a73e8] px-3 py-1 font-bold tracking-widest uppercase shadow-md">
+                <ShieldCheck size={14} className="stroke-[2.5]" /> Verificado
               </span>
             </div>
-            <p className="text-xs text-muted-foreground mt-1">
+            <p className="text-sm text-white/90 font-medium">
               Feedback real dos nossos clientes do showroom de Campo Grande
             </p>
           </div>
         </div>
         
-        <div className="flex items-center gap-6">
-          <div className="text-center md:text-right">
-            <div className="flex items-center gap-1 justify-center md:justify-end text-amber-500">
-              <span className="text-xl font-black text-foreground mr-1">4.9</span>
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} size={14} fill="currentColor" className="stroke-amber-500" />
-              ))}
+        {/* Avaliação e CTA */}
+        <div className="flex flex-col md:flex-row items-center gap-6 md:gap-8">
+          <div className="text-center">
+            <div className="flex items-center gap-1.5 justify-center mb-2">
+              <span className="text-4xl font-black text-white">4.9</span>
+              <div className="flex gap-0.5">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} size={18} fill="white" className="stroke-white" />
+                ))}
+              </div>
             </div>
-            <p className="text-[10px] text-muted-foreground tracking-wider uppercase mt-1">
-              Com base em mais de 120 avaliações
+            <p className="text-xs text-white/80 font-semibold tracking-wider uppercase">
+              120+ avaliações
             </p>
           </div>
           <a 
             href="https://g.page/r/estofattocasacg/review" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="px-4 py-2.5 bg-primary text-primary-foreground text-xs font-bold tracking-widest uppercase hover:bg-primary/90 transition-colors"
+            aria-label="Avaliar Estofatto Casa no Google - abre em nova aba"
+            className="px-6 py-3 bg-white text-[#1a73e8] text-xs font-black tracking-widest uppercase hover:bg-gray-100 transition-all duration-200 shadow-md hover:shadow-lg active:scale-95"
           >
             Avaliar no Google
           </a>
         </div>
+      </div>
+
+      {/* Título da seção de depoimentos com hierarquia correta */}
+      <div className="space-y-2">
+        <h2 className="text-2xl md:text-3xl font-serif font-light tracking-tight text-foreground">
+          O que nossos clientes dizem
+        </h2>
+        <div className="w-12 h-1 bg-primary"></div>
       </div>
 
       {/* Grid de Avaliações */}
@@ -85,10 +101,10 @@ export const ReviewsSection: React.FC = () => {
         {REVIEWS.map(review => {
           const isVisible = visibleReviews.has(review.id);
           return (
-            <div
+            <article
               key={review.id}
               data-review-id={review.id}
-              className={`bg-card border border-border p-6 flex flex-col justify-between space-y-4 relative group hover:border-primary/30 transition-all duration-500 ${
+              className={`bg-card border-2 border-border p-6 flex flex-col justify-between space-y-4 relative group hover:border-primary hover:shadow-lg transition-all duration-500 ${
                 isVisible
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-8"
@@ -97,34 +113,43 @@ export const ReviewsSection: React.FC = () => {
                 transitionDelay: isVisible ? `${review.id * 100}ms` : "0ms",
               }}
             >
-              <div className="space-y-3">
-                <div className="flex space-x-1 text-primary">
-                  {[...Array(review.rating)].map((_, i) => (
-                    <Star key={i} size={12} fill="currentColor" />
-                  ))}
-                </div>
-                <p className="text-xs text-muted-foreground leading-relaxed italic">
-                  "{review.text}"
-                </p>
+              {/* Estrelas com aria-label */}
+              <div 
+                className="flex space-x-1 text-amber-500"
+                aria-label={`Avaliação: ${review.rating} de 5 estrelas`}
+              >
+                {[...Array(5)].map((_, i) => (
+                  <Star 
+                    key={i} 
+                    size={14} 
+                    fill={i < review.rating ? "currentColor" : "none"}
+                    className={i < review.rating ? "stroke-amber-500" : "stroke-border"}
+                  />
+                ))}
               </div>
 
-              <div className="pt-4 border-t border-border/40 flex flex-col justify-between space-y-1">
+              {/* Texto do depoimento com contraste melhorado */}
+              <p className="text-sm text-foreground leading-relaxed font-medium">
+                "{review.text}"
+              </p>
+
+              {/* Informações do autor */}
+              <div className="pt-4 border-t-2 border-border flex flex-col justify-between space-y-2">
                 <div>
-                  <h4 className="text-xs font-bold tracking-wider uppercase text-foreground">
+                  <h3 className="text-sm font-black tracking-wider uppercase text-foreground">
                     {review.author}
-                  </h4>
-                  <p
-                    className="text-[10px] text-muted-foreground"
-                    style={{ fontSize: "12px", fontWeight: "700" }}
-                  >
-                    {review.role}
-                  </p>
+                  </h3>
+                  {review.role && (
+                    <p className="text-xs text-muted-foreground font-semibold">
+                      {review.role}
+                    </p>
+                  )}
                 </div>
-                <span className="text-[9px] text-muted-foreground tracking-widest uppercase">
+                <span className="text-xs text-muted-foreground tracking-widest uppercase font-semibold">
                   {review.date}
                 </span>
               </div>
-            </div>
+            </article>
           );
         })}
       </div>
