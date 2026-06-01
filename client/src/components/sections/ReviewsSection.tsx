@@ -64,7 +64,7 @@ export const ReviewsSection: React.FC = () => {
         ref={googleWidgetRef}
         className="flex justify-center"
         dangerouslySetInnerHTML={{
-          __html: `<g:businesscard name="Estofatto Casa - Loja de móveis em Campo Grande MS" itemid="ChIJN1blFLsB5ZQRj9z_wGIjZmE"></g:businesscard>`
+          __html: `<g:businesscard name="Estofatto Casa - Loja de móveis em Campo Grande MS" itemid="10938569232415454368"></g:businesscard>`
         }}
       />
 
