@@ -18,7 +18,8 @@ import {
   X,
   Sparkles,
   Compass,
-  Award
+  Award,
+  Search
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -1016,14 +1017,14 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
                   <Instagram size={16} />
                 </a>
                 <a 
-                  href="https://google.com" 
+                  href="https://www.google.com/search?q=estofatto+casa&oq=estofatto+casa&gs_lcrp=EgZjaHJvbWUqBggAEEUYOzIGCAAQRRg7MgYIARBFGDsyBggCEEUYOzIGCAMQRRg9MgYIBBBFGDwyBggFEEUYPNIBCDEyNTVqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="p-2 bg-background border border-border text-foreground hover:text-primary hover:border-primary/40 transition-colors duration-200"
-                  aria-label="Google Reviews"
+                  aria-label="Google Meu Negócio"
                   title="Avaliações no Google"
                 >
-                  <Star size={16} />
+                  <Search size={16} />
                 </a>
               </div>
             </div>
