@@ -401,6 +401,7 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
                   src={IMAGES.heroSofa} 
                   alt="Sofá de luxo de 2.40m perfeitamente escalado em living monumental com parede de 3.90m em Campo Grande" 
                   className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
+                  loading="lazy"
                 />
               </div>
               
@@ -428,11 +429,12 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
               <div className="lg:col-span-5 order-2 lg:order-1 relative">
                 <div className="absolute inset-0 border border-border/60 -translate-x-4 translate-y-4 -z-10" />
                 <div className="aspect-square w-full overflow-hidden border border-border">
-                  <img 
-                    src={IMAGES.textureDetail} 
-                    alt="Close-up macro de texturas premium, linho nobre e encaixes de madeira maciça na Estofatto Casa" 
-                    className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-                  />
+                   <img 
+                     src={IMAGES.textureDetail} 
+                     alt="Close-up macro de texturas premium, linho nobre e encaixes de madeira maciça na Estofatto Casa" 
+                     className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                     loading="lazy"
+                   />
                 </div>
               </div>
 
@@ -521,11 +523,12 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
               {/* Categoria 1: Living & Estofados */}
               <div className="group space-y-6">
                 <div className="relative overflow-hidden border border-border aspect-[3/4]">
-                  <img 
-                    src={IMAGES.collection.living} 
-                    alt="Coleção de Living e Estofados de luxo Estofatto Casa" 
-                    className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
-                  />
+                   <img 
+                     src={IMAGES.collection.living} 
+                     alt="Coleção de Living e Estofados de luxo Estofatto Casa" 
+                     className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
+                     loading="lazy"
+                   />
                   <div className="absolute top-4 left-4 bg-background/90 backdrop-blur-sm border border-border/30 px-3 py-1 text-[10px] tracking-widest uppercase">
                     I. Living
                   </div>
@@ -543,11 +546,12 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
               {/* Categoria 2: Jantar & Recepção */}
               <div className="group space-y-6 md:translate-y-8 transition-transform duration-500">
                 <div className="relative overflow-hidden border border-border aspect-[3/4]">
-                  <img 
-                    src={IMAGES.collection.jantar} 
-                    alt="Coleção de Jantar Estofatto Casa" 
-                    className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
-                  />
+                   <img 
+                     src={IMAGES.collection.jantar} 
+                     alt="Coleção de Jantar Estofatto Casa" 
+                     className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
+                     loading="lazy"
+                   />
                   <div className="absolute top-4 left-4 bg-background/90 backdrop-blur-sm border border-border/30 px-3 py-1 text-[10px] tracking-widest uppercase">
                     II. Jantar
                   </div>
@@ -565,11 +569,12 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
               {/* Categoria 3: Design de Autor */}
               <div className="group space-y-6">
                 <div className="relative overflow-hidden border border-border aspect-[3/4]">
-                  <img 
-                    src={IMAGES.collection.autor} 
-                    alt="Mobiliário com design contemporâneo na Estofatto Casa" 
-                    className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
-                  />
+                   <img 
+                     src={IMAGES.collection.autor} 
+                     alt="Mobiliário com design contemporâneo na Estofatto Casa" 
+                     className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
+                     loading="lazy"
+                   />
                   <div className="absolute top-4 left-4 bg-background/90 backdrop-blur-sm border border-border/30 px-3 py-1 text-[10px] tracking-widest uppercase">
                     III. Design
                   </div>
@@ -655,11 +660,12 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
               <div className="lg:col-span-6 relative">
                 <div className="absolute inset-0 border border-border/60 translate-x-4 translate-y-4 -z-10" />
                 <div className="aspect-[4/3] w-full overflow-hidden border border-border">
-                  <img 
-                    src={IMAGES.showroom} 
-                    alt="Showroom monumental da Estofatto Casa em Campo Grande, MS" 
-                    className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-                  />
+                   <img 
+                     src={IMAGES.showroom} 
+                     alt="Showroom monumental da Estofatto Casa em Campo Grande, MS" 
+                     className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                     loading="lazy"
+                   />
                 </div>
                 
                 {/* Selo de 30 Anos */}
