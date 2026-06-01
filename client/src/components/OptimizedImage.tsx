@@ -12,6 +12,7 @@ interface OptimizedImageProps {
 /**
  * Componente de imagem otimizado com suporte a WebP e fallback
  * Converte automaticamente URLs de JPG/PNG para WebP com fallback
+ * Evita conversão para URLs que já são WebP ou que usam /manus-storage/
  */
 export const OptimizedImage: React.FC<OptimizedImageProps> = ({
   src,
@@ -21,19 +22,21 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = ({
   fetchPriority = "auto",
   decoding = "async",
 }) => {
-  // Converter URL para WebP (substitui extensão)
-  const webpSrc = src.replace(/\.(jpg|jpeg|png)$/i, ".webp");
+  // Se a URL já é WebP, usar como está
+  const isWebP = src.endsWith(".webp");
+  const isManusStor = src.includes("/manus-storage/");
 
-  // Manter a URL original como fallback
-  const originalSrc = src;
+  // Converter URL para WebP apenas se for JPG/PNG e NÃO for /manus-storage/
+  const shouldConvertToWebP = !isWebP && !isManusStor && /\.(jpg|jpeg|png)$/i.test(src);
+  const webpSrc = shouldConvertToWebP ? src.replace(/\.(jpg|jpeg|png)$/i, ".webp") : src;
 
   return (
     <picture>
-      {/* Fonte WebP para navegadores modernos */}
-      <source srcSet={webpSrc} type="image/webp" />
-      {/* Fallback para navegadores antigos */}
+      {/* Fonte WebP para navegadores modernos (apenas se convertido) */}
+      {shouldConvertToWebP && <source srcSet={webpSrc} type="image/webp" />}
+      {/* Imagem principal */}
       <img
-        src={originalSrc}
+        src={src}
         alt={alt}
         className={className}
         loading={loading}
