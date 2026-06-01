@@ -252,9 +252,14 @@ export default defineConfig({
       compress: {
         drop_console: true,
         drop_debugger: true,
-        passes: 2,
+        passes: 3,
+        pure_funcs: ['console.log', 'console.info'],
+        pure_getters: true,
+        unsafe: true,
       },
-      mangle: true,
+      mangle: {
+        toplevel: true,
+      },
       format: {
         comments: false,
       },
