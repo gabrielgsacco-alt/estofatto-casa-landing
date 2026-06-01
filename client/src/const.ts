@@ -29,7 +29,8 @@ export const CONTACT_INFO = {
   city: "Campo Grande",
   state: "MS",
   cep: "79004-422",
-  phone: "(67) 3325-9999", // Substitua pelo telefone real
+  phone: "(67) 3325-9999", // Telefone da loja
+  whatsapp: "5567993310724", // WhatsApp para qualificação de leads
   instagram: "https://www.instagram.com/estofattocasacg/",
   hours: {
     weekday: "08:30 - 18:00",

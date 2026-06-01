@@ -62,11 +62,9 @@ const formSchema = z.object({
 
 type FormValues = z.infer<typeof formSchema>;
 
-// Lista de consultores seniores com seus respectivos números de WhatsApp
+// Usar o WhatsApp centralizado do CONTACT_INFO
 const CONSULTORES = [
-  { telefone: "5567999990001" },
-  { telefone: "5567999990002" },
-  { telefone: "5567999990003" }
+  { telefone: CONTACT_INFO.whatsapp },
 ];
 
 export default function Home() {
@@ -140,8 +138,8 @@ ${data.descricao}
 
 _Solicitação enviada via Landing Page Estofatto Casa_`;
 
-    // Gerar link do WhatsApp API
-    const linkWhatsApp = `https://api.whatsapp.com/send?phone=${consultorSelecionado.telefone}&text=${encodeURIComponent(mensagemWhatsApp)}`;
+    // Gerar link do WhatsApp API com o número correto
+    const linkWhatsApp = `https://api.whatsapp.com/send?phone=${CONTACT_INFO.whatsapp}&text=${encodeURIComponent(mensagemWhatsApp)}`;
 
     // Rastrear evento de envio de formulario no Google Analytics
     trackEvent('form_submission', {
@@ -907,12 +905,16 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
                   <Button 
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full md:w-auto bg-primary text-primary-foreground hover:bg-primary/95 text-xs tracking-[0.15em] uppercase px-12 py-6 rounded-none transition-all duration-300 shadow-md disabled:opacity-50"
+                    className="w-full md:w-auto bg-primary text-primary-foreground hover:bg-primary/95 text-xs tracking-[0.15em] uppercase px-12 py-6 rounded-none transition-all duration-300 shadow-md disabled:opacity-70 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? (
-                      <span className="flex items-center justify-center space-x-2">
-                        <span className="animate-spin rounded-full h-4 w-4 border-b-2 border-primary-foreground" />
-                        <span>Enviando dados...</span>
+                      <span className="flex items-center justify-center space-x-3">
+                        <span className="inline-flex space-x-1">
+                          <span className="w-2 h-2 bg-primary-foreground rounded-full animate-bounce" style={{ animationDelay: '0s' }} />
+                          <span className="w-2 h-2 bg-primary-foreground rounded-full animate-bounce" style={{ animationDelay: '0.2s' }} />
+                          <span className="w-2 h-2 bg-primary-foreground rounded-full animate-bounce" style={{ animationDelay: '0.4s' }} />
+                        </span>
+                        <span>Processando...</span>
                       </span>
                     ) : (
                       "Solicitar Atendimento e Consultoria de Vendas"
@@ -937,27 +939,29 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
                     </div>
 
                     {/* Mensagem de Sucesso */}
-                    <div className="space-y-2">
-                      <h3 className="text-2xl font-serif font-light text-foreground">
+                    <div className="space-y-3">
+                      <h3 className="text-3xl font-serif font-light text-foreground">
                         Sucesso!
                       </h3>
-                      <p className="text-sm text-muted-foreground leading-relaxed">
+                      <p className="text-base text-foreground font-medium leading-relaxed">
                         {successMessage}
                       </p>
                     </div>
 
-                    {/* Texto Adicional */}
+                    {/* Texto Adicional com Melhor Contraste */}
                     <div className="pt-4 border-t border-border/40">
-                      <p className="text-xs text-muted-foreground tracking-wide">
+                      <p className="text-sm text-foreground/80 tracking-wide leading-relaxed">
                         Você será redirecionado para o WhatsApp em instantes para conversar com um de nossos consultores.
                       </p>
                     </div>
 
-                    {/* Indicador de Carregamento */}
-                    <div className="flex justify-center space-x-2 pt-4">
-                      <span className="w-2 h-2 bg-primary rounded-full animate-bounce" style={{ animationDelay: '0s' }} />
-                      <span className="w-2 h-2 bg-primary rounded-full animate-bounce" style={{ animationDelay: '0.2s' }} />
-                      <span className="w-2 h-2 bg-primary rounded-full animate-bounce" style={{ animationDelay: '0.4s' }} />
+                    {/* Indicador de Carregamento com Animação Melhorada */}
+                    <div className="flex justify-center items-center space-x-3 py-6">
+                      <div className="flex space-x-2">
+                        <span className="w-3 h-3 bg-primary rounded-full animate-bounce" style={{ animationDelay: '0s' }} />
+                        <span className="w-3 h-3 bg-primary rounded-full animate-bounce" style={{ animationDelay: '0.2s' }} />
+                        <span className="w-3 h-3 bg-primary rounded-full animate-bounce" style={{ animationDelay: '0.4s' }} />
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -1080,7 +1084,7 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
         
         {/* Botão de WhatsApp em tom Oliva Profundo e Bronze do design Quiet Luxury */}
         <a
-          href="https://api.whatsapp.com/send?phone=5567999990001&text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20uma%20consultoria%20exclusiva%20com%20um%20especialista%20da%20Estofatto%20Casa."
+          href={`https://api.whatsapp.com/send?phone=${CONTACT_INFO.whatsapp}&text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20uma%20consultoria%20exclusiva%20com%20um%20especialista%20da%20Estofatto%20Casa.`}
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center justify-center w-14 h-14 bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg border border-primary-foreground/10 transition-all duration-300 hover:scale-105 active:scale-95 relative"
