@@ -76,6 +76,7 @@ export default function Home() {
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [formSuccess, setFormSuccess] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
+  const [cookieConsent, setCookieConsent] = useState<boolean | null>(null);
   const reviewsRef = useRef<HTMLDivElement>(null);
   const formRef = useRef<HTMLDivElement>(null);
 
@@ -212,6 +213,14 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
     }
     setMobileMenuOpen(false);
   };
+
+  // Carregar consentimento de cookies do localStorage
+  useEffect(() => {
+    const savedConsent = localStorage.getItem('cookieConsent');
+    if (savedConsent) {
+      setCookieConsent(JSON.parse(savedConsent));
+    }
+  }, []);
 
   // Intersection Observer para animacoes dos depoimentos
   useEffect(() => {
@@ -1085,6 +1094,42 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
         >
           <ArrowUp size={20} className="stroke-[2]" />
         </button>
+      )}
+
+      {/* BANNER DE CONSENTIMENTO DE COOKIES */}
+      {cookieConsent === null && (
+        <div className="fixed bottom-0 left-0 right-0 z-50 bg-background border-t border-border shadow-2xl animate-slide-up">
+          <div className="container py-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div className="flex-1">
+              <p className="text-sm text-foreground font-medium mb-2">
+                Respeito à sua Privacidade
+              </p>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                Utilizamos cookies e tecnologias de rastreamento (Google Analytics e Meta Pixel) para melhorar sua experiência e analisar o desempenho do site. Ao continuar navegando, você concorda com nossa Política de Privacidade.
+              </p>
+            </div>
+            <div className="flex gap-3 w-full sm:w-auto">
+              <button
+                onClick={() => {
+                  setCookieConsent(false);
+                  localStorage.setItem('cookieConsent', JSON.stringify(false));
+                }}
+                className="flex-1 sm:flex-none px-4 py-2 text-xs font-medium border border-border text-foreground hover:bg-muted transition-colors"
+              >
+                Rejeitar
+              </button>
+              <button
+                onClick={() => {
+                  setCookieConsent(true);
+                  localStorage.setItem('cookieConsent', JSON.stringify(true));
+                }}
+                className="flex-1 sm:flex-none px-4 py-2 text-xs font-medium bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
+              >
+                Aceitar
+              </button>
+            </div>
+          </div>
+        </div>
       )}
 
     </div>
