@@ -729,7 +729,7 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
             </Suspense>
 
             {/* Google My Business Badge Sutil */}
-            <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4 text-xs text-muted-foreground border-t border-border/40 pt-8">
+            <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4 text-xs text-foreground/80 border-t border-border/40 pt-8 font-medium">
               <div className="flex items-center space-x-2">
                 <span className="font-bold text-foreground">Excelente 4.5 de 5</span>
                 <div className="flex text-primary">
@@ -789,11 +789,11 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
                 <span className="font-serif text-lg md:text-xl tracking-[0.2em] uppercase text-foreground">
                   Estofatto Casa
                 </span>
-                <span className="text-[8px] tracking-[0.3em] uppercase text-muted-foreground -mt-1 pl-[2px]">
+                <span className="text-[8px] tracking-[0.3em] uppercase text-foreground/70 -mt-1 pl-[2px] font-medium">
                   Alta Curadoria • Desde 1996
                 </span>
               </div>
-              <p className="text-xs leading-relaxed text-muted-foreground/80 max-w-sm">
+              <p className="text-xs leading-relaxed text-foreground/85 max-w-sm font-medium">
                 Mais de 30 anos selecionando e entregando móveis e estofados de qualidade no Mato Grosso do Sul. Especialistas em conforto, durabilidade e design.
               </p>
             </div>
@@ -848,7 +848,7 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
           </div>
 
           {/* Linha de Copyright */}
-          <div className="mt-16 pt-8 border-t border-border/40 flex flex-col sm:flex-row items-center justify-between gap-4 text-[10px] text-muted-foreground/60 uppercase tracking-widest">
+          <div className="mt-16 pt-8 border-t border-border/40 flex flex-col sm:flex-row items-center justify-between gap-4 text-[10px] text-foreground/75 uppercase tracking-widest font-medium">
             <p>© 2026 Estofatto Casa. Todos os direitos reservados.</p>
             <p>Desenvolvido com foco em CRO & SEO Local para Campo Grande - MS</p>
           </div>
