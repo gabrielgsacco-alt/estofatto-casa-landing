@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, lazy, Suspense } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -27,6 +27,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { OptimizedImage } from "@/components/OptimizedImage";
+const LazyQualificationForm = lazy(() => import('@/components/sections/QualificationForm'));
+const LazyReviewsSection = lazy(() => import('@/components/sections/ReviewsSection'));
 import { 
   Select, 
   SelectContent, 
@@ -709,49 +711,10 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
               <div className="h-[1px] w-16 bg-primary/30 mx-auto mt-4" />
             </div>
 
-            {/* Cards de Avaliações */}
-            <div ref={reviewsRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-              {REVIEWS.map((review) => {
-                const isVisible = visibleReviews.has(review.id);
-                return (
-                <div 
-                  key={review.id} 
-                  data-review-id={review.id}
-                  className={`bg-card border border-border p-6 flex flex-col justify-between space-y-4 relative group hover:border-primary/30 transition-all duration-500 ${
-                    isVisible 
-                      ? 'opacity-100 translate-y-0' 
-                      : 'opacity-0 translate-y-8'
-                  }`}
-                  style={{
-                    transitionDelay: isVisible ? `${review.id * 100}ms` : '0ms'
-                  }}
-                >
-                  <div className="space-y-3">
-                    
-                    {/* Estrelas */}
-                    <div className="flex space-x-1 text-primary">
-                      {[...Array(review.rating)].map((_, i) => (
-                        <Star key={i} size={12} fill="currentColor" />
-                      ))}
-                    </div>
-                    
-                    {/* Texto do Depoimento */}
-                    <p className="text-xs text-muted-foreground leading-relaxed italic">
-                      "{review.text}"
-                    </p>
-                  </div>
-
-                  <div className="pt-4 border-t border-border/40 flex flex-col justify-between space-y-1">
-                    <div>
-                      <h4 className="text-xs font-bold tracking-wider uppercase text-foreground">{review.author}</h4>
-                      <p className="text-[10px] text-muted-foreground" style={{fontSize: '12px', fontWeight: '700'}}>{review.role}</p>
-                    </div>
-                    <span className="text-[9px] text-muted-foreground tracking-widest uppercase">{review.date}</span>
-                  </div>
-                </div>
-              );
-              })}
-            </div>
+            {/* Cards de Avaliações - Lazy Loaded */}
+            <Suspense fallback={<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">{[...Array(4)].map((_, i) => <div key={i} className="h-48 bg-background/50 animate-pulse rounded" />)}</div>}>
+              <LazyReviewsSection />
+            </Suspense>
 
             {/* Google My Business Badge Sutil */}
             <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4 text-xs text-muted-foreground border-t border-border/40 pt-8">
@@ -792,25 +755,11 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
                 <div className="h-[1px] w-16 bg-primary/30 mx-auto mt-4" />
               </div>
 
-              {/* Formulário Real */}
-              <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  
-                  {/* Campo 1: Nome Completo */}
-                  <div className="space-y-2">
-                    <Label htmlFor="nome" className="text-xs tracking-widest uppercase font-semibold text-foreground">
-                      Nome Completo *
-                    </Label>
-                    <Input 
-                      id="nome"
-                      placeholder="Ex: Dr. Eduardo Silveira"
-                      {...register("nome")}
-                      className="bg-card/30 border-border focus:border-primary/50 text-sm h-12 rounded-none transition-all duration-200"
-                    />
-                    {errors.nome && (
-                      <p className="text-xs text-destructive mt-1">{errors.nome.message}</p>
-                    )}
+              {/* Formulário Real - Lazy Loaded */}
+              <Suspense fallback={<div className="h-96 bg-background/50 animate-pulse rounded" />}>
+                <LazyQualificationForm />
+              </Suspense>
+              {/* Formulário Original - Removido e substituído por LazyQualificationForm */}
                   </div>
 
                   {/* Campo 2: WhatsApp */}
@@ -940,48 +889,7 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
                   </p>
                 </div>
 
-              </form>
-
-              {/* OVERLAY DE SUCESSO COM ANIMACAO */}
-              {formSuccess && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm animate-fade-in">
-                  <div className="bg-background border border-border p-12 md:p-16 text-center space-y-6 max-w-md w-full mx-4 shadow-2xl animate-scale-in">
-                    {/* Icone de Sucesso */}
-                    <div className="flex justify-center">
-                      <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center animate-pulse">
-                        <Check size={32} className="text-primary" />
-                      </div>
-                    </div>
-
-                    {/* Mensagem de Sucesso */}
-                    <div className="space-y-3">
-                      <h3 className="text-3xl font-serif font-light text-foreground">
-                        Sucesso!
-                      </h3>
-                      <p className="text-base text-foreground font-medium leading-relaxed">
-                        {successMessage}
-                      </p>
-                    </div>
-
-                    {/* Texto Adicional com Melhor Contraste */}
-                    <div className="pt-4 border-t border-border/40">
-                      <p className="text-sm text-foreground/80 tracking-wide leading-relaxed">
-                        Você será redirecionado para o WhatsApp em instantes para conversar com um de nossos consultores.
-                      </p>
-                    </div>
-
-                    {/* Indicador de Carregamento com Animação Melhorada */}
-                    <div className="flex justify-center items-center space-x-3 py-6">
-                      <div className="flex space-x-2">
-                        <span className="w-3 h-3 bg-primary rounded-full animate-bounce" style={{ animationDelay: '0s' }} />
-                        <span className="w-3 h-3 bg-primary rounded-full animate-bounce" style={{ animationDelay: '0.2s' }} />
-                        <span className="w-3 h-3 bg-primary rounded-full animate-bounce" style={{ animationDelay: '0.4s' }} />
-                      </div>
-                    </div>
-                  </div>
-                </div>
               )}
-
             </div>
           </div>
         </section>
