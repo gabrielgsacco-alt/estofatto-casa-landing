@@ -221,11 +221,30 @@ export default defineConfig({
     emptyOutDir: true,
     minify: 'esbuild',
     cssCodeSplit: true,
+    chunkSizeWarningLimit: 500,
+    reportCompressedSize: false,
+    sourcemap: false,
     rollupOptions: {
       output: {
         manualChunks: {
-          'vendor': ['react', 'react-dom', 'react-hook-form', 'zod', '@hookform/resolvers'],
+          'vendor': ['react', 'react-dom'],
+          'forms': ['react-hook-form', 'zod', '@hookform/resolvers'],
           'ui': ['lucide-react', '@radix-ui/react-dialog', '@radix-ui/react-select'],
+          'sonner': ['sonner'],
+        },
+        chunkFileNames: 'js/[name]-[hash].js',
+        entryFileNames: 'js/[name]-[hash].js',
+        assetFileNames: (assetInfo) => {
+          const info = assetInfo.name.split('.');
+          const ext = info[info.length - 1];
+          if (/png|jpe?g|gif|svg/.test(ext)) {
+            return 'img/[name]-[hash][extname]';
+          } else if (/woff|woff2|eot|ttf|otf/.test(ext)) {
+            return 'fonts/[name]-[hash][extname]';
+          } else if (ext === 'css') {
+            return 'css/[name]-[hash][extname]';
+          }
+          return '[name]-[hash][extname]';
         },
       },
     },
@@ -233,6 +252,11 @@ export default defineConfig({
       compress: {
         drop_console: true,
         drop_debugger: true,
+        passes: 2,
+      },
+      mangle: true,
+      format: {
+        comments: false,
       },
     },
   },
