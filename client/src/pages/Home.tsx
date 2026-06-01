@@ -496,7 +496,7 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
                       <Check size={12} />
                     </div>
                     <div>
-                      <h4 className="text-xs font-semibold tracking-wider uppercase text-foreground mb-1">Tamanho Sob Medida</h4>
+                      <h3 className="text-xs font-semibold tracking-wider uppercase text-foreground mb-1">Tamanho Sob Medida</h3>
                       <p className="text-xs text-muted-foreground">Móveis com opções de medidas para se ajustar perfeitamente à sua sala.</p>
                     </div>
                   </div>
@@ -505,7 +505,7 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
                       <Check size={12} />
                     </div>
                     <div>
-                      <h4 className="text-xs font-semibold tracking-wider uppercase text-foreground mb-1">Tecidos Resistentes</h4>
+                      <h3 className="text-xs font-semibold tracking-wider uppercase text-foreground mb-1">Tecidos Resistentes</h3>
                       <p className="text-xs text-muted-foreground">Grande variedade de linhos, couros e tecidos fáceis de limpar para o dia a dia.</p>
                     </div>
                   </div>
@@ -514,7 +514,7 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
                       <Check size={12} />
                     </div>
                     <div>
-                      <h4 className="text-xs font-semibold tracking-wider uppercase text-foreground mb-1">Preço Justo Sem Taxas Invisíveis</h4>
+                      <h3 className="text-xs font-semibold tracking-wider uppercase text-foreground mb-1">Preço Justo Sem Taxas Invisíveis</h3>
                       <p className="text-xs text-muted-foreground">Eliminamos comissões de intermediação e parcerias embutidas. O preço que você vê reflete unicamente a alta qualidade do produto.</p>
                     </div>
                   </div>
@@ -800,10 +800,10 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
 
             {/* Coluna 2: Endereço (Local SEO) */}
             <div className="md:col-span-4 space-y-4">
-              <h4 className="text-xs font-bold tracking-widest uppercase text-foreground flex items-center space-x-2">
+              <h3 className="text-xs font-bold tracking-widest uppercase text-foreground flex items-center space-x-2">
                 <MapPin size={14} className="text-primary" />
                 <span>Showroom Campo Grande</span>
-              </h4>
+              </h3>
               <p className="leading-relaxed">
                 Rua 13 de Maio, 1459 • Centro<br />
                 Campo Grande - MS • CEP 79004-422<br />
@@ -813,10 +813,10 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
 
             {/* Coluna 3: Horários e Contato */}
             <div className="md:col-span-4 space-y-4">
-              <h4 className="text-xs font-bold tracking-widest uppercase text-foreground flex items-center space-x-2">
+              <h3 className="text-xs font-bold tracking-widest uppercase text-foreground flex items-center space-x-2">
                 <Clock size={14} className="text-primary" />
                 <span>Horário de Funcionamento</span>
-              </h4>
+              </h3>
               <p className="leading-relaxed mb-4">
                 Segunda a Sexta: 08:30 às 18:00<br />
                 Sábado: 08:00 às 12:30<br />

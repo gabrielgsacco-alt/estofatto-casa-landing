@@ -80,9 +80,9 @@ export const ReviewsSection: React.FC = () => {
           
           <div className="flex-1">
             <div className="flex items-center gap-3 mb-2">
-              <h2 className="text-lg md:text-xl font-black tracking-wider uppercase text-white">
+              <h3 className="text-lg md:text-xl font-black tracking-wider uppercase text-white">
                 Avaliações no Google
-              </h2>
+              </h3>
               <span className="flex items-center gap-1.5 text-xs bg-white text-[#8B3A3A] px-3 py-1 font-bold tracking-widest uppercase shadow-md">
                 <ShieldCheck size={14} className="stroke-[2.5]" /> Verificado
               </span>
@@ -122,9 +122,9 @@ export const ReviewsSection: React.FC = () => {
 
       {/* Título da seção de depoimentos com hierarquia correta */}
       <div className="space-y-2">
-        <h2 className="text-2xl md:text-3xl font-serif font-light tracking-tight text-foreground">
+        <h3 className="text-2xl md:text-3xl font-serif font-light tracking-tight text-foreground">
           O que nossos clientes dizem
-        </h2>
+        </h3>
         <div className="w-12 h-1 bg-primary"></div>
       </div>
 
