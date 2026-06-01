@@ -119,7 +119,7 @@ export const FAQ_ITEMS = [
   {
     id: "faq-3",
     question: "Qual é a garantia oferecida nos móveis e estofados?",
-    answer: "Todos os nossos móveis e estofados possuem garantia de fábrica contra defeitos de fabricação. Os estofados contam com garantia estrutural de 1 ano para a estrutura de madeira tratada e percintas elásticas, além de 90 dias de garantia legal para o tecido e espumas, conforme o Código de Defesa do Consumidor. Oferecemos também suporte de pós-venda dedicado para qualquer manutenção ou assistência necessária."
+    answer: "Todos os nossos móveis e estofados possuem garantia de fábrica contra defeitos de fabricação de 1 ano. Oferecemos também suporte de pós-venda dedicado para qualquer manutenção ou assistência necessária."
   },
   {
     id: "faq-4",
