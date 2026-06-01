@@ -284,6 +284,16 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
     });
   };
 
+  // Smooth scroll customizado para links de âncora
+  const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
+    e.preventDefault();
+    const element = document.getElementById(targetId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+    setMobileMenuOpen(false);
+  };
+
 
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground font-sans">
@@ -302,10 +312,10 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
 
           {/* Desktop Nav */}
             <nav className="hidden md:flex items-center space-x-8 text-xs tracking-widest uppercase">
-            <a href="#exclusividade" className="hover:text-primary transition-colors duration-200">Diferenciais</a>
-            <a href="#acervo" className="hover:text-primary transition-colors duration-200">Produtos</a>
-            <a href="#tradicao" className="hover:text-primary transition-colors duration-200">Tradição & Logística</a>
-            <a href="#depoimentos" className="hover:text-primary transition-colors duration-200">Depoimentos</a>
+            <a href="#exclusividade" onClick={(e) => handleAnchorClick(e, "exclusividade")} className="hover:text-primary transition-colors duration-200">Diferenciais</a>
+            <a href="#acervo" onClick={(e) => handleAnchorClick(e, "acervo")} className="hover:text-primary transition-colors duration-200">Produtos</a>
+            <a href="#tradicao" onClick={(e) => handleAnchorClick(e, "tradicao")} className="hover:text-primary transition-colors duration-200">Tradição & Logística</a>
+            <a href="#depoimentos" onClick={(e) => handleAnchorClick(e, "depoimentos")} className="hover:text-primary transition-colors duration-200">Depoimentos</a>
             <Button 
               variant="outline" 
               size="sm" 
@@ -332,28 +342,28 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
           <div className="md:hidden absolute top-full left-0 w-full bg-background border-b border-border py-6 px-6 flex flex-col space-y-4 animate-fade-in">
             <a 
               href="#exclusividade" 
-              onClick={() => setMobileMenuOpen(false)}
+              onClick={(e) => handleAnchorClick(e, "exclusividade")}
               className="text-sm tracking-widest uppercase py-2 border-b border-border/30"
             >
               Diferenciais
             </a>
             <a 
               href="#acervo" 
-              onClick={() => setMobileMenuOpen(false)}
+              onClick={(e) => handleAnchorClick(e, "acervo")}
               className="text-sm tracking-widest uppercase py-2 border-b border-border/30"
             >
               Produtos
             </a>
             <a 
               href="#tradicao" 
-              onClick={() => setMobileMenuOpen(false)}
+              onClick={(e) => handleAnchorClick(e, "tradicao")}
               className="text-sm tracking-widest uppercase py-2 border-b border-border/30"
             >
               Tradição & Logística
             </a>
             <a 
               href="#depoimentos" 
-              onClick={() => setMobileMenuOpen(false)}
+              onClick={(e) => handleAnchorClick(e, "depoimentos")}
               className="text-sm tracking-widest uppercase py-2 border-b border-border/30"
             >
               Depoimentos
@@ -868,32 +878,11 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
         </div>
       )}
 
-      {/* BOTÃO FLUTUANTE DO WHATSAPP (Quiet Luxury Style) */}
-      <div className="fixed bottom-6 right-6 z-50 group">
-        {/* Balão de Dica de Texto Sofisticado */}
-        <div className="absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-background border border-border px-4 py-2 text-[10px] tracking-widest uppercase text-foreground shadow-sm whitespace-nowrap opacity-0 translate-x-2 pointer-events-none group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
-          Fale Conosco no WhatsApp
-        </div>
-        
-        {/* Botão de WhatsApp em tom Oliva Profundo e Bronze do design Quiet Luxury */}
-        <a
-          href={`https://api.whatsapp.com/send?phone=${CONTACT_INFO.whatsapp}&text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20uma%20consultoria%20exclusiva%20com%20um%20especialista%20da%20Estofatto%20Casa.`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center justify-center w-14 h-14 bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg border border-primary-foreground/10 transition-all duration-300 hover:scale-105 active:scale-95 relative"
-          aria-label="Fale conosco no WhatsApp"
-        >
-          {/* Efeito de pulso sutil no fundo */}
-          <span className="absolute inset-0 bg-primary/20 animate-ping -z-10" />
-          <Phone size={20} className="stroke-[2]" />
-        </a>
-      </div>
-
       {/* BOTAO DE VOLTAR AO TOPO */}
       {showScrollTop && (
         <button
           onClick={scrollToTop}
-          className="fixed bottom-8 right-8 z-40 p-3 bg-primary text-primary-foreground border border-primary/40 hover:bg-primary/90 transition-all duration-300 opacity-100 animate-fade-in shadow-lg"
+          className="fixed bottom-6 right-6 z-40 p-3 bg-primary text-primary-foreground border border-primary/40 hover:bg-primary/90 transition-all duration-300 opacity-100 animate-fade-in shadow-lg"
           aria-label="Voltar ao topo da página"
           title="Voltar ao topo"
         >
