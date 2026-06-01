@@ -232,7 +232,7 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
           }
         });
       },
-      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
+      { threshold: 0.1, rootMargin: "0px 0px -100px 0px" }
     );
 
     if (reviewsRef.current) {
@@ -243,13 +243,20 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
     return () => observer.disconnect();
   }, []);
 
-  // Listener de scroll para mostrar/esconder botao de voltar ao topo
+  // Listener de scroll para mostrar/esconder botao de voltar ao topo (com throttle)
   useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      setShowScrollTop(window.scrollY > 400);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setShowScrollTop(window.scrollY > 400);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -400,7 +407,9 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
                   src={IMAGES.heroSofa} 
                   alt="Sofá de luxo de 2.40m perfeitamente escalado em living monumental com parede de 3.90m em Campo Grande" 
                   className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
-                  loading="lazy"
+                  loading="eager"
+                  fetchPriority="high"
+                  decoding="async"
                 />
               </div>
               
@@ -433,6 +442,7 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
                      alt="Close-up macro de texturas premium, linho nobre e encaixes de madeira maciça na Estofatto Casa" 
                      className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                      loading="lazy"
+                     decoding="async"
                    />
                 </div>
               </div>
@@ -523,7 +533,8 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
               <div className="group space-y-6">
                 <div className="relative overflow-hidden border border-border aspect-[3/4]">
                    <img 
-                     src={IMAGES.collection.living} 
+                      src={IMAGES.collection.living}
+                     decoding="async"
                      alt="Coleção de Living e Estofados de luxo Estofatto Casa" 
                      className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
                      loading="lazy"
@@ -550,6 +561,7 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
                      alt="Coleção de Jantar Estofatto Casa" 
                      className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
                      loading="lazy"
+                     decoding="async"
                    />
                   <div className="absolute top-4 left-4 bg-background/90 backdrop-blur-sm border border-border/30 px-3 py-1 text-[10px] tracking-widest uppercase">
                     II. Jantar
@@ -573,6 +585,7 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
                      alt="Mobiliário com design contemporâneo na Estofatto Casa" 
                      className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
                      loading="lazy"
+                     decoding="async"
                    />
                   <div className="absolute top-4 left-4 bg-background/90 backdrop-blur-sm border border-border/30 px-3 py-1 text-[10px] tracking-widest uppercase">
                     III. Design
@@ -664,6 +677,7 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
                      alt="Showroom monumental da Estofatto Casa em Campo Grande, MS" 
                      className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                      loading="lazy"
+                     decoding="async"
                    />
                 </div>
                 

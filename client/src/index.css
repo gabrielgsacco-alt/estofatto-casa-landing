@@ -156,10 +156,12 @@
 
 .animate-fade-in {
   animation: fadeIn 0.3s ease-out;
+  will-change: opacity;
 }
 
 .animate-scale-in {
   animation: scaleIn 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  will-change: transform, opacity;
 }
 
 
@@ -176,4 +178,39 @@
 
 .animate-slide-up {
   animation: slideUp 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Otimizações de Performance */
+@media (prefers-reduced-motion: no-preference) {
+  * {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Desabilitar animações em conexões lentas */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Otimizar imagens com will-change */
+img {
+  content-visibility: auto;
+}
+
+/* Otimizar transformações */
+.group:hover img {
+  will-change: transform;
+}
+
+/* Otimizar scroll performance */
+body {
+  scroll-behavior: smooth;
+  overscroll-behavior: none;
 }
