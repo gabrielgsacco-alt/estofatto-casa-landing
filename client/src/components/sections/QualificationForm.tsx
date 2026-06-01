@@ -100,10 +100,12 @@ export const QualificationForm: React.FC = () => {
               id="nome"
               placeholder="Seu nome completo"
               {...register("nome")}
+              aria-label="Nome completo"
+              aria-describedby="nome-error"
               className="bg-background border-border/60 text-foreground placeholder:text-muted-foreground/50"
             />
             {errors.nome && (
-              <p className="text-xs text-destructive">{errors.nome.message}</p>
+              <p id="nome-error" className="text-xs text-destructive" role="alert">{errors.nome.message}</p>
             )}
           </div>
 
@@ -119,10 +121,12 @@ export const QualificationForm: React.FC = () => {
               type="email"
               placeholder="seu@email.com"
               {...register("email")}
+              aria-label="Email"
+              aria-describedby="email-error"
               className="bg-background border-border/60 text-foreground placeholder:text-muted-foreground/50"
             />
             {errors.email && (
-              <p className="text-xs text-destructive">{errors.email.message}</p>
+              <p id="email-error" className="text-xs text-destructive" role="alert">{errors.email.message}</p>
             )}
           </div>
 
@@ -137,10 +141,12 @@ export const QualificationForm: React.FC = () => {
               id="telefone"
               placeholder="(67) 99999-9999"
               {...register("telefone")}
+              aria-label="Telefone ou WhatsApp"
+              aria-describedby="telefone-error"
               className="bg-background border-border/60 text-foreground placeholder:text-muted-foreground/50"
             />
             {errors.telefone && (
-              <p className="text-xs text-destructive">
+              <p id="telefone-error" className="text-xs text-destructive" role="alert">
                 {errors.telefone.message}
               </p>
             )}
@@ -154,7 +160,7 @@ export const QualificationForm: React.FC = () => {
               Faixa de Investimento *
             </Label>
             <Select onValueChange={value => setValue("investimento", value)}>
-              <SelectTrigger className="bg-background border-border/60 text-foreground" aria-label="Selecione a faixa de investimento para seu projeto de móveis">
+              <SelectTrigger className="bg-background border-border/60 text-foreground" aria-label="Selecione a faixa de investimento para seu projeto de móveis" aria-describedby="investimento-error">
                 <SelectValue placeholder="Selecione a faixa" />
               </SelectTrigger>
               <SelectContent className="bg-card border-border">
@@ -167,7 +173,7 @@ export const QualificationForm: React.FC = () => {
               </SelectContent>
             </Select>
             {errors.investimento && (
-              <p className="text-xs text-destructive">
+              <p id="investimento-error" className="text-xs text-destructive" role="alert">
                 {errors.investimento.message}
               </p>
             )}
@@ -180,7 +186,7 @@ export const QualificationForm: React.FC = () => {
             >
               Fase do Projeto *
             </Label>
-            <RadioGroup onValueChange={value => setValue("fase", value)}>
+            <RadioGroup onValueChange={value => setValue("fase", value)} aria-label="Selecione a fase do seu projeto" aria-describedby="fase-error">
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="planejamento" id="planejamento" />
                 <Label
@@ -210,7 +216,7 @@ export const QualificationForm: React.FC = () => {
               </div>
             </RadioGroup>
             {errors.fase && (
-              <p className="text-xs text-destructive">{errors.fase.message}</p>
+              <p id="fase-error" className="text-xs text-destructive" role="alert">{errors.fase.message}</p>
             )}
           </div>
 
@@ -225,10 +231,12 @@ export const QualificationForm: React.FC = () => {
               id="descricao"
               placeholder="Descreva brevemente seu projeto, o tipo de móvel que procura e qualquer detalhe importante..."
               {...register("descricao")}
+              aria-label="Descrição do projeto"
+              aria-describedby="descricao-error"
               className="bg-background border-border/60 text-foreground placeholder:text-muted-foreground/50 min-h-[120px]"
             />
             {errors.descricao && (
-              <p className="text-xs text-destructive">
+              <p id="descricao-error" className="text-xs text-destructive" role="alert">
                 {errors.descricao.message}
               </p>
             )}
@@ -238,6 +246,7 @@ export const QualificationForm: React.FC = () => {
         <Button
           type="submit"
           disabled={isLoading}
+          aria-label="Enviar formulário de qualificação e falar com consultor"
           className="w-full bg-primary text-primary-foreground hover:bg-primary/90 text-xs tracking-widest uppercase px-8 py-6 transition-all duration-300 relative"
         >
           {isLoading ? (
@@ -262,9 +271,9 @@ export const QualificationForm: React.FC = () => {
       </form>
 
       {showSuccess && (
-        <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 animate-fade-in">
+        <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 animate-fade-in" role="dialog" aria-labelledby="success-title" aria-modal="true">
           <div className="bg-background border border-border p-8 max-w-sm text-center space-y-4 animate-scale-in">
-            <h3 className="text-3xl font-serif font-light text-foreground">
+            <h3 id="success-title" className="text-3xl font-serif font-light text-foreground">
               Obrigado!
             </h3>
             <p className="text-sm text-foreground font-medium">
