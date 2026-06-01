@@ -199,6 +199,91 @@
   animation: slideUp 0.4s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
+/* Animações sofisticadas de carregamento para botões */
+@keyframes loadingPulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes loadingShimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+@keyframes spinnerRotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes dotBounce {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-8px);
+    opacity: 0.7;
+  }
+}
+
+.loading-pulse {
+  animation: loadingPulse 2s ease-in-out infinite;
+  will-change: opacity;
+}
+
+.loading-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  background-size: 1000px 100%;
+  animation: loadingShimmer 2s infinite;
+  will-change: background-position;
+}
+
+.spinner-rotate {
+  animation: spinnerRotate 1s linear infinite;
+  will-change: transform;
+}
+
+.dot-bounce {
+  animation: dotBounce 1.4s infinite;
+  will-change: transform, opacity;
+}
+
+.dot-bounce:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.dot-bounce:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+/* Desabilitar animações em mobile para melhor performance */
+@media (prefers-reduced-motion: reduce) {
+  .loading-pulse,
+  .loading-shimmer,
+  .spinner-rotate,
+  .dot-bounce {
+    animation: none;
+    opacity: 0.7;
+  }
+}
+
 /* Otimizações de Performance */
 @media (prefers-reduced-motion: no-preference) {
   * {

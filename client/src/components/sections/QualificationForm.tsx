@@ -247,22 +247,18 @@ export const QualificationForm: React.FC = () => {
           type="submit"
           disabled={isLoading}
           aria-label="Enviar formulário de qualificação e falar com consultor"
-          className="w-full bg-primary text-primary-foreground hover:bg-primary/90 text-xs tracking-widest uppercase px-8 py-6 transition-all duration-300 relative"
+          className={`w-full text-xs tracking-widest uppercase px-8 py-6 transition-all duration-300 relative font-semibold ${
+            isLoading
+              ? "bg-primary/80 text-primary-foreground loading-pulse"
+              : "bg-primary text-primary-foreground hover:bg-primary/90 active:scale-95"
+          }`}
         >
           {isLoading ? (
-            <div className="flex items-center justify-center space-x-1">
-              <span
-                className="inline-block w-1 h-1 bg-current rounded-full animate-bounce"
-                style={{ animationDelay: "0ms" }}
-              />
-              <span
-                className="inline-block w-1 h-1 bg-current rounded-full animate-bounce"
-                style={{ animationDelay: "150ms" }}
-              />
-              <span
-                className="inline-block w-1 h-1 bg-current rounded-full animate-bounce"
-                style={{ animationDelay: "300ms" }}
-              />
+            <div className="flex items-center justify-center gap-2">
+              <span className="inline-block w-2 h-2 bg-current rounded-full dot-bounce" />
+              <span className="inline-block w-2 h-2 bg-current rounded-full dot-bounce" />
+              <span className="inline-block w-2 h-2 bg-current rounded-full dot-bounce" />
+              <span className="text-xs ml-2 opacity-80">Enviando...</span>
             </div>
           ) : (
             "Falar com Consultor"
