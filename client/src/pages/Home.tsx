@@ -789,7 +789,7 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
                 <span className="font-serif text-lg md:text-xl tracking-[0.2em] uppercase text-foreground">
                   Estofatto Casa
                 </span>
-                <span className="text-[8px] tracking-[0.3em] uppercase text-foreground/70 -mt-1 pl-[2px] font-medium">
+                <span className="text-[8px] tracking-[0.3em] uppercase text-foreground/85 -mt-1 pl-[2px] font-semibold">
                   Alta Curadoria • Desde 1996
                 </span>
               </div>

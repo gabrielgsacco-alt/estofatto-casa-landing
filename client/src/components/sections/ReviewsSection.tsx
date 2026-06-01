@@ -135,9 +135,10 @@ export const ReviewsSection: React.FC = () => {
                 transitionDelay: isVisible ? `${review.id * 100}ms` : "0ms",
               }}
             >
-              {/* Estrelas com aria-label */}
+              {/* Estrelas com role="img" para acessibilidade */}
               <div 
                 className="flex space-x-1 text-secondary"
+                role="img"
                 aria-label={`Avaliação: ${review.rating} de 5 estrelas`}
               >
                 {[...Array(5)].map((_, i) => (
@@ -146,6 +147,7 @@ export const ReviewsSection: React.FC = () => {
                     size={14} 
                     fill={i < review.rating ? "currentColor" : "none"}
                     className={i < review.rating ? "stroke-secondary" : "stroke-border"}
+                    aria-hidden="true"
                   />
                 ))}
               </div>
