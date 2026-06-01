@@ -22,12 +22,22 @@
       content="Móveis e estofados de alta qualidade em Campo Grande. Design sofisticado, conforto garantido e preço justo."
     />
     <meta property="og:type" content="website" />
+    <!-- Critical CSS inline para FCP rápido -->
+    <style>
+      html { scroll-behavior: smooth; }
+      body { margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Plus Jakarta Sans', sans-serif; background: #f9f7f4; color: #1a1a1a; }
+      * { box-sizing: border-box; }
+      #root { display: block; }
+      img { max-width: 100%; height: auto; display: block; }
+    </style>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
     <link rel="dns-prefetch" href="https://connect.facebook.net" />
     <!-- Preload de imagens críticas (hero) -->
     <link rel="preload" as="image" href="/manus-storage/IMG_3140_a28f3515.jpg" />
+    <!-- Preload de CSS crítico -->
+    <link rel="preload" as="style" href="/css/main.css" />
     <!-- Google Fonts com font-display=swap para evitar FOUT -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -152,11 +162,12 @@
         alt=""
     /></noscript>
     <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <script type="module" src="/src/main.tsx" defer></script>
     <script
       defer
       src="%VITE_ANALYTICS_ENDPOINT%/umami"
       data-website-id="%VITE_ANALYTICS_WEBSITE_ID%"
+      data-domains="estofattocasa.com.br"
     ></script>
   </body>
 </html>
