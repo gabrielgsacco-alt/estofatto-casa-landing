@@ -154,7 +154,7 @@ export const QualificationForm: React.FC = () => {
               Faixa de Investimento *
             </Label>
             <Select onValueChange={value => setValue("investimento", value)}>
-              <SelectTrigger className="bg-background border-border/60 text-foreground">
+              <SelectTrigger className="bg-background border-border/60 text-foreground" aria-label="Selecione a faixa de investimento para seu projeto de móveis">
                 <SelectValue placeholder="Selecione a faixa" />
               </SelectTrigger>
               <SelectContent className="bg-card border-border">
