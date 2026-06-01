@@ -1,12 +1,12 @@
-import React from 'react';
+import React from "react";
 
 interface OptimizedImageProps {
   src: string;
   alt: string;
   className?: string;
-  loading?: 'lazy' | 'eager';
-  fetchPriority?: 'high' | 'low' | 'auto';
-  decoding?: 'sync' | 'async' | 'auto';
+  loading?: "lazy" | "eager";
+  fetchPriority?: "high" | "low" | "auto";
+  decoding?: "sync" | "async" | "auto";
 }
 
 /**
@@ -16,24 +16,21 @@ interface OptimizedImageProps {
 export const OptimizedImage: React.FC<OptimizedImageProps> = ({
   src,
   alt,
-  className = '',
-  loading = 'lazy',
-  fetchPriority = 'auto',
-  decoding = 'async',
+  className = "",
+  loading = "lazy",
+  fetchPriority = "auto",
+  decoding = "async",
 }) => {
   // Converter URL para WebP (substitui extensão)
-  const webpSrc = src.replace(/\.(jpg|jpeg|png)$/i, '.webp');
-  
+  const webpSrc = src.replace(/\.(jpg|jpeg|png)$/i, ".webp");
+
   // Manter a URL original como fallback
   const originalSrc = src;
 
   return (
     <picture>
       {/* Fonte WebP para navegadores modernos */}
-      <source 
-        srcSet={webpSrc}
-        type="image/webp"
-      />
+      <source srcSet={webpSrc} type="image/webp" />
       {/* Fallback para navegadores antigos */}
       <img
         src={originalSrc}
