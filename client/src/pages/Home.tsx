@@ -26,6 +26,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
+import { OptimizedImage } from "@/components/OptimizedImage";
 import { 
   Select, 
   SelectContent, 
@@ -403,7 +404,7 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
             <div className="lg:col-span-7 relative w-full h-[50vh] lg:h-[70vh] group">
               <div className="absolute inset-0 border border-border/60 translate-x-4 translate-y-4 -z-10 transition-transform duration-500 group-hover:translate-x-2 group-hover:translate-y-2" />
               <div className="w-full h-full overflow-hidden border border-border">
-                <img 
+                <OptimizedImage
                   src={IMAGES.heroSofa} 
                   alt="Sofá de luxo de 2.40m perfeitamente escalado em living monumental com parede de 3.90m em Campo Grande" 
                   className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
@@ -437,7 +438,7 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
               <div className="lg:col-span-5 order-2 lg:order-1 relative">
                 <div className="absolute inset-0 border border-border/60 -translate-x-4 translate-y-4 -z-10" />
                 <div className="aspect-square w-full overflow-hidden border border-border">
-                   <img 
+                   <OptimizedImage
                      src={IMAGES.textureDetail} 
                      alt="Close-up macro de texturas premium, linho nobre e encaixes de madeira maciça na Estofatto Casa" 
                      className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
@@ -532,12 +533,12 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
               {/* Categoria 1: Living & Estofados */}
               <div className="group space-y-6">
                 <div className="relative overflow-hidden border border-border aspect-[3/4]">
-                   <img 
+                   <OptimizedImage
                       src={IMAGES.collection.living}
-                     decoding="async"
                      alt="Coleção de Living e Estofados de luxo Estofatto Casa" 
                      className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
                      loading="lazy"
+                     decoding="async"
                    />
                   <div className="absolute top-4 left-4 bg-background/90 backdrop-blur-sm border border-border/30 px-3 py-1 text-[10px] tracking-widest uppercase">
                     I. Living
@@ -556,7 +557,7 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
               {/* Categoria 2: Jantar & Recepção */}
               <div className="group space-y-6 md:translate-y-8 transition-transform duration-500">
                 <div className="relative overflow-hidden border border-border aspect-[3/4]">
-                   <img 
+                   <OptimizedImage
                      src={IMAGES.collection.jantar} 
                      alt="Coleção de Jantar Estofatto Casa" 
                      className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
@@ -580,7 +581,7 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
               {/* Categoria 3: Design de Autor */}
               <div className="group space-y-6">
                 <div className="relative overflow-hidden border border-border aspect-[3/4]">
-                   <img 
+                   <OptimizedImage
                      src={IMAGES.collection.autor} 
                      alt="Mobiliário com design contemporâneo na Estofatto Casa" 
                      className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
@@ -672,7 +673,7 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
               <div className="lg:col-span-6 relative">
                 <div className="absolute inset-0 border border-border/60 translate-x-4 translate-y-4 -z-10" />
                 <div className="aspect-[4/3] w-full overflow-hidden border border-border">
-                   <img 
+                   <OptimizedImage
                      src={IMAGES.showroom} 
                      alt="Showroom monumental da Estofatto Casa em Campo Grande, MS" 
                      className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
