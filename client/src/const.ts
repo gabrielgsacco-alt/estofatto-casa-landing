@@ -104,3 +104,31 @@ export const REVIEWS = [
     date: "Há 2 meses"
   }
 ];
+
+export const FAQ_ITEMS = [
+  {
+    id: "faq-1",
+    question: "Como funciona o frete e a entrega dos móveis em Campo Grande e no MS?",
+    answer: "Para garantir a máxima segurança e integridade do seu mobiliário, nós utilizamos frota de entrega própria e equipe de montadores internos altamente qualificados. Entregamos e montamos em toda a cidade de Campo Grande e em todas as cidades do estado do Mato Grosso do Sul. O valor do frete varia de acordo com a sua localidade e o volume do pedido, sendo calculado de forma transparente pelo nosso consultor durante o atendimento."
+  },
+  {
+    id: "faq-2",
+    question: "Qual é o prazo de entrega dos móveis?",
+    answer: "Para os produtos disponíveis em nosso showroom, a entrega é imediata e agendada conforme a sua disponibilidade. Para peças personalizadas ou sob medida encomendadas de fábrica, o prazo médio de entrega varia de 30 a 45 dias úteis, dependendo do fabricante e do nível de customização escolhido (tecidos especiais, alterações de medidas ou acabamentos específicos)."
+  },
+  {
+    id: "faq-3",
+    question: "Qual é a garantia oferecida nos móveis e estofados?",
+    answer: "Todos os nossos móveis e estofados possuem garantia de fábrica contra defeitos de fabricação. Os estofados contam com garantia estrutural de 1 ano para a estrutura de madeira tratada e percintas elásticas, além de 90 dias de garantia legal para o tecido e espumas, conforme o Código de Defesa do Consumidor. Oferecemos também suporte de pós-venda dedicado para qualquer manutenção ou assistência necessária."
+  },
+  {
+    id: "faq-4",
+    question: "Posso personalizar as medidas e os tecidos dos sofás?",
+    answer: "Sim, um dos nossos grandes diferenciais é a alta capacidade de personalização. A maioria dos nossos sofás e estofados pode ser encomendada sob medida para se adequar perfeitamente ao seu living ou sala de TV. Disponibilizamos um catálogo com centenas de opções de tecidos nobres, incluindo linhos, veludos, couros e opções com tratamentos antimanchas e pet-friendly (resistentes a arranhões)."
+  },
+  {
+    id: "faq-5",
+    question: "Como faço para agendar uma visita ou solicitar um orçamento?",
+    answer: "Você pode iniciar o seu atendimento diretamente pelo nosso formulário de qualificação nesta página. Ao preenchê-lo, nossa equipe de especialistas (Elisabete, Gabriel ou Bianca) entrará em contato rapidamente para entender as necessidades do seu projeto, enviar orçamentos personalizados via WhatsApp ou agendar uma visita exclusiva ao nosso showroom."
+  }
+];

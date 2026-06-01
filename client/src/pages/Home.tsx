@@ -37,7 +37,8 @@ import {
   SelectValue 
 } from "@/components/ui/select";
 import { toast } from "sonner";
-import { IMAGES, REVIEWS, REELS_VIDEOS, CONTACT_INFO } from "../const";
+import { IMAGES, REVIEWS, REELS_VIDEOS, CONTACT_INFO, FAQ_ITEMS } from "../const";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 // Funcao para rastrear eventos no Google Analytics
 const trackEvent = (eventName: string, eventData?: Record<string, any>) => {
@@ -316,6 +317,7 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
             <a href="#acervo" onClick={(e) => handleAnchorClick(e, "acervo")} className="hover:text-primary transition-colors duration-200">Produtos</a>
             <a href="#tradicao" onClick={(e) => handleAnchorClick(e, "tradicao")} className="hover:text-primary transition-colors duration-200">Tradição & Logística</a>
             <a href="#depoimentos" onClick={(e) => handleAnchorClick(e, "depoimentos")} className="hover:text-primary transition-colors duration-200">Depoimentos</a>
+            <a href="#faq" onClick={(e) => handleAnchorClick(e, "faq")} className="hover:text-primary transition-colors duration-200">FAQ</a>
             <Button 
               variant="outline" 
               size="sm" 
@@ -367,6 +369,13 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
               className="text-sm tracking-widest uppercase py-2 border-b border-border/30"
             >
               Depoimentos
+            </a>
+            <a 
+              href="#faq" 
+              onClick={(e) => handleAnchorClick(e, "faq")}
+              className="text-sm tracking-widest uppercase py-2 border-b border-border/30"
+            >
+              FAQ
             </a>
             <Button 
               onClick={scrollToForm}
@@ -785,6 +794,64 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
               </Suspense>
               {/* Formulário Original - Removido e substituído por LazyQualificationForm */}
             </div>
+          </div>
+        </section>
+
+        {/* NEW FOLD: FAQ SECTION WITH SCHEMA.ORG STRUCTURED DATA */}
+        <section id="faq" className="py-20 md:py-32 border-t border-border/40">
+          <div className="container max-w-3xl">
+            
+            {/* Header do FAQ */}
+            <div className="text-center space-y-4 mb-12 md:mb-16">
+              <div className="text-xs tracking-[0.2em] uppercase text-primary font-semibold">
+                Dúvidas Frequentes
+              </div>
+              <h2 className="text-3xl md:text-4xl font-serif font-light text-foreground">
+                Perguntas <span className="italic font-normal text-primary">Frequentes</span>
+              </h2>
+              <p className="text-xs md:text-sm text-muted-foreground max-w-lg mx-auto leading-relaxed">
+                Esclareça suas principais dúvidas sobre frete, prazos de entrega, garantia e personalização de móveis na Estofatto Casa.
+              </p>
+              <div className="h-[1px] w-16 bg-primary/30 mx-auto mt-4" />
+            </div>
+
+            {/* Accordion do FAQ */}
+            <Accordion type="single" collapsible className="w-full space-y-4">
+              {FAQ_ITEMS.map((item) => (
+                <AccordionItem 
+                  key={item.id} 
+                  value={item.id}
+                  className="border border-border bg-card px-6 rounded-none transition-all duration-200 hover:border-primary/30"
+                >
+                  <AccordionTrigger className="text-sm md:text-base font-serif font-medium text-foreground py-5 hover:text-primary hover:no-underline">
+                    {item.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-xs md:text-sm text-muted-foreground leading-relaxed pb-5">
+                    {item.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+
+            {/* Injeção de Dados Estruturados Schema.org FAQPage */}
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{
+                __html: JSON.stringify({
+                  "@context": "https://schema.org",
+                  "@type": "FAQPage",
+                  "mainEntity": FAQ_ITEMS.map((item) => ({
+                    "@type": "Question",
+                    "name": item.question,
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": item.answer
+                    }
+                  }))
+                })
+              }}
+            />
+
           </div>
         </section>
 
