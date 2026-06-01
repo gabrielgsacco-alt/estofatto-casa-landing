@@ -60,7 +60,10 @@ export default function Home() {
   const [activeVideo, setActiveVideo] = useState<string | null>(null);
   const [visibleReviews, setVisibleReviews] = useState<Set<number>>(new Set());
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const [formSuccess, setFormSuccess] = useState(false);
+  const [successMessage, setSuccessMessage] = useState("");
   const reviewsRef = useRef<HTMLDivElement>(null);
+  const formRef = useRef<HTMLDivElement>(null);
 
   const {
     register,
@@ -124,6 +127,10 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
     // Gerar link do WhatsApp API
     const linkWhatsApp = `https://api.whatsapp.com/send?phone=${consultorSelecionado.telefone}&text=${encodeURIComponent(mensagemWhatsApp)}`;
 
+    // Mostrar mensagem de sucesso com animacao
+    setSuccessMessage(`Olá ${data.nome}! Sua solicitação foi enviada com sucesso.`);
+    setFormSuccess(true);
+
     // Toast de sucesso sofisticado e personalizado
     toast.success("Curadoria Iniciada com Sucesso!", {
       description: "Você está sendo direcionado para o atendimento exclusivo com um de nossos consultores.",
@@ -133,7 +140,11 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
     // Abrir WhatsApp em nova aba
     window.open(linkWhatsApp, "_blank");
     
-    reset();
+    // Reset do formulario apos 3 segundos
+    setTimeout(() => {
+      setFormSuccess(false);
+      reset();
+    }, 3000);
   };
 
   const scrollToForm = () => {
@@ -825,6 +836,44 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
                 </div>
 
               </form>
+
+              {/* OVERLAY DE SUCESSO COM ANIMACAO */}
+              {formSuccess && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm animate-fade-in">
+                  <div className="bg-background border border-border p-12 md:p-16 text-center space-y-6 max-w-md w-full mx-4 shadow-2xl animate-scale-in">
+                    {/* Icone de Sucesso */}
+                    <div className="flex justify-center">
+                      <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center animate-pulse">
+                        <Check size={32} className="text-primary" />
+                      </div>
+                    </div>
+
+                    {/* Mensagem de Sucesso */}
+                    <div className="space-y-2">
+                      <h3 className="text-2xl font-serif font-light text-foreground">
+                        Sucesso!
+                      </h3>
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        {successMessage}
+                      </p>
+                    </div>
+
+                    {/* Texto Adicional */}
+                    <div className="pt-4 border-t border-border/40">
+                      <p className="text-xs text-muted-foreground tracking-wide">
+                        Você será redirecionado para o WhatsApp em instantes para conversar com um de nossos consultores.
+                      </p>
+                    </div>
+
+                    {/* Indicador de Carregamento */}
+                    <div className="flex justify-center space-x-2 pt-4">
+                      <span className="w-2 h-2 bg-primary rounded-full animate-bounce" style={{ animationDelay: '0s' }} />
+                      <span className="w-2 h-2 bg-primary rounded-full animate-bounce" style={{ animationDelay: '0.2s' }} />
+                      <span className="w-2 h-2 bg-primary rounded-full animate-bounce" style={{ animationDelay: '0.4s' }} />
+                    </div>
+                  </div>
+                </div>
+              )}
 
             </div>
           </div>
