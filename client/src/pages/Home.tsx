@@ -42,6 +42,13 @@ const trackEvent = (eventName: string, eventData?: Record<string, any>) => {
   }
 };
 
+// Funcao para rastrear eventos no Facebook Pixel
+const trackFacebookEvent = (eventName: string, eventData?: Record<string, any>) => {
+  if (typeof window !== 'undefined' && (window as any).fbq) {
+    (window as any).fbq('track', eventName, eventData || {});
+  }
+};
+
 // Esquema de validação com Zod para o Formulário de Qualificação de Alto Padrão
 const formSchema = z.object({
   nome: z.string().min(3, "Por favor, insira seu nome completo."),
@@ -144,6 +151,14 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
       value: 1
     });
 
+    // Rastrear evento de envio de formulario no Facebook Pixel
+    trackFacebookEvent('Lead', {
+      currency: 'BRL',
+      value: 1,
+      content_name: 'Formulario de Qualificacao',
+      content_type: 'product'
+    });
+
     // Mostrar mensagem de sucesso com animacao
     setSuccessMessage(`Olá ${data.nome}! Sua solicitação foi enviada com sucesso.`);
     setFormSuccess(true);
@@ -159,6 +174,12 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
       event_category: 'engagement',
       event_label: 'whatsapp_redirect',
       value: 1
+    });
+
+    // Rastrear clique no WhatsApp no Facebook Pixel
+    trackFacebookEvent('Contact', {
+      content_name: 'WhatsApp Redirect',
+      content_type: 'product'
     });
 
     // Abrir WhatsApp em nova aba
@@ -177,6 +198,12 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
       event_category: 'engagement',
       event_label: 'cta_button',
       value: 1
+    });
+
+    // Rastrear clique no CTA no Facebook Pixel
+    trackFacebookEvent('ViewContent', {
+      content_name: 'Qualification Form',
+      content_type: 'product'
     });
     
     const element = document.getElementById("qualificar");
@@ -225,6 +252,12 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
       event_category: 'engagement',
       event_label: 'scroll_to_top_button',
       value: 1
+    });
+
+    // Rastrear clique no scroll to top no Facebook Pixel
+    trackFacebookEvent('ViewContent', {
+      content_name: 'Scroll To Top',
+      content_type: 'engagement'
     });
     
     window.scrollTo({
