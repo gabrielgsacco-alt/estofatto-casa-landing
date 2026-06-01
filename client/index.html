@@ -34,8 +34,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
     <link rel="dns-prefetch" href="https://connect.facebook.net" />
-    <!-- Preload de imagens críticas (hero) -->
-    <link rel="preload" as="image" href="/manus-storage/IMG_3140_a28f3515.jpg" />
+    <!-- Preload de imagens críticas (hero) com AVIF + WebP -->
+    <link rel="preload" as="image" href="/manus-storage/IMG_3140_a28f3515.jpg" type="image/jpeg" />
+    <link rel="preload" as="image" href="/manus-storage/IMG_3140_a28f3515.webp" type="image/webp" />
+    <link rel="preload" as="image" href="/manus-storage/IMG_3140_a28f3515.avif" type="image/avif" />
     <!-- Preload de CSS crítico -->
     <link rel="preload" as="style" href="/css/main.css" />
     <!-- Google Fonts com font-display=swap para evitar FOUT -->

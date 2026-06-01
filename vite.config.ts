@@ -280,6 +280,8 @@ export default defineConfig({
       minifyWhitespace: true,
       legalComments: 'none',
     },
+    // Compressão Brotli para melhor performance
+    brotliSize: true,
   },
   server: {
     port: 3000,
