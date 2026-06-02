@@ -298,6 +298,39 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
 
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground font-sans">
+      {/* Breadcrumb Schema.org JSON-LD para melhorar navegação nos resultados de busca */}
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Início",
+              "item": "https://estofattocasa.com.br"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Diferenciais",
+              "item": "https://estofattocasa.com.br#exclusividade"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Produtos",
+              "item": "https://estofattocasa.com.br#acervo"
+            },
+            {
+              "@type": "ListItem",
+              "position": 4,
+              "name": "FAQ",
+              "item": "https://estofattocasa.com.br#faq"
+            }
+          ]
+        })}
+      </script>
       
       {/* HEADER SOFISTICADO */}
       <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/40 transition-all duration-300">

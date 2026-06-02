@@ -1,22 +1,32 @@
 # Robots.txt para Estofatto Casa
-# Permite que todos os bots indexem o site
+# Otimizado para melhor indexação do Google e Bing
 
 User-agent: *
 Allow: /
-Disallow: 
+Disallow: /admin/
+Disallow: /*.json$
+Disallow: /*?*sort=
+Disallow: /*?*filter=
 
-# Sitemap
-Sitemap: https://estofatto-9y4zod3a.manus.space/sitemap.xml
-
-# Crawl delay para evitar sobrecarga
-Crawl-delay: 1
-
-# Regras específicas para Google
+# Google-specific directives
 User-agent: Googlebot
 Allow: /
 Crawl-delay: 0
 
-# Regras específicas para Bing
+# Bing-specific directives
 User-agent: Bingbot
 Allow: /
 Crawl-delay: 1
+
+# Block bad bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+# Sitemap location
+Sitemap: https://estofattocasa.com.br/sitemap.xml
