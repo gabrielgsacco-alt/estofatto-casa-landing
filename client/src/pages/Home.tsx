@@ -464,7 +464,7 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
             </div>
 
             {/* Imagem do Hero (Sofa de 2.40m perfeitamente escalado na parede de 3.90m) */}
-            <div className="lg:col-span-7 relative w-full h-[50vh] lg:h-[70vh] group">
+            <div className="lg:col-span-7 relative w-full h-[40vh] md:h-[50vh] lg:h-[70vh] group">
               <div className="absolute inset-0 border border-border/60 translate-x-4 translate-y-4 -z-10 transition-transform duration-500 group-hover:translate-x-2 group-hover:translate-y-2" />
               <div className="w-full h-full overflow-hidden border border-border">
                 <OptimizedImage
@@ -497,7 +497,7 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
         {/* FOLD 2: VALUE PROPOSITION & EXCLUSIVITY (Interest) */}
         <section id="exclusividade" className="py-20 md:py-32 bg-card border-b border-border/40">
           <div className="container">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 lg:gap-20 items-center">
               
               {/* Imagem de Detalhe de Textura (Linen/Wood) */}
               <div className="lg:col-span-5 order-2 lg:order-1 relative">
@@ -595,7 +595,7 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
             </div>
 
             {/* Grid Minimalista com Amplo Espaço em Branco */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 lg:gap-16">
               
               {/* Categoria 1: Living & Estofados */}
               <div className="group space-y-6">
@@ -697,7 +697,7 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
           <div className="container">
 
 
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 lg:gap-20 items-center">
               
               {/* Texto de Tradição */}
               <div className="lg:col-span-6 space-y-8">
