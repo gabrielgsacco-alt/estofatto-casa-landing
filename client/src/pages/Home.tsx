@@ -333,7 +333,9 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
           <button 
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="md:hidden text-foreground p-1"
-            aria-label="Menu"
+            aria-label="Abrir menu de navegação"
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-menu"
           >
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -341,7 +343,12 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
 
         {/* Mobile Menu Overlay */}
         {mobileMenuOpen && (
-          <div className="md:hidden absolute top-full left-0 w-full bg-background border-b border-border py-6 px-6 flex flex-col space-y-4 animate-fade-in">
+          <div 
+            id="mobile-menu"
+            className="md:hidden absolute top-full left-0 w-full bg-background border-b border-border py-6 px-6 flex flex-col space-y-4 animate-fade-in"
+            role="navigation"
+            aria-label="Menu de navegação móvel"
+          >
             <a 
               href="#exclusividade" 
               onClick={(e) => handleAnchorClick(e, "exclusividade")}
