@@ -1,64 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
-        xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0">
-  
-  <!-- Página inicial (Highest priority) -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://estofattocasa.com.br</loc>
-    <lastmod>2026-06-02</lastmod>
+    <loc>https://estofatto-9y4zod3a.manus.space/</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <image:image>
-      <image:loc>https://estofattocasa.com.br/manus-storage/IMG_3140_a28f3515.jpg</image:loc>
-      <image:title>Showroom Estofatto Casa - Sofas e Estofados em Campo Grande</image:title>
-    </image:image>
-    <mobile:mobile/>
   </url>
-
-  <!-- Seção de Diferenciais -->
-  <url>
-    <loc>https://estofattocasa.com.br#exclusividade</loc>
-    <lastmod>2026-06-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <mobile:mobile/>
-  </url>
-
-  <!-- Seção de Produtos -->
-  <url>
-    <loc>https://estofattocasa.com.br#acervo</loc>
-    <lastmod>2026-06-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <mobile:mobile/>
-  </url>
-
-  <!-- Seção de Tradição & Logística -->
-  <url>
-    <loc>https://estofattocasa.com.br#tradicao</loc>
-    <lastmod>2026-06-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <mobile:mobile/>
-  </url>
-
-  <!-- Seção de Depoimentos -->
-  <url>
-    <loc>https://estofattocasa.com.br#depoimentos</loc>
-    <lastmod>2026-06-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <mobile:mobile/>
-  </url>
-
-  <!-- Seção de FAQ -->
-  <url>
-    <loc>https://estofattocasa.com.br#faq</loc>
-    <lastmod>2026-06-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <mobile:mobile/>
-  </url>
-
 </urlset>

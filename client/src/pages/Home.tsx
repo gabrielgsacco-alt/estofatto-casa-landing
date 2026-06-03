@@ -37,8 +37,7 @@ import {
   SelectValue 
 } from "@/components/ui/select";
 import { toast } from "sonner";
-import { IMAGES, REVIEWS, REELS_VIDEOS, CONTACT_INFO, FAQ_ITEMS } from "../const";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { IMAGES, REVIEWS, REELS_VIDEOS, CONTACT_INFO } from "../const";
 
 // Funcao para rastrear eventos no Google Analytics
 const trackEvent = (eventName: string, eventData?: Record<string, any>) => {
@@ -298,39 +297,6 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
 
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground font-sans">
-      {/* Breadcrumb Schema.org JSON-LD para melhorar navegação nos resultados de busca */}
-      <script type="application/ld+json">
-        {JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Início",
-              "item": "https://estofattocasa.com.br"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Diferenciais",
-              "item": "https://estofattocasa.com.br#exclusividade"
-            },
-            {
-              "@type": "ListItem",
-              "position": 3,
-              "name": "Produtos",
-              "item": "https://estofattocasa.com.br#acervo"
-            },
-            {
-              "@type": "ListItem",
-              "position": 4,
-              "name": "FAQ",
-              "item": "https://estofattocasa.com.br#faq"
-            }
-          ]
-        })}
-      </script>
       
       {/* HEADER SOFISTICADO */}
       <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/40 transition-all duration-300">
@@ -350,7 +316,6 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
             <a href="#acervo" onClick={(e) => handleAnchorClick(e, "acervo")} className="hover:text-primary transition-colors duration-200">Produtos</a>
             <a href="#tradicao" onClick={(e) => handleAnchorClick(e, "tradicao")} className="hover:text-primary transition-colors duration-200">Tradição & Logística</a>
             <a href="#depoimentos" onClick={(e) => handleAnchorClick(e, "depoimentos")} className="hover:text-primary transition-colors duration-200">Depoimentos</a>
-            <a href="#faq" onClick={(e) => handleAnchorClick(e, "faq")} className="hover:text-primary transition-colors duration-200">FAQ</a>
             <Button 
               variant="outline" 
               size="sm" 
@@ -366,9 +331,7 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
           <button 
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="md:hidden text-foreground p-1"
-            aria-label="Abrir menu de navegação"
-            aria-expanded={mobileMenuOpen}
-            aria-controls="mobile-menu"
+            aria-label="Menu"
           >
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -376,12 +339,7 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
 
         {/* Mobile Menu Overlay */}
         {mobileMenuOpen && (
-          <div 
-            id="mobile-menu"
-            className="md:hidden absolute top-full left-0 w-full bg-background border-b border-border py-6 px-6 flex flex-col space-y-4 animate-fade-in"
-            role="navigation"
-            aria-label="Menu de navegação móvel"
-          >
+          <div className="md:hidden absolute top-full left-0 w-full bg-background border-b border-border py-6 px-6 flex flex-col space-y-4 animate-fade-in">
             <a 
               href="#exclusividade" 
               onClick={(e) => handleAnchorClick(e, "exclusividade")}
@@ -409,13 +367,6 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
               className="text-sm tracking-widest uppercase py-2 border-b border-border/30"
             >
               Depoimentos
-            </a>
-            <a 
-              href="#faq" 
-              onClick={(e) => handleAnchorClick(e, "faq")}
-              className="text-sm tracking-widest uppercase py-2 border-b border-border/30"
-            >
-              FAQ
             </a>
             <Button 
               onClick={scrollToForm}
@@ -464,18 +415,16 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
             </div>
 
             {/* Imagem do Hero (Sofa de 2.40m perfeitamente escalado na parede de 3.90m) */}
-            <div className="lg:col-span-7 relative w-full h-[40vh] md:h-[50vh] lg:h-[60vh] group">
+            <div className="lg:col-span-7 relative w-full h-[50vh] lg:h-[70vh] group">
               <div className="absolute inset-0 border border-border/60 translate-x-4 translate-y-4 -z-10 transition-transform duration-500 group-hover:translate-x-2 group-hover:translate-y-2" />
-              <div className="w-full h-full overflow-hidden border border-border relative">
+              <div className="w-full h-full overflow-hidden border border-border">
                 <OptimizedImage
                   src={IMAGES.heroSofa} 
                   alt="Sofá de luxo de 2.40m perfeitamente escalado em living monumental com parede de 3.90m em Campo Grande" 
-                  className="w-full h-full object-cover block transition-transform duration-1000 ease-out group-hover:scale-105"
+                  className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
                   loading="eager"
                   fetchPriority="high"
                   decoding="async"
-                  width={1200}
-                  height={800}
                 />
               </div>
               
@@ -497,20 +446,18 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
         {/* FOLD 2: VALUE PROPOSITION & EXCLUSIVITY (Interest) */}
         <section id="exclusividade" className="py-20 md:py-32 bg-card border-b border-border/40">
           <div className="container">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 lg:gap-20 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
               
               {/* Imagem de Detalhe de Textura (Linen/Wood) */}
               <div className="lg:col-span-5 order-2 lg:order-1 relative">
                 <div className="absolute inset-0 border border-border/60 -translate-x-4 translate-y-4 -z-10" />
-                <div className="aspect-square w-full overflow-hidden border border-border relative">
+                <div className="aspect-square w-full overflow-hidden border border-border">
                    <OptimizedImage
                      src={IMAGES.textureDetail} 
-                     alt="Close-up macro de texturas premium, linho nobre e encaixes de madeira maçiça na Estofatto Casa" 
-                     className="w-full h-full object-cover block transition-transform duration-700 hover:scale-105"
+                     alt="Close-up macro de texturas premium, linho nobre e encaixes de madeira maciça na Estofatto Casa" 
+                     className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                      loading="lazy"
                      decoding="async"
-                     width={600}
-                     height={600}
                    />
                 </div>
               </div>
@@ -595,20 +542,18 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
             </div>
 
             {/* Grid Minimalista com Amplo Espaço em Branco */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 lg:gap-16">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
               
               {/* Categoria 1: Living & Estofados */}
               <div className="group space-y-6">
                 <div className="relative overflow-hidden border border-border aspect-[3/4]">
-                    <OptimizedImage
-                       src={IMAGES.collection.living}
-                      alt="Coleção de Living e Estofados de luxo Estofatto Casa" 
-                      className="w-full h-full object-cover block transition-transform duration-500 hover:scale-105"
-                      loading="lazy"
-                      decoding="async"
-                      width={800}
-                      height={600}
-                    />
+                   <OptimizedImage
+                      src={IMAGES.collection.living}
+                     alt="Coleção de Living e Estofados de luxo Estofatto Casa" 
+                     className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
+                     loading="lazy"
+                     decoding="async"
+                   />
                   <div className="absolute top-4 left-4 bg-background/90 backdrop-blur-sm border border-border/30 px-3 py-1 text-[10px] tracking-widest uppercase">
                     I. Living
                   </div>
@@ -626,15 +571,13 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
               {/* Categoria 2: Jantar & Recepção */}
               <div className="group space-y-6 md:translate-y-8 transition-transform duration-500">
                 <div className="relative overflow-hidden border border-border aspect-[3/4]">
-                    <OptimizedImage
-                      src={IMAGES.collection.jantar} 
-                      alt="Coleção de Jantar Estofatto Casa" 
-                      className="w-full h-full object-cover block transition-transform duration-500 hover:scale-105"
-                      loading="lazy"
-                      decoding="async"
-                      width={800}
-                      height={600}
-                    />
+                   <OptimizedImage
+                     src={IMAGES.collection.jantar} 
+                     alt="Coleção de Jantar Estofatto Casa" 
+                     className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
+                     loading="lazy"
+                     decoding="async"
+                   />
                   <div className="absolute top-4 left-4 bg-background/90 backdrop-blur-sm border border-border/30 px-3 py-1 text-[10px] tracking-widest uppercase">
                     II. Jantar
                   </div>
@@ -652,15 +595,13 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
               {/* Categoria 3: Design de Autor */}
               <div className="group space-y-6">
                 <div className="relative overflow-hidden border border-border aspect-[3/4]">
-                    <OptimizedImage
-                      src={IMAGES.collection.autor} 
-                      alt="Mobiliário com design contemporâneo na Estofatto Casa" 
-                      className="w-full h-full object-cover block transition-transform duration-500 hover:scale-105"
-                      loading="lazy"
-                      decoding="async"
-                      width={800}
-                      height={600}
-                    />
+                   <OptimizedImage
+                     src={IMAGES.collection.autor} 
+                     alt="Mobiliário com design contemporâneo na Estofatto Casa" 
+                     className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
+                     loading="lazy"
+                     decoding="async"
+                   />
                   <div className="absolute top-4 left-4 bg-background/90 backdrop-blur-sm border border-border/30 px-3 py-1 text-[10px] tracking-widest uppercase">
                     III. Design
                   </div>
@@ -697,7 +638,7 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
           <div className="container">
 
 
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 lg:gap-20 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
               
               {/* Texto de Tradição */}
               <div className="lg:col-span-6 space-y-8">
@@ -745,16 +686,14 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
               {/* Imagem do Showroom */}
               <div className="lg:col-span-6 relative">
                 <div className="absolute inset-0 border border-border/60 translate-x-4 translate-y-4 -z-10" />
-                <div className="aspect-[4/3] w-full overflow-hidden border border-border relative">
-                    <OptimizedImage
-                      src={IMAGES.showroom} 
-                      alt="Showroom monumental da Estofatto Casa em Campo Grande, MS" 
-                      className="w-full h-full object-cover block transition-transform duration-500 hover:scale-105"
-                      loading="lazy"
-                      decoding="async"
-                      width={800}
-                      height={600}
-                    />
+                <div className="aspect-[4/3] w-full overflow-hidden border border-border">
+                   <OptimizedImage
+                     src={IMAGES.showroom} 
+                     alt="Showroom monumental da Estofatto Casa em Campo Grande, MS" 
+                     className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                     loading="lazy"
+                     decoding="async"
+                   />
                 </div>
                 
                 {/* Selo de 30 Anos */}
@@ -834,64 +773,6 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
               </Suspense>
               {/* Formulário Original - Removido e substituído por LazyQualificationForm */}
             </div>
-          </div>
-        </section>
-
-        {/* NEW FOLD: FAQ SECTION WITH SCHEMA.ORG STRUCTURED DATA */}
-        <section id="faq" className="py-20 md:py-32 border-t border-border/40">
-          <div className="container max-w-3xl">
-            
-            {/* Header do FAQ */}
-            <div className="text-center space-y-4 mb-12 md:mb-16">
-              <div className="text-xs tracking-[0.2em] uppercase text-primary font-semibold">
-                Dúvidas Frequentes
-              </div>
-              <h2 className="text-3xl md:text-4xl font-serif font-light text-foreground">
-                Perguntas <span className="italic font-normal text-primary">Frequentes</span>
-              </h2>
-              <p className="text-xs md:text-sm text-muted-foreground max-w-lg mx-auto leading-relaxed">
-                Esclareça suas principais dúvidas sobre frete, prazos de entrega, garantia e personalização de móveis na Estofatto Casa.
-              </p>
-              <div className="h-[1px] w-16 bg-primary/30 mx-auto mt-4" />
-            </div>
-
-            {/* Accordion do FAQ */}
-            <Accordion type="single" collapsible className="w-full space-y-4">
-              {FAQ_ITEMS.map((item) => (
-                <AccordionItem 
-                  key={item.id} 
-                  value={item.id}
-                  className="border border-border bg-card px-6 rounded-none transition-all duration-200 hover:border-primary/30"
-                >
-                  <AccordionTrigger className="text-sm md:text-base font-serif font-medium text-foreground py-5 hover:text-primary hover:no-underline">
-                    {item.question}
-                  </AccordionTrigger>
-                  <AccordionContent className="text-xs md:text-sm text-muted-foreground leading-relaxed pb-5">
-                    {item.answer}
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-
-            {/* Injeção de Dados Estruturados Schema.org FAQPage */}
-            <script
-              type="application/ld+json"
-              dangerouslySetInnerHTML={{
-                __html: JSON.stringify({
-                  "@context": "https://schema.org",
-                  "@type": "FAQPage",
-                  "mainEntity": FAQ_ITEMS.map((item) => ({
-                    "@type": "Question",
-                    "name": item.question,
-                    "acceptedAnswer": {
-                      "@type": "Answer",
-                      "text": item.answer
-                    }
-                  }))
-                })
-              }}
-            />
-
           </div>
         </section>
 

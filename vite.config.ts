@@ -226,14 +226,11 @@ export default defineConfig({
     sourcemap: false,
     rollupOptions: {
       output: {
-        manualChunks: (id) => {
-          if (id.includes('node_modules')) {
-            if (id.includes('react')) return 'vendor';
-            if (id.includes('react-hook-form') || id.includes('zod')) return 'forms';
-            if (id.includes('lucide-react') || id.includes('@radix-ui')) return 'ui';
-            if (id.includes('sonner')) return 'sonner';
-            return 'vendor';
-          }
+        manualChunks: {
+          'vendor': ['react', 'react-dom'],
+          'forms': ['react-hook-form', 'zod', '@hookform/resolvers'],
+          'ui': ['lucide-react', '@radix-ui/react-dialog', '@radix-ui/react-select'],
+          'sonner': ['sonner'],
         },
         chunkFileNames: 'js/[name]-[hash].js',
         entryFileNames: 'js/[name]-[hash].js',
@@ -255,33 +252,13 @@ export default defineConfig({
       compress: {
         drop_console: true,
         drop_debugger: true,
-        passes: 4,
-        pure_funcs: ['console.log', 'console.info', 'console.warn'],
-        pure_getters: true,
-        unsafe: true,
-        unsafe_comps: true,
-        unsafe_methods: true,
-        unused: true,
-        dead_code: true,
+        passes: 2,
       },
-      mangle: {
-        toplevel: true,
-        reserved: [],
-      },
+      mangle: true,
       format: {
         comments: false,
       },
     },
-    esbuildOptions: {
-      target: 'ES2020',
-      minify: true,
-      minifyIdentifiers: true,
-      minifySyntax: true,
-      minifyWhitespace: true,
-      legalComments: 'none',
-    },
-    // Compressão Brotli para melhor performance
-    brotliSize: true,
   },
   server: {
     port: 3000,

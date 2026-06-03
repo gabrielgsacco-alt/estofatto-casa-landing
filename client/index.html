@@ -13,11 +13,6 @@
       content="móveis Campo Grande, estofados Campo Grande, sofás, poltronas, móveis de design, móveis de qualidade"
     />
     <meta name="author" content="Estofatto Casa" />
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-    <meta name="googlebot" content="index, follow" />
-    <meta name="language" content="Portuguese" />
-    <meta name="revisit-after" content="7 days" />
-    <link rel="canonical" href="https://estofattocasa.com.br" />
     <meta
       property="og:title"
       content="Móveis de Qualidade em Campo Grande | Estofatto Casa"
@@ -27,28 +22,10 @@
       content="Móveis e estofados de alta qualidade em Campo Grande. Design sofisticado, conforto garantido e preço justo."
     />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://estofattocasa.com.br" />
-    <meta property="og:site_name" content="Estofatto Casa" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Móveis de Qualidade em Campo Grande | Estofatto Casa" />
-    <meta name="twitter:description" content="Móveis e estofados de alta qualidade em Campo Grande. Design sofisticado, conforto garantido e preço justo." />
-    <!-- Critical CSS inline para FCP rápido -->
-    <style>
-      html { scroll-behavior: smooth; }
-      body { margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Plus Jakarta Sans', sans-serif; background: #f9f7f4; color: #1a1a1a; }
-      * { box-sizing: border-box; }
-      #root { display: block; }
-      img { max-width: 100%; height: auto; display: block; }
-    </style>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
     <link rel="dns-prefetch" href="https://connect.facebook.net" />
-    <!-- Preload de imagens críticas (hero) com AVIF + WebP -->
-    <link rel="preload" as="image" href="/manus-storage/IMG_3140_a28f3515.jpg" type="image/jpeg" />
-    <link rel="preload" as="image" href="/manus-storage/IMG_3140_a28f3515.webp" type="image/webp" />
-    <link rel="preload" as="image" href="/manus-storage/IMG_3140_a28f3515.avif" type="image/avif" />
-    <!-- Preload de CSS crítico removido (CSS é injetado pelo Vite) -->
     <!-- Google Fonts com font-display=swap para evitar FOUT -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -70,83 +47,46 @@
       type="font/woff2"
       crossorigin
     />
-    <!-- Carregamento Inteligente e Diferido de Scripts de Terceiros (GA4 e Facebook Pixel) -->
-    <script>
-      (function() {
-        var initialized = false;
-
-        function loadThirdPartyScripts() {
-          if (initialized) return;
-          initialized = true;
-
-          // Remover ouvintes de evento para evitar chamadas duplicadas
-          triggerEvents.forEach(function(event) {
-            window.removeEventListener(event, loadThirdPartyScripts, { passive: true });
-          });
-
-          // 1. Carregar Google Analytics 4
-          var gaScript = document.createElement('script');
-          gaScript.async = true;
-          gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX';
-          document.head.appendChild(gaScript);
-
-          window.dataLayer = window.dataLayer || [];
-          window.gtag = function() { window.dataLayer.push(arguments); };
-          window.gtag('js', new Date());
-          window.gtag('config', 'G-XXXXXXXXXX', { send_page_view: true });
-
-          // 2. Carregar Facebook Pixel
-          !(function (f, b, e, v, n, t, s) {
-            if (f.fbq) return;
-            n = f.fbq = function () {
-              n.callMethod
-                ? n.callMethod.apply(n, arguments)
-                : n.queue.push(arguments);
-            };
-            if (!f._fbq) f._fbq = n;
-            n.push = n;
-            n.loaded = !0;
-            n.version = "2.0";
-            n.queue = [];
-            t = b.createElement(e);
-            t.async = !0;
-            t.src = v;
-            s = b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t, s);
-          })(
-            window,
-            document,
-            "script",
-            "https://connect.facebook.net/en_US/fbevents.js"
-          );
-          fbq("init", "1698423457965661");
-          fbq("track", "PageView");
-        }
-
-        // Eventos que indicam interação real do usuário
-        var triggerEvents = ['click', 'mousedown', 'keydown', 'touchstart', 'scroll'];
-
-        // Se o navegador suportar requestIdleCallback, agendamos o carregamento em background após 3.5 segundos de inatividade
-        // Caso contrário, usamos um setTimeout de segurança de 4 segundos.
-        var idleTimeout = setTimeout(loadThirdPartyScripts, 4000);
-
-        if ('requestIdleCallback' in window) {
-          window.requestIdleCallback(function() {
-            // Aguarda o navegador ficar livre, mas se o usuário interagir antes, carrega imediatamente
-            setTimeout(function() {
-              if (!initialized) {
-                clearTimeout(idleTimeout);
-                loadThirdPartyScripts();
-              }
-            }, 3000);
-          }, { timeout: 6000 });
-        }
-
-        // Registrar ouvintes para carregar instantaneamente em qualquer interação do usuário
-        triggerEvents.forEach(function(event) {
-          window.addEventListener(event, loadThirdPartyScripts, { passive: true });
-        });
-      })();
+    <!-- Google Analytics 4 (defer para não bloquear renderização) -->
+    <script
+      defer
+      src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"
+    ></script>
+    <script defer>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-XXXXXXXXXX");
+    </script>
+    <!-- Facebook Pixel (defer para não bloquear renderização) -->
+    <script defer>
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+          n.callMethod
+            ? n.callMethod.apply(n, arguments)
+            : n.queue.push(arguments);
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = "2.0";
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s);
+      })(
+        window,
+        document,
+        "script",
+        "https://connect.facebook.net/en_US/fbevents.js"
+      );
+      fbq("init", "1698423457965661");
+      fbq("track", "PageView");
     </script>
     <!-- Schema Markup LocalBusiness -->
     <script type="application/ld+json">
@@ -210,7 +150,11 @@
         alt=""
     /></noscript>
     <div id="root"></div>
-    <script type="module" src="/src/main.tsx" defer></script>
-    <!-- Umami Analytics removido: causa erros de tipo MIME e 404 -->
+    <script type="module" src="/src/main.tsx"></script>
+    <script
+      defer
+      src="%VITE_ANALYTICS_ENDPOINT%/umami"
+      data-website-id="%VITE_ANALYTICS_WEBSITE_ID%"
+    ></script>
   </body>
 </html>

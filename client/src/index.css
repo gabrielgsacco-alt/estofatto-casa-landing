@@ -317,41 +317,4 @@ img {
 body {
   scroll-behavior: smooth;
   overscroll-behavior: none;
-  contain: layout style paint;
-}
-
-/* Otimizar renderização de elementos */
-.container {
-  contain: layout style;
-}
-
-/* Otimizar performance de listas */
-.grid, .flex {
-  contain: layout style;
-}
-
-/* Desabilitar reflow forçado */
-* {
-  box-sizing: border-box;
-}
-
-/* Otimizar font loading */
-@font-face {
-  font-display: swap;
-}
-
-/* Reduzir layout thrashing */
-.section {
-  contain: content;
-}
-
-/* Otimizar imagens críticas */
-img[loading="eager"] {
-  content-visibility: visible;
-  will-change: auto;
-}
-
-/* Otimizar lazy loaded images */
-img[loading="lazy"] {
-  content-visibility: auto;
 }

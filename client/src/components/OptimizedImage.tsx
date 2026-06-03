@@ -7,14 +7,12 @@ interface OptimizedImageProps {
   loading?: "lazy" | "eager";
   fetchPriority?: "high" | "low" | "auto";
   decoding?: "sync" | "async" | "auto";
-  width?: number;
-  height?: number;
 }
 
 /**
- * Componente de imagem otimizado com suporte a AVIF, WebP e fallback
- * Prioriza AVIF > WebP > JPG/PNG para máxima compressão
- * Evita conversão para URLs que já são WebP/AVIF ou que usam /manus-storage/
+ * Componente de imagem otimizado com suporte a WebP e fallback
+ * Converte automaticamente URLs de JPG/PNG para WebP com fallback
+ * Evita conversão para URLs que já são WebP ou que usam /manus-storage/
  */
 export const OptimizedImage: React.FC<OptimizedImageProps> = ({
   src,
@@ -23,26 +21,20 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = ({
   loading = "lazy",
   fetchPriority = "auto",
   decoding = "async",
-  width,
-  height,
 }) => {
-  // Se a URL já é WebP/AVIF, usar como está
+  // Se a URL já é WebP, usar como está
   const isWebP = src.endsWith(".webp");
-  const isAVIF = src.endsWith(".avif");
   const isManusStor = src.includes("/manus-storage/");
 
-  // Converter URL para AVIF e WebP apenas se for JPG/PNG e NÃO for /manus-storage/
-  const shouldConvert = !isWebP && !isAVIF && !isManusStor && /\.(jpg|jpeg|png)$/i.test(src);
-  const avifSrc = shouldConvert ? src.replace(/\.(jpg|jpeg|png)$/i, ".avif") : null;
-  const webpSrc = shouldConvert ? src.replace(/\.(jpg|jpeg|png)$/i, ".webp") : null;
+  // Converter URL para WebP apenas se for JPG/PNG e NÃO for /manus-storage/
+  const shouldConvertToWebP = !isWebP && !isManusStor && /\.(jpg|jpeg|png)$/i.test(src);
+  const webpSrc = shouldConvertToWebP ? src.replace(/\.(jpg|jpeg|png)$/i, ".webp") : src;
 
   return (
-    <picture className="w-full h-full block">
-      {/* Fonte AVIF para navegadores modernos (melhor compressão) */}
-      {avifSrc && <source srcSet={avifSrc} type="image/avif" />}
-      {/* Fonte WebP para navegadores que suportam (fallback) */}
-      {webpSrc && <source srcSet={webpSrc} type="image/webp" />}
-      {/* Imagem principal com fallback */}
+    <picture>
+      {/* Fonte WebP para navegadores modernos (apenas se convertido) */}
+      {shouldConvertToWebP && <source srcSet={webpSrc} type="image/webp" />}
+      {/* Imagem principal */}
       <img
         src={src}
         alt={alt}
@@ -50,12 +42,6 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = ({
         loading={loading}
         fetchPriority={fetchPriority}
         decoding={decoding}
-        width={width}
-        height={height}
-        style={{
-          contentVisibility: "auto",
-          containIntrinsicSize: width && height ? `${width}px ${height}px` : undefined,
-        }}
       />
     </picture>
   );
