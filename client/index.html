@@ -22,71 +22,100 @@
       content="Móveis e estofados de alta qualidade em Campo Grande. Design sofisticado, conforto garantido e preço justo."
     />
     <meta property="og:type" content="website" />
+    <!-- Otimização de Conexões de Rede -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
     <link rel="dns-prefetch" href="https://connect.facebook.net" />
-    <!-- Google Fonts com font-display=swap para evitar FOUT -->
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- Google Fonts com display=swap (não bloqueia renderização inicial) -->
     <link
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap"
       rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
     />
-    <!-- Preload de fontes críticas -->
-    <link
-      rel="preload"
-      as="font"
-      href="https://fonts.gstatic.com/s/playfairdisplay/v30/nuFvD-vgj4v2FQpR_6bT8uJpvYfXVaVJSbrw_cEz.woff2"
-      type="font/woff2"
-      crossorigin
-    />
-    <link
-      rel="preload"
-      as="font"
-      href="https://fonts.gstatic.com/s/plusjakartasans/v8/sykt-y5Qn-QRxFbFeGSfDz-_kf6Q0KtXRpLjnennG8E.woff2"
-      type="font/woff2"
-      crossorigin
-    />
-    <!-- Google Analytics 4 (defer para não bloquear renderização) -->
-    <script
-      defer
-      src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"
-    ></script>
-    <script defer>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-      gtag("config", "G-XXXXXXXXXX");
-    </script>
-    <!-- Facebook Pixel (defer para não bloquear renderização) -->
-    <script defer>
-      !(function (f, b, e, v, n, t, s) {
-        if (f.fbq) return;
-        n = f.fbq = function () {
-          n.callMethod
-            ? n.callMethod.apply(n, arguments)
-            : n.queue.push(arguments);
-        };
-        if (!f._fbq) f._fbq = n;
-        n.push = n;
-        n.loaded = !0;
-        n.version = "2.0";
-        n.queue = [];
-        t = b.createElement(e);
-        t.async = !0;
-        t.src = v;
-        s = b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t, s);
-      })(
-        window,
-        document,
-        "script",
-        "https://connect.facebook.net/en_US/fbevents.js"
-      );
-      fbq("init", "1698423457965661");
-      fbq("track", "PageView");
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
+    <!-- Lazy Loading Avançado de Scripts de Terceiros (GA4 & Facebook Pixel) -->
+    <script>
+      (function() {
+        var scriptsLoaded = false;
+        
+        function loadThirdPartyScripts() {
+          if (scriptsLoaded) return;
+          scriptsLoaded = true;
+          
+          // Remover listeners de eventos para evitar chamadas duplicadas
+          cleanupListeners();
+          
+          // 1. Carregar Google Analytics 4
+          var gaScript = document.createElement('script');
+          gaScript.async = true;
+          gaScript.src = "https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX";
+          document.head.appendChild(gaScript);
+          
+          window.dataLayer = window.dataLayer || [];
+          window.gtag = function() { dataLayer.push(arguments); };
+          gtag("js", new Date());
+          gtag("config", "G-XXXXXXXXXX");
+          
+          // 2. Carregar Facebook Pixel
+          !(function (f, b, e, v, n, t, s) {
+            if (f.fbq) return;
+            n = f.fbq = function () {
+              n.callMethod
+                ? n.callMethod.apply(n, arguments)
+                : n.queue.push(arguments);
+            };
+            if (!f._fbq) f._fbq = n;
+            n.push = n;
+            n.loaded = !0;
+            n.version = "2.0";
+            n.queue = [];
+            t = b.createElement(e);
+            t.async = !0;
+            t.src = v;
+            s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s);
+          })(
+            window,
+            document,
+            "script",
+            "https://connect.facebook.net/en_US/fbevents.js"
+          );
+          fbq("init", "1698423457965661");
+          fbq("track", "PageView");
+        }
+        
+        // Listeners para carregar ao menor sinal de interação real
+        var events = ['click', 'mousedown', 'touchstart', 'scroll', 'keydown'];
+        
+        function cleanupListeners() {
+          events.forEach(function(event) {
+            window.removeEventListener(event, loadThirdPartyScripts, { passive: true });
+          });
+        }
+        
+        events.forEach(function(event) {
+          window.addEventListener(event, loadThirdPartyScripts, { passive: true });
+        });
+        
+        // Carregamento de fallback via requestIdleCallback (se suportado) ou setTimeout longo de 3.5 segundos
+        if ('requestIdleCallback' in window) {
+          requestIdleCallback(function() {
+            setTimeout(loadThirdPartyScripts, 3500);
+          });
+        } else {
+          window.addEventListener('load', function() {
+            setTimeout(loadThirdPartyScripts, 3500);
+          });
+        }
+      })();
     </script>
     <!-- Schema Markup LocalBusiness -->
     <script type="application/ld+json">
