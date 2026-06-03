@@ -53,36 +53,36 @@
 }
 
 :root {
-  /* Paleta Estofatto Casa - Cores Reais do Logo */
-  --primary: #8B3A3A; /* Vinho/Marsala - Cor principal do logo */
+  /* Paleta Estofatto Casa - Cores Reais do Logo Otimizadas para Contraste */
+  --primary: #9B2C2C; /* Vinho/Marsala mais profundo e vibrante, excelente contraste */
   --primary-foreground: #FFFFFF; /* Branco puro */
   
-  --background: #FEFDFB; /* Bege muito claro, quase branco */
-  --foreground: #3D3D3D; /* Cinza escuro - cor da base "CASA" */
+  --background: #FCFAF7; /* Bege quente e sofisticado (Marfim Imperial) para dar mais corpo ao fundo */
+  --foreground: #2C2C2C; /* Cinza grafite mais escuro para aumentar a legibilidade e contraste */
   
-  --card: #F5F3F0; /* Bege claro para cards */
-  --card-foreground: #3D3D3D;
+  --card: #F2EDE8; /* Bege areia mais encorpado para destacar os cards do fundo */
+  --card-foreground: #2C2C2C;
   
-  --popover: #FEFDFB;
-  --popover-foreground: #3D3D3D;
+  --popover: #FCFAF7;
+  --popover-foreground: #2C2C2C;
   
-  --secondary: #C9A961; /* Bege/Ouro - linhas do símbolo */
-  --secondary-foreground: #3D3D3D;
+  --secondary: #D4AF37; /* Ouro Metálico/Champanhe mais vivo e atraente para elementos de destaque */
+  --secondary-foreground: #2C2C2C;
   
-  --muted: #E8E5E0;
-  --muted-foreground: #6B6B6B;
+  --muted: #EBE6DF;
+  --muted-foreground: #5A5A5A; /* Cinza mais escuro para melhor contraste em textos secundários */
   
-  --accent: #2D5016; /* Verde escuro - cor das folhas */
+  --accent: #1E3F10; /* Verde Floresta profundo e luxuoso */
   --accent-foreground: #FFFFFF;
   
-  --destructive: #DC2626;
+  --destructive: #C53030;
   --destructive-foreground: #FFFFFF;
   
-  --border: #D4CFC7; /* Linhas sutis em bege */
-  --input: #E8E5E0;
-  --ring: #8B3A3A;
+  --border: #C8BFB3; /* Linhas de borda mais visíveis e elegantes para demarcar os blocos */
+  --input: #EBE6DF;
+  --ring: #9B2C2C;
   
-  --radius: 0.25rem; /* Cantos retos/levemente arredondados para ar arquitetônico */
+  --radius: 0.125rem; /* Cantos quase retos, muito mais modernos, arquitetônicos e sofisticados */
 }
 
 @layer base {

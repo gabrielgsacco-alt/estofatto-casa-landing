@@ -401,7 +401,7 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
             
             {/* Texto do Hero */}
             <div className="lg:col-span-5 space-y-8 z-10">
-              <div className="inline-flex items-center space-x-2 bg-primary/5 px-3 py-1 border border-primary/10">
+              <div className="inline-flex items-center space-x-2 bg-primary/10 px-3 py-1 border border-primary/20">
                 <Sparkles size={14} className="text-primary" />
                 <span className="text-[10px] tracking-[0.15em] uppercase text-primary font-semibold">
                   Design & Conforto para sua Casa
@@ -430,8 +430,8 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
 
             {/* Imagem do Hero (Sofa de 2.40m perfeitamente escalado na parede de 3.90m) */}
             <div className="lg:col-span-7 relative w-full h-[50vh] lg:h-[70vh] group">
-              <div className="absolute inset-0 border border-border/60 translate-x-4 translate-y-4 -z-10 transition-transform duration-500 group-hover:translate-x-2 group-hover:translate-y-2" />
-              <div className="w-full h-full overflow-hidden border border-border">
+              <div className="absolute inset-0 border-2 border-secondary/40 translate-x-4 translate-y-4 -z-10 transition-transform duration-500 group-hover:translate-x-2 group-hover:translate-y-2" />
+              <div className="w-full h-full overflow-hidden border-2 border-border relative">
                 <OptimizedImage
                   src={IMAGES.heroSofa} 
                   alt="Sofá de luxo de 2.40m perfeitamente escalado em living monumental com parede de 3.90m em Campo Grande" 
@@ -464,8 +464,8 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
               
               {/* Imagem de Detalhe de Textura (Linen/Wood) */}
               <div className="lg:col-span-5 order-2 lg:order-1 relative">
-                <div className="absolute inset-0 border border-border/60 -translate-x-4 translate-y-4 -z-10" />
-                <div className="aspect-square w-full overflow-hidden border border-border">
+                <div className="absolute inset-0 border-2 border-secondary/40 -translate-x-4 translate-y-4 -z-10" />
+                <div className="aspect-square w-full overflow-hidden border-2 border-border relative">
                    <OptimizedImage
                      src={IMAGES.textureDetail} 
                      alt="Close-up macro de texturas premium, linho nobre e encaixes de madeira maciça na Estofatto Casa" 
@@ -506,8 +506,8 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4 border-t border-border/60">
                   <div className="flex items-start space-x-3">
-                    <div className="p-1 bg-primary/5 text-primary border border-primary/10 mt-0.5">
-                      <Check size={12} />
+                    <div className="p-1 bg-primary/10 text-primary border border-primary/20 mt-0.5">
+                      <Check size={12} className="stroke-[3]" />
                     </div>
                     <div>
                       <h3 className="text-xs font-semibold tracking-wider uppercase text-foreground mb-1">Tamanho Sob Medida</h3>
@@ -515,8 +515,8 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
                     </div>
                   </div>
                   <div className="flex items-start space-x-3">
-                    <div className="p-1 bg-primary/5 text-primary border border-primary/10 mt-0.5">
-                      <Check size={12} />
+                    <div className="p-1 bg-primary/10 text-primary border border-primary/20 mt-0.5">
+                      <Check size={12} className="stroke-[3]" />
                     </div>
                     <div>
                       <h3 className="text-xs font-semibold tracking-wider uppercase text-foreground mb-1">Tecidos Resistentes</h3>
@@ -524,8 +524,8 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
                     </div>
                   </div>
                   <div className="flex items-start space-x-3 sm:col-span-2">
-                    <div className="p-1 bg-primary/5 text-primary border border-primary/10 mt-0.5">
-                      <Check size={12} />
+                    <div className="p-1 bg-primary/10 text-primary border border-primary/20 mt-0.5">
+                      <Check size={12} className="stroke-[3]" />
                     </div>
                     <div>
                       <h3 className="text-xs font-semibold tracking-wider uppercase text-foreground mb-1">Preço Justo Sem Taxas Invisíveis</h3>
@@ -672,8 +672,8 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
 
                 <div className="space-y-6 pt-6 border-t border-border/60">
                   <div className="flex items-start space-x-4">
-                    <div className="p-2 bg-primary/5 text-primary border border-primary/10 mt-1">
-                      <Truck size={18} />
+                    <div className="p-2 bg-primary/10 text-primary border border-primary/20 mt-1">
+                      <Truck size={18} className="stroke-[2]" />
                     </div>
                     <div>
                       <h3 className="text-sm font-semibold tracking-wider uppercase text-foreground mb-1">Entrega e Montagem Própria</h3>
@@ -684,8 +684,8 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
                   </div>
 
                   <div className="flex items-start space-x-4">
-                    <div className="p-2 bg-primary/5 text-primary border border-primary/10 mt-1">
-                      <ShieldCheck size={18} />
+                    <div className="p-2 bg-primary/10 text-primary border border-primary/20 mt-1">
+                      <ShieldCheck size={18} className="stroke-[2]" />
                     </div>
                     <div>
                       <h3 className="text-sm font-semibold tracking-wider uppercase text-foreground mb-1">Atendimento em todo o Mato Grosso do Sul</h3>
@@ -699,8 +699,8 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
 
               {/* Imagem do Showroom */}
               <div className="lg:col-span-6 relative">
-                <div className="absolute inset-0 border border-border/60 translate-x-4 translate-y-4 -z-10" />
-                <div className="aspect-[4/3] w-full overflow-hidden border border-border">
+                <div className="absolute inset-0 border-2 border-secondary/40 translate-x-4 translate-y-4 -z-10" />
+                <div className="aspect-[4/3] w-full overflow-hidden border-2 border-border relative">
                    <OptimizedImage
                      src={IMAGES.showroom} 
                      alt="Showroom monumental da Estofatto Casa em Campo Grande, MS" 
@@ -765,7 +765,12 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
           <div className="absolute inset-0 opacity-[0.015] pointer-events-none bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:16px_16px]" />
 
           <div className="container max-w-4xl relative z-10">
-            <div className="bg-background border border-border p-8 md:p-16 space-y-12 shadow-sm">
+            <div className="bg-background border-2 border-secondary/30 p-8 md:p-16 space-y-12 shadow-md relative">
+              {/* Detalhe de Canto Luxuoso */}
+              <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-primary" />
+              <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-primary" />
+              <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-primary" />
+              <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-primary" />
               
               {/* Header do Formulário */}
               <div className="text-center space-y-4">
