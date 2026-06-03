@@ -37,7 +37,7 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = ({
   const webpSrc = shouldConvert ? src.replace(/\.(jpg|jpeg|png)$/i, ".webp") : null;
 
   return (
-    <picture>
+    <picture className="w-full h-full block">
       {/* Fonte AVIF para navegadores modernos (melhor compressão) */}
       {avifSrc && <source srcSet={avifSrc} type="image/avif" />}
       {/* Fonte WebP para navegadores que suportam (fallback) */}

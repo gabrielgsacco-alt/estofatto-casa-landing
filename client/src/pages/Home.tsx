@@ -464,13 +464,13 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
             </div>
 
             {/* Imagem do Hero (Sofa de 2.40m perfeitamente escalado na parede de 3.90m) */}
-            <div className="lg:col-span-7 relative w-full h-[40vh] md:h-[50vh] lg:h-[70vh] group">
+            <div className="lg:col-span-7 relative w-full h-[40vh] md:h-[50vh] lg:h-[60vh] group">
               <div className="absolute inset-0 border border-border/60 translate-x-4 translate-y-4 -z-10 transition-transform duration-500 group-hover:translate-x-2 group-hover:translate-y-2" />
-              <div className="w-full h-full overflow-hidden border border-border">
+              <div className="w-full h-full overflow-hidden border border-border relative">
                 <OptimizedImage
                   src={IMAGES.heroSofa} 
                   alt="Sofá de luxo de 2.40m perfeitamente escalado em living monumental com parede de 3.90m em Campo Grande" 
-                  className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
+                  className="w-full h-full object-cover block transition-transform duration-1000 ease-out group-hover:scale-105"
                   loading="eager"
                   fetchPriority="high"
                   decoding="async"
@@ -502,11 +502,11 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
               {/* Imagem de Detalhe de Textura (Linen/Wood) */}
               <div className="lg:col-span-5 order-2 lg:order-1 relative">
                 <div className="absolute inset-0 border border-border/60 -translate-x-4 translate-y-4 -z-10" />
-                <div className="aspect-square w-full overflow-hidden border border-border">
+                <div className="aspect-square w-full overflow-hidden border border-border relative">
                    <OptimizedImage
                      src={IMAGES.textureDetail} 
                      alt="Close-up macro de texturas premium, linho nobre e encaixes de madeira maçiça na Estofatto Casa" 
-                     className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                     className="w-full h-full object-cover block transition-transform duration-700 hover:scale-105"
                      loading="lazy"
                      decoding="async"
                      width={600}
@@ -603,7 +603,7 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
                     <OptimizedImage
                        src={IMAGES.collection.living}
                       alt="Coleção de Living e Estofados de luxo Estofatto Casa" 
-                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                      className="w-full h-full object-cover block transition-transform duration-500 hover:scale-105"
                       loading="lazy"
                       decoding="async"
                       width={800}
@@ -629,7 +629,7 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
                     <OptimizedImage
                       src={IMAGES.collection.jantar} 
                       alt="Coleção de Jantar Estofatto Casa" 
-                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                      className="w-full h-full object-cover block transition-transform duration-500 hover:scale-105"
                       loading="lazy"
                       decoding="async"
                       width={800}
@@ -655,7 +655,7 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
                     <OptimizedImage
                       src={IMAGES.collection.autor} 
                       alt="Mobiliário com design contemporâneo na Estofatto Casa" 
-                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                      className="w-full h-full object-cover block transition-transform duration-500 hover:scale-105"
                       loading="lazy"
                       decoding="async"
                       width={800}
@@ -745,11 +745,11 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
               {/* Imagem do Showroom */}
               <div className="lg:col-span-6 relative">
                 <div className="absolute inset-0 border border-border/60 translate-x-4 translate-y-4 -z-10" />
-                <div className="aspect-[4/3] w-full overflow-hidden border border-border">
+                <div className="aspect-[4/3] w-full overflow-hidden border border-border relative">
                     <OptimizedImage
                       src={IMAGES.showroom} 
                       alt="Showroom monumental da Estofatto Casa em Campo Grande, MS" 
-                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                      className="w-full h-full object-cover block transition-transform duration-500 hover:scale-105"
                       loading="lazy"
                       decoding="async"
                       width={800}
