@@ -37,7 +37,13 @@ import {
   SelectValue 
 } from "@/components/ui/select";
 import { toast } from "sonner";
-import { IMAGES, REVIEWS, REELS_VIDEOS, CONTACT_INFO } from "../const";
+import { IMAGES, REVIEWS, REELS_VIDEOS, CONTACT_INFO, FAQ_ITEMS } from "../const";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 // Funcao para rastrear eventos no Google Analytics
 const trackEvent = (eventName: string, eventData?: Record<string, any>) => {
@@ -310,13 +316,14 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
             </span>
           </div>
 
-          {/* Desktop Nav */}
-            <nav className="hidden md:flex items-center space-x-8 text-xs tracking-widest uppercase">
-            <a href="#exclusividade" onClick={(e) => handleAnchorClick(e, "exclusividade")} className="hover:text-primary transition-colors duration-200">Diferenciais</a>
-            <a href="#acervo" onClick={(e) => handleAnchorClick(e, "acervo")} className="hover:text-primary transition-colors duration-200">Produtos</a>
-            <a href="#tradicao" onClick={(e) => handleAnchorClick(e, "tradicao")} className="hover:text-primary transition-colors duration-200">Tradição & Logística</a>
-            <a href="#depoimentos" onClick={(e) => handleAnchorClick(e, "depoimentos")} className="hover:text-primary transition-colors duration-200">Depoimentos</a>
-            <Button 
+		          {/* Desktop Nav */}
+		          <nav className="hidden md:flex items-center space-x-8 text-xs tracking-widest uppercase">
+	            <a href="#exclusividade" onClick={(e) => handleAnchorClick(e, "exclusividade")} className="hover:text-primary transition-colors duration-200">Diferenciais</a>
+	            <a href="#acervo" onClick={(e) => handleAnchorClick(e, "acervo")} className="hover:text-primary transition-colors duration-200">Produtos</a>
+	            <a href="#tradicao" onClick={(e) => handleAnchorClick(e, "tradicao")} className="hover:text-primary transition-colors duration-200">Tradição & Logística</a>
+	            <a href="#depoimentos" onClick={(e) => handleAnchorClick(e, "depoimentos")} className="hover:text-primary transition-colors duration-200">Depoimentos</a>
+	            <a href="#faq" onClick={(e) => handleAnchorClick(e, "faq")} className="hover:text-primary transition-colors duration-200">FAQ</a>
+	            <Button 
               variant="outline" 
               size="sm" 
               onClick={scrollToForm}
@@ -361,14 +368,21 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
             >
               Tradição & Logística
             </a>
-            <a 
-              href="#depoimentos" 
-              onClick={(e) => handleAnchorClick(e, "depoimentos")}
-              className="text-sm tracking-widest uppercase py-2 border-b border-border/30"
-            >
-              Depoimentos
-            </a>
-            <Button 
+	            <a 
+	              href="#depoimentos" 
+	              onClick={(e) => handleAnchorClick(e, "depoimentos")}
+	              className="text-sm tracking-widest uppercase py-2 border-b border-border/30"
+	            >
+	              Depoimentos
+	            </a>
+	            <a 
+	              href="#faq" 
+	              onClick={(e) => handleAnchorClick(e, "faq")}
+	              className="text-sm tracking-widest uppercase py-2 border-b border-border/30"
+	            >
+	              FAQ
+	            </a>
+	            <Button 
               onClick={scrollToForm}
               aria-label="Ir para formulário de qualificação com especialista"
               className="w-full bg-primary text-primary-foreground hover:bg-primary/90 text-xs tracking-widest uppercase py-5"
@@ -774,6 +788,53 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
               {/* Formulário Original - Removido e substituído por LazyQualificationForm */}
             </div>
           </div>
+        </section>
+
+        {/* FOLD 6.5: FAQ (Objeções e SEO) */}
+        <section id="faq" className="py-20 md:py-32 border-b border-border/40">
+          <div className="container max-w-3xl">
+            <div className="text-center space-y-4 mb-12 md:mb-16">
+              <div className="text-xs tracking-[0.2em] uppercase text-primary font-semibold">
+                Dúvidas Frequentes
+              </div>
+              <h2 className="text-3xl md:text-4xl font-serif font-light text-foreground">
+                Como podemos <span className="italic font-normal text-primary">ajudar?</span>
+              </h2>
+              <div className="h-[1px] w-16 bg-primary/30 mx-auto mt-4" />
+            </div>
+
+            <Accordion type="single" collapsible className="w-full">
+              {FAQ_ITEMS.map((item, index) => (
+                <AccordionItem key={item.id} value={item.id} className="border-border/60">
+                  <AccordionTrigger className="text-left font-serif text-lg md:text-xl hover:text-primary transition-colors hover:no-underline py-6">
+                    {item.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground leading-relaxed pb-6 text-sm md:text-base">
+                    {item.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
+          
+          {/* Schema.org FAQPage JSON-LD injetado dinamicamente para SEO */}
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                "mainEntity": FAQ_ITEMS.map(item => ({
+                  "@type": "Question",
+                  "name": item.question,
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": item.answer
+                  }
+                }))
+              })
+            }}
+          />
         </section>
 
       </main>

@@ -104,3 +104,31 @@ export const REVIEWS = [
     date: "Há 2 meses"
   }
 ];
+
+export const FAQ_ITEMS = [
+  {
+    id: "faq-1",
+    question: "Como funciona o frete e a montagem para Campo Grande e região?",
+    answer: "Entregamos e montamos em toda a cidade de Campo Grande e em todas as cidades do estado do Mato Grosso do Sul. O valor do frete varia de acordo com a sua localidade e o volume do pedido, sendo calculado de forma transparente pelo nosso consultor durante o atendimento."
+  },
+  {
+    id: "faq-2",
+    question: "Quais são os prazos de entrega dos estofados?",
+    answer: "Para produtos em estoque, a entrega em Campo Grande é quase imediata, realizada em poucos dias úteis. Para estofados personalizados sob medida (onde você escolhe o tecido, tamanho e cor), o prazo médio de produção e entrega é de 30 a 45 dias úteis, garantindo que sua peça seja fabricada com o máximo rigor de qualidade."
+  },
+  {
+    id: "faq-3",
+    question: "Qual é o prazo e a cobertura da garantia dos móveis?",
+    answer: "Todos os nossos móveis e estofados possuem garantia de fábrica contra defeitos de fabricação de 1 ano. Oferecemos também suporte de pós-venda dedicado para qualquer manutenção ou assistência necessária."
+  },
+  {
+    id: "faq-4",
+    question: "É possível personalizar o tamanho e o tecido dos sofás?",
+    answer: "Sim! Essa é uma das nossas maiores especialidades. Praticamente todos os nossos modelos de estofados podem ser personalizados em termos de modulação, largura total, profundidade e tipo de tecido (linhos nobres, couro, boucle, tecidos antimanchas, etc.). Nossos consultores ajudam você a projetar a peça perfeita para a sua planta."
+  },
+  {
+    id: "faq-5",
+    question: "O showroom físico está aberto para visitação? Onde fica?",
+    answer: "Sim, adoramos receber nossos clientes! Nosso showroom monumental fica na Rua 13 de Maio, 1459, no Centro de Campo Grande, MS. Funcionamos de segunda a sexta das 08:30 às 18:00, e aos sábados das 08:00 às 12:30. Venha experimentar o conforto de nossas peças pessoalmente!"
+  }
+];
