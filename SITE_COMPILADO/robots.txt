@@ -1,0 +1,22 @@
+# Robots.txt para Estofatto Casa
+# Permite que todos os bots indexem o site
+
+User-agent: *
+Allow: /
+Disallow: 
+
+# Sitemap
+Sitemap: https://estofatto-9y4zod3a.manus.space/sitemap.xml
+
+# Crawl delay para evitar sobrecarga
+Crawl-delay: 1
+
+# Regras específicas para Google
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+# Regras específicas para Bing
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
