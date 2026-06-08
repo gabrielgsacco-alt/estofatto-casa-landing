@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef, lazy, Suspense } from "react";
+import { useAuth } from "@/_core/hooks/useAuth";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -27,6 +28,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { OptimizedImage } from "@/components/OptimizedImage";
+import { SupportChat } from "@/components/SupportChat";
 const LazyQualificationForm = lazy(() => import('@/components/sections/QualificationForm'));
 const LazyReviewsSection = lazy(() => import('@/components/sections/ReviewsSection'));
 import { 
@@ -997,6 +999,9 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
           </div>
         </div>
       )}
+
+      {/* CHAT DE SUPORTE */}
+      <SupportChat />
 
       {/* BOTAO DE VOLTAR AO TOPO */}
       {showScrollTop && (

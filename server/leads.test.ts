@@ -136,8 +136,56 @@ describe("Leads Router", () => {
   });
 
   describe("leads.getAll", () => {
-    it("deve retornar lista de leads", async () => {
+    it("deve rejeitar acesso de usuários não autenticados", async () => {
       const ctx = createMockContext();
+      const caller = appRouter.createCaller(ctx);
+
+      try {
+        await caller.leads.getAll();
+        expect.fail("Deveria ter lançado erro de autenticação");
+      } catch (error: any) {
+        expect(error.code).toBe("FORBIDDEN");
+      }
+    });
+
+    it("deve rejeitar acesso de usuários não-admin", async () => {
+      const ctx: TrpcContext = {
+        user: {
+          id: "user-123",
+          email: "user@example.com",
+          role: "user",
+          openId: "openid-123",
+        },
+        req: {
+          protocol: "https",
+          headers: {},
+        } as TrpcContext["req"],
+        res: {} as TrpcContext["res"],
+      };
+      const caller = appRouter.createCaller(ctx);
+
+      try {
+        await caller.leads.getAll();
+        expect.fail("Deveria ter lançado erro de permissão");
+      } catch (error: any) {
+        expect(error.code).toBe("FORBIDDEN");
+      }
+    });
+
+    it("deve permitir acesso de usuários admin", async () => {
+      const ctx: TrpcContext = {
+        user: {
+          id: "admin-123",
+          email: "admin@example.com",
+          role: "admin",
+          openId: "openid-admin",
+        },
+        req: {
+          protocol: "https",
+          headers: {},
+        } as TrpcContext["req"],
+        res: {} as TrpcContext["res"],
+      };
       const caller = appRouter.createCaller(ctx);
 
       const result = await caller.leads.getAll();

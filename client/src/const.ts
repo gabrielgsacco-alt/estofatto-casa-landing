@@ -132,3 +132,17 @@ export const FAQ_ITEMS = [
     answer: "Sim, adoramos receber nossos clientes! Nosso showroom monumental fica na Rua 13 de Maio, 1459, no Centro de Campo Grande, MS. Funcionamos de segunda a sexta das 08:30 às 18:00, e aos sábados das 08:00 às 12:30. Venha experimentar o conforto de nossas peças pessoalmente!"
   }
 ];
+
+
+/**
+ * Função para gerar URL de login com OAuth
+ * Encoda a origem e o caminho de retorno no estado para segurança
+ */
+export function getLoginUrl(returnPath?: string): string {
+  const origin = typeof window !== 'undefined' ? window.location.origin : '';
+  const state = btoa(JSON.stringify({ origin, returnPath: returnPath || '/' }));
+  const portalUrl = import.meta.env.VITE_OAUTH_PORTAL_URL || '';
+  const appId = import.meta.env.VITE_APP_ID || '';
+  
+  return `${portalUrl}/oauth/authorize?client_id=${appId}&redirect_uri=${encodeURIComponent(origin)}/api/oauth/callback&state=${state}&response_type=code`;
+}

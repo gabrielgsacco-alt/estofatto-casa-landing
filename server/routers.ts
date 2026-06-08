@@ -1,7 +1,7 @@
 import { COOKIE_NAME } from "@shared/const";
 import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
-import { publicProcedure, router } from "./_core/trpc";
+import { publicProcedure, router, adminProcedure } from "./_core/trpc";
 import { createLead, getAllLeads } from "./db";
 import { z } from "zod";
 
@@ -48,7 +48,7 @@ export const appRouter = router({
           throw new Error("Falha ao salvar o lead");
         }
       }),
-    getAll: publicProcedure.query(async () => {
+    getAll: adminProcedure.query(async () => {
       try {
         const leads = await getAllLeads();
         return leads;

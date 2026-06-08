@@ -235,7 +235,7 @@ export default defineConfig({
         chunkFileNames: 'js/[name]-[hash].js',
         entryFileNames: 'js/[name]-[hash].js',
         assetFileNames: (assetInfo) => {
-          const info = assetInfo.name.split('.');
+          const info = (assetInfo.name || '').split('.');
           const ext = info[info.length - 1];
           if (/png|jpe?g|gif|svg/.test(ext)) {
             return 'img/[name]-[hash][extname]';
@@ -252,13 +252,12 @@ export default defineConfig({
       compress: {
         drop_console: true,
         drop_debugger: true,
-        passes: 2,
-      },
+      } as any,
       mangle: true,
       format: {
         comments: false,
       },
-    },
+    } as any,
   },
   server: {
     host: true,

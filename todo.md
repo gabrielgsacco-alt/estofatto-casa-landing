@@ -15,10 +15,10 @@
 
 ## Funcionalidades em Progresso
 
-- [ ] Implementar formulário com backend para capturar leads automaticamente
-- [ ] Adicionar chat em tempo real para responder perguntas frequentes
+- [x] Implementar formulário com backend para capturar leads automaticamente
+- [x] Adicionar chat em tempo real para responder perguntas frequentes
+- [x] Dashboard de analytics para visualizar leads capturados
 - [ ] Rastreamento avançado de conversões com UTM parameters
-- [ ] Dashboard de analytics para visualizar leads capturados
 
 ## Funcionalidades Futuras
 
