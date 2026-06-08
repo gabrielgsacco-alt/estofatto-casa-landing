@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, lazy, Suspense } from "react";
 import { useAuth } from "@/_core/hooks/useAuth";
+import { useUTMTracking } from "@/hooks/useUTMTracking";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -82,6 +83,9 @@ export default function Home() {
   // The userAuth hooks provides authentication state
   // To implement login/logout functionality, simply call logout() or redirect to getLoginUrl()
   let { user, loading, error, isAuthenticated, logout } = useAuth();
+  
+  // Rastrear parâmetros UTM
+  const { getUTMParams } = useUTMTracking();
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -156,6 +160,9 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
     // Gerar link do WhatsApp API com o número correto
     const linkWhatsApp = `https://api.whatsapp.com/send?phone=${CONTACT_INFO.whatsapp}&text=${encodeURIComponent(mensagemWhatsApp)}`;
 
+    // Obter parâmetros UTM armazenados
+    const utmParams = getUTMParams();
+    
     // Rastrear evento de envio de formulario no Google Analytics
     trackEvent('form_submission', {
       event_category: 'engagement',
@@ -163,6 +170,11 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
       investment_range: data.investimento,
       project_phase: data.faseProjeto,
       has_architect: data.arquiteto,
+      utm_source: utmParams.utm_source,
+      utm_medium: utmParams.utm_medium,
+      utm_campaign: utmParams.utm_campaign,
+      utm_content: utmParams.utm_content,
+      utm_term: utmParams.utm_term,
       value: 1
     });
 
@@ -171,7 +183,9 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
       currency: 'BRL',
       value: 1,
       content_name: 'Formulario de Qualificacao',
-      content_type: 'product'
+      content_type: 'product',
+      utm_source: utmParams.utm_source,
+      utm_campaign: utmParams.utm_campaign
     });
 
     // Mostrar mensagem de sucesso com animacao

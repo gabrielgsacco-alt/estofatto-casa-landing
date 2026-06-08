@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
+import { useUTMTracking } from "@/hooks/useUTMTracking";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -40,6 +41,7 @@ export const QualificationForm: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   const submitLeadMutation = trpc.leads.submit.useMutation();
+  const { getUTMParams } = useUTMTracking();
 
   const {
     register,
@@ -58,12 +60,20 @@ export const QualificationForm: React.FC = () => {
     setIsLoading(true);
 
     try {
+      // Obter parâmetros UTM armazenados
+      const utmParams = getUTMParams();
+      
       // Rastrear envio de formulário no Google Analytics
       trackEvent('form_submission', {
         event_category: 'engagement',
         event_label: 'qualification_form',
         investment_range: data.investimento,
         project_phase: data.fase,
+        utm_source: utmParams.utm_source,
+        utm_medium: utmParams.utm_medium,
+        utm_campaign: utmParams.utm_campaign,
+        utm_content: utmParams.utm_content,
+        utm_term: utmParams.utm_term,
         value: 1
       });
 
@@ -72,6 +82,8 @@ export const QualificationForm: React.FC = () => {
         (window as any).fbq("track", "Lead", {
           content_name: "Qualification Form",
           content_type: "lead",
+          utm_source: utmParams.utm_source,
+          utm_campaign: utmParams.utm_campaign,
           value: 1,
           currency: "BRL",
         });

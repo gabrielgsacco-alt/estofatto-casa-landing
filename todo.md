@@ -18,7 +18,7 @@
 - [x] Implementar formulário com backend para capturar leads automaticamente
 - [x] Adicionar chat em tempo real para responder perguntas frequentes
 - [x] Dashboard de analytics para visualizar leads capturados
-- [ ] Rastreamento avançado de conversões com UTM parameters
+- [x] Rastreamento avançado de conversões com UTM parameters
 
 ## Funcionalidades Futuras
 
