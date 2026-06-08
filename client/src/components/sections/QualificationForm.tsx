@@ -16,6 +16,14 @@ import {
 } from "@/components/ui/select";
 import { toast } from "sonner";
 import { CONTACT_INFO } from "@/const";
+import { trpc } from "@/lib/trpc";
+
+// Função para rastrear eventos no Google Analytics
+const trackEvent = (eventName: string, eventData?: Record<string, any>) => {
+  if (typeof window !== 'undefined' && (window as any).gtag) {
+    (window as any).gtag('event', eventName, eventData || {});
+  }
+};
 
 const qualificationSchema = z.object({
   nome: z.string().min(3, "Nome deve ter pelo menos 3 caracteres"),
@@ -31,6 +39,7 @@ type QualificationFormData = z.infer<typeof qualificationSchema>;
 export const QualificationForm: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
+  const submitLeadMutation = trpc.leads.submit.useMutation();
 
   const {
     register,
@@ -49,19 +58,16 @@ export const QualificationForm: React.FC = () => {
     setIsLoading(true);
 
     try {
-      const whatsappMessage = `Olá! Meu nome é ${data.nome}. Estou interessado em móveis para ${data.fase}. Meu investimento previsto é de ${data.investimento}. ${data.descricao}. Meu email é ${data.email} e meu telefone é ${data.telefone}.`;
-      const whatsappUrl = `https://wa.me/${CONTACT_INFO.whatsapp}?text=${encodeURIComponent(whatsappMessage)}`;
+      // Rastrear envio de formulário no Google Analytics
+      trackEvent('form_submission', {
+        event_category: 'engagement',
+        event_label: 'qualification_form',
+        investment_range: data.investimento,
+        project_phase: data.fase,
+        value: 1
+      });
 
-      // Rastrear conversão no Google Analytics
-      if (typeof window !== "undefined" && (window as any).gtag) {
-        (window as any).gtag("event", "lead_qualification", {
-          event_category: "conversion",
-          event_label: "qualification_form",
-          value: 1,
-        });
-      }
-
-      // Rastrear conversão no Facebook Pixel
+      // Rastrear envio de formulário no Facebook Pixel
       if (typeof window !== "undefined" && (window as any).fbq) {
         (window as any).fbq("track", "Lead", {
           content_name: "Qualification Form",
@@ -71,6 +77,19 @@ export const QualificationForm: React.FC = () => {
         });
       }
 
+      // Submeter lead ao backend
+      await submitLeadMutation.mutateAsync({
+        nome: data.nome,
+        whatsapp: data.telefone,
+        faseProjeto: data.fase,
+        arquiteto: "nao",
+        investimento: data.investimento,
+        descricao: data.descricao,
+      });
+
+      const whatsappMessage = `Olá! Meu nome é ${data.nome}. Estou interessado em móveis para ${data.fase}. Meu investimento previsto é de ${data.investimento}. ${data.descricao}. Meu email é ${data.email} e meu telefone é ${data.telefone}.`;
+      const whatsappUrl = `https://wa.me/${CONTACT_INFO.whatsapp}?text=${encodeURIComponent(whatsappMessage)}`;
+
       setShowSuccess(true);
       reset();
 
@@ -79,6 +98,7 @@ export const QualificationForm: React.FC = () => {
         setShowSuccess(false);
       }, 1500);
     } catch (error) {
+      console.error("Erro ao enviar formulário:", error);
       toast.error("Erro ao enviar formulário. Tente novamente.");
     } finally {
       setIsLoading(false);

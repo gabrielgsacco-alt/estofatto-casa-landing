@@ -1,15 +1,41 @@
 import { MessageCircle } from 'lucide-react';
 import { useState } from 'react';
 
+// Função para rastrear eventos no Google Analytics
+const trackEvent = (eventName: string, eventData?: Record<string, any>) => {
+  if (typeof window !== 'undefined' && (window as any).gtag) {
+    (window as any).gtag('event', eventName, eventData || {});
+  }
+};
+
 export function WhatsAppButton() {
   const [isExpanded, setIsExpanded] = useState(false);
   const whatsappNumber = '5567993310724'; // Formato internacional: +55 67 99331-0724
   const defaultMessage = 'Olá! Gostaria de saber mais sobre os móveis de luxo da Estofatto Casa.';
 
   const handleWhatsAppClick = () => {
+    // Rastrear clique no WhatsApp no Google Analytics
+    trackEvent('whatsapp_click', {
+      event_category: 'engagement',
+      event_label: 'whatsapp_button_click',
+      value: 1
+    });
+
     const encodedMessage = encodeURIComponent(defaultMessage);
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
     window.open(whatsappUrl, '_blank');
+  };
+
+  const handleButtonExpand = () => {
+    if (!isExpanded) {
+      // Rastrear expansão do botão
+      trackEvent('whatsapp_button_expand', {
+        event_category: 'engagement',
+        event_label: 'whatsapp_menu_opened',
+        value: 1
+      });
+    }
+    setIsExpanded(!isExpanded);
   };
 
   return (
@@ -51,7 +77,7 @@ export function WhatsAppButton() {
 
         {/* Botão flutuante principal */}
         <button
-          onClick={() => setIsExpanded(!isExpanded)}
+          onClick={handleButtonExpand}
           className="bg-green-500 hover:bg-green-600 text-white rounded-full p-4 shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-110 flex items-center justify-center"
           aria-label="Abrir WhatsApp"
           title="Fale conosco no WhatsApp"
