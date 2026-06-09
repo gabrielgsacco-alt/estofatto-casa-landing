@@ -31,9 +31,44 @@ async function findAvailablePort(startPort: number = 3000): Promise<number> {
 async function startServer() {
   const app = express();
   const server = createServer(app);
+  
+  // Headers para permitir indexacao e rastreamento
+  app.use((req, res, next) => {
+    res.setHeader('X-Robots-Tag', 'index, follow');
+    res.setHeader('Cache-Control', 'public, max-age=3600');
+    next();
+  });
+  
   // Configure body parser with larger size limit for file uploads
   app.use(express.json({ limit: "50mb" }));
   app.use(express.urlencoded({ limit: "50mb", extended: true }));
+  // Servir robots.txt com headers corretos
+  app.get('/robots.txt', (req, res) => {
+    res.type('text/plain');
+    res.send(`# Robots.txt para Estofatto Casa
+# Permite que todos os bots indexem o site
+
+User-agent: *
+Allow: /
+Disallow: 
+
+# Sitemap
+Sitemap: https://estofattocasa.com.br/sitemap.xml
+
+# Crawl delay para evitar sobrecarga
+Crawl-delay: 1
+
+# Regras especificas para Google
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+# Regras especificas para Bing
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1`);
+  });
+  
   registerStorageProxy(app);
   registerOAuthRoutes(app);
   // tRPC API
