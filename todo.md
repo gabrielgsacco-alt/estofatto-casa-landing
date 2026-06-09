@@ -22,7 +22,7 @@
 
 ## Funcionalidades Completadas - Pronto para Produção
 
-- [x] Chat em tempo real com respostas FAQ
+- [x] Botão flutuante WhatsApp Business como único canal de comunicação
 - [x] Dashboard de leads com autenticação admin
 - [x] Rastreamento de UTM parameters em GA e Facebook Pixel
 - [x] Proteção de dados com adminProcedure
