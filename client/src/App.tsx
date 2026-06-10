@@ -42,4 +42,22 @@ function App() {
   );
 }
 
-export default App;
+// Wrapper para garantir que Router está dentro de um contexto válido
+function AppWithRouter() {
+  return (
+    <ErrorBoundary>
+      <ThemeProvider
+        defaultTheme="light"
+        // switchable
+      >
+        <TooltipProvider>
+          <Toaster />
+          <Router />
+          <WhatsAppButton />
+        </TooltipProvider>
+      </ThemeProvider>
+    </ErrorBoundary>
+  );
+}
+
+export default AppWithRouter;
