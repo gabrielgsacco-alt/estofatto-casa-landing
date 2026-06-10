@@ -259,24 +259,4 @@ export default defineConfig({
       },
     } as any,
   },
-  server: {
-    middlewareMode: false,
-    host: '0.0.0.0',
-    port: 5173,
-    allowedHosts: [
-      ".manuspre.computer",
-      ".manus.computer",
-      ".manus-asia.computer",
-      ".manuscomputer.ai",
-      ".manusvm.computer",
-      "localhost",
-      "127.0.0.1",
-    ],
-    hmr: false,
-    fs: {
-      strict: false,
-      allow: ["."],
-      deny: ["**/.*"],
-    },
-  },
 });
