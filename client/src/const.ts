@@ -73,70 +73,38 @@ export const REELS_VIDEOS = [
 export const REVIEWS = [
   {
     id: 1,
-    author: "Mariana Costa",
-    role: "",
-    rating: 5,
-    text: "Fui até a Estofatto procurando um sofá para a sala de TV, mas confesso que estava bem indecisa com as medidas do meu espaço. O Gabriel me atendeu super bem, tirou todas as dúvidas e ajudou a escolher o tamanho perfeito sem pressa. A entrega também foi impecável e os entregadores muito cuidadosos. Super recomendo!",
-    date: "Há 1 semana"
-  },
-  {
-    id: 2,
-    author: "Thiago & Aline Ramos",
-    role: "",
-    rating: 5,
-    text: "A qualidade dos móveis é indiscutível. Adquiri peças para a minha sala de jantar e o acabamento é impecável. O que mais me chamou a atenção, além do design exclusivo, foi o suporte da Elisabete desde o primeiro contato até o pós-venda. Loja de altíssimo nível.",
-    date: "Há 3 semanas"
-  },
-  {
-    id: 3,
-    author: "Juliana Medeiros",
-    role: "",
-    rating: 5,
-    text: "Já é a segunda vez que compro na Estofatto. A primeira foi há uns 3 anos e a peça continua impecável, sem afundar ou perder a cor. Agora voltei para escolher umas poltronas novas e o atendimento da Bianca foi perfeito. É raro achar uma loja que mantém o mesmo padrão de excelência ao longo dos anos.",
-    date: "Há 1 mês"
-  },
-  {
-    id: 4,
-    author: "Ricardo Fontes",
-    role: "",
-    rating: 5,
-    text: "Procurava peças de destaque para a recepção da minha clínica e encontrei na Estofatto. A qualidade dos estofados salta aos olhos de qualquer um que entra no ambiente. O processo de compra foi muito ágil e os entregadores tiveram muito cuidado na montagem. Recomendo de olhos fechados para quem exige qualidade superior.",
-    date: "Há 2 meses"
-  },
-  {
-    id: 5,
-    author: "Elisabete",
-    role: "Cliente - Depoimento WhatsApp",
+    author: "Cliente Estofatto Casa",
+    role: "Atendimento por Elisabete",
     rating: 5,
     text: "Ficou lindo! Moramos em uma cidade distante e que aqui não temos muita opção.. então nos atendimentos me senti como se estivesse na loja.. tirei todas minhas dúvidas e estou bem contente com o meu produto!",
-    date: "Há 2 semanas",
+    date: "Depoimento via WhatsApp",
     whatsappImage: "/manus-storage/pasted_file_fNPv4Y_image_14b31646.png"
   },
   {
-    id: 6,
+    id: 2,
     author: "Camila",
-    role: "Cliente - Depoimento WhatsApp",
+    role: "Atendimento por Isadora",
     rating: 5,
-    text: "Quero agradecer de coração por todo o carinho e a atenção durante o atendimento. Tudo o que combinamos foi entregue com pontualidade britânica. Entrega em pouco tempo e com flexibilidade de horário. É raro encontrar um atendimento tão acolhedor e humano!",
-    date: "Há 1 semana",
+    text: "Quero agradecer de coração por todo o carinho e atenção durante o atendimento. A forma como fui recebida, com tanta simpatia, respeito e delicadeza, fez toda a diferença. É raro encontrar um atendimento tão acolhedor e humano — obrigada por cada gesto e por todo o cuidado!",
+    date: "Depoimento via WhatsApp",
     whatsappImage: "/manus-storage/pasted_file_RMWedD_image_b526b34b.png"
   },
   {
-    id: 7,
+    id: 3,
     author: "Alyne",
-    role: "Cliente - Depoimento WhatsApp",
+    role: "Atendimento por Mary",
     rating: 5,
-    text: "Essas mensagens que fazem o nosso trabalho ser tão gratificante! Você sonha a Estofatto realiza! Obrigada pelo carinho e pela confiança em nosso trabalho!",
-    date: "Há 3 dias",
+    text: "Gostaria de agradecer por todo atendimento. Tudo o que combinou foi entregue com pontualidade britânica. Agora já sabemos quem procurar. Um beijo e parabéns pelo seu trabalho!",
+    date: "Depoimento via WhatsApp",
     whatsappImage: "/manus-storage/pasted_file_G7K7zE_image_c649be35.png"
   },
   {
-    id: 8,
-    author: "Cliente Satisfeito",
-    role: "Cliente - Depoimento WhatsApp",
+    id: 4,
+    author: "Cliente Estofatto Casa",
+    role: "Feedback de pós-venda",
     rating: 5,
     text: "Boa tarde! Gostamos da gentileza. De sempre tentarem encontrar soluções para o que precisamos. A preocupação de realmente adquirirmos uma peça que vai ser compatível com o ambiente, que vai se ajustar. As formas de pagamento. Entrega em pouco tempo e com flexibilidade de horário.",
-    date: "Há 5 dias",
+    date: "Depoimento via WhatsApp",
     whatsappImage: "/manus-storage/pasted_file_2PlZUx_image_05f307c0.png"
   }
 ];

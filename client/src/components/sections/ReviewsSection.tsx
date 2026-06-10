@@ -1,20 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Star, ShieldCheck } from "lucide-react";
+import { ShieldCheck, MessageCircle } from "lucide-react";
 import { REVIEWS } from "@/const";
-
-// Declare global for Google Business Card
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'g:businesscard': any;
-    }
-  }
-}
 
 export const ReviewsSection: React.FC = () => {
   const reviewsRef = useRef<HTMLDivElement>(null);
   const [visibleReviews, setVisibleReviews] = useState<Set<number>>(new Set());
-  const googleWidgetRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -29,7 +19,7 @@ export const ReviewsSection: React.FC = () => {
           }
         });
       },
-      { threshold: 0.1, rootMargin: "0px 0px -100px 0px" }
+      { threshold: 0.1, rootMargin: "0px 0px -80px 0px" }
     );
 
     if (reviewsRef.current) {
@@ -41,28 +31,20 @@ export const ReviewsSection: React.FC = () => {
     return () => observer.disconnect();
   }, []);
 
-  // Carregar widget oficial do Google Meu Negócio
-  useEffect(() => {
-    if (!(window as any).gapi) {
-      const script = document.createElement("script");
-      script.src = "https://www.gstatic.com/business-card/js/client.js";
-      script.async = true;
-      script.defer = true;
-      script.onload = () => {
-        if ((window as any).gapi && (window as any).gapi.businesscard) {
-          (window as any).gapi.businesscard.go();
-        }
-      };
-      document.body.appendChild(script);
-    }
-  }, []);
-
   return (
-    <div className="space-y-12">
-      {/* Grid de Avaliações */}
+    <div className="space-y-10">
+      {/* Selo de autenticidade */}
+      <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
+        <ShieldCheck size={18} className="text-secondary" aria-hidden="true" />
+        <span className="font-semibold tracking-wide">
+          Conversas reais de clientes via WhatsApp
+        </span>
+      </div>
+
+      {/* Grid de Prints de WhatsApp */}
       <div
         ref={reviewsRef}
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8"
+        className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 max-w-4xl mx-auto"
       >
         {REVIEWS.map(review => {
           const isVisible = visibleReviews.has(review.id);
@@ -70,63 +52,46 @@ export const ReviewsSection: React.FC = () => {
             <article
               key={review.id}
               data-review-id={review.id}
-              className={`bg-card border-2 border-border p-6 flex flex-col justify-between space-y-4 relative group hover:border-primary hover:shadow-lg transition-all duration-500 ${
+              className={`flex flex-col bg-card border-2 border-border rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:border-primary transition-all duration-500 ${
                 isVisible
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-8"
               }`}
               style={{
-                transitionDelay: isVisible ? `${review.id * 100}ms` : "0ms",
+                transitionDelay: isVisible ? `${(review.id % 4) * 100}ms` : "0ms",
               }}
             >
-              {/* Estrelas com role="img" para acessibilidade */}
-              <div 
-                className="flex space-x-1 text-secondary"
-                role="img"
-                aria-label={`Avaliação: ${review.rating} de 5 estrelas`}
-              >
-                {[...Array(5)].map((_, i) => (
-                  <Star 
-                    key={i} 
-                    size={14} 
-                    fill={i < review.rating ? "currentColor" : "none"}
-                    className={i < review.rating ? "stroke-secondary" : "stroke-border"}
-                    aria-hidden="true"
-                  />
-                ))}
+              {/* Cabeçalho estilo WhatsApp */}
+              <div className="flex items-center gap-3 bg-[#075E54] px-4 py-3">
+                <div className="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center shrink-0">
+                  <MessageCircle size={18} className="text-white" aria-hidden="true" />
+                </div>
+                <div className="flex flex-col min-w-0">
+                  <span className="text-white text-sm font-bold truncate">
+                    {review.author}
+                  </span>
+                  <span className="text-white/70 text-xs truncate">
+                    {review.role}
+                  </span>
+                </div>
               </div>
 
-              {/* Imagem do WhatsApp se disponível */}
-              {review.whatsappImage && (
-                <div className="my-4 rounded-lg overflow-hidden border-2 border-border">
-                  <img 
-                    src={review.whatsappImage} 
-                    alt={`Depoimento de ${review.author} no WhatsApp`}
-                    className="w-full h-auto object-cover max-h-96"
-                  />
-                </div>
-              )}
+              {/* Print real do WhatsApp */}
+              <div className="bg-[#ECE5DD] p-3">
+                <img
+                  src={review.whatsappImage}
+                  alt={`Depoimento real de cliente da Estofatto Casa enviado por WhatsApp - ${review.author}`}
+                  loading="lazy"
+                  className="w-full h-auto rounded-lg shadow-md"
+                />
+              </div>
 
-              {/* Texto do depoimento com contraste melhorado */}
-              {!review.whatsappImage && (
-                <p className="text-sm text-foreground leading-relaxed font-medium">
+              {/* Rodapé com a transcrição do depoimento */}
+              <div className="p-5 flex flex-col gap-2 border-t-2 border-border">
+                <p className="text-sm text-foreground leading-relaxed italic">
                   "{review.text}"
                 </p>
-              )}
-
-              {/* Informações do autor */}
-              <div className="pt-4 border-t-2 border-border flex flex-col justify-between space-y-2">
-                <div>
-                  <h3 className="text-sm font-black tracking-wider uppercase text-foreground">
-                    {review.author}
-                  </h3>
-                  {review.role && (
-                    <p className="text-xs text-muted-foreground font-semibold">
-                      {review.role}
-                    </p>
-                  )}
-                </div>
-                <span className="text-xs text-muted-foreground tracking-widest uppercase font-semibold">
+                <span className="text-xs text-muted-foreground tracking-widest uppercase font-semibold pt-2">
                   {review.date}
                 </span>
               </div>
