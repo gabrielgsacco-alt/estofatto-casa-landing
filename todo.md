@@ -30,14 +30,6 @@
 - [x] Integração tRPC com banco de dados
 - [x] OAuth Manus implementado
 
-## Correções de SEO Implementadas
-
-- [x] Adicionado react-helmet-async para gerenciar meta tags dinamicamente
-- [x] Adicionado Helmet component no Home.tsx com title, description e keywords
-- [x] Adicionado H1 estático no HTML para detecção por ferramentas de SEO
-- [x] Meta tags de descrição e keywords confirmadas no HTML inicial
-- [x] Todos os testes continuam passando (9/9)
-
 ## Funcionalidades Futuras (Backlog)
 
 - [ ] Integração com CRM (Pipedrive, HubSpot)
