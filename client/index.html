@@ -131,13 +131,19 @@
         }
       })();
     </script>
-    <!-- Schema Markup LocalBusiness -->
+    <!-- Schema Markup LocalBusiness com Rich Snippets -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "LocalBusiness",
+        "@type": "FurnitureStore",
+        "@id": "https://estofattocasa.com.br",
         "name": "Estofatto Casa",
-        "description": "Moveis e estofados de alta qualidade em Campo Grande. Design sofisticado, conforto garantido e preco justo.",
+        "description": "Loja de moveis e estofados de alta qualidade em Campo Grande. Design sofisticado, conforto garantido e preco justo. Sofas, poltronas e moveis de design.",
+        "image": "/manus-storage/LOGOS_e91d0223.png",
+        "url": "https://estofattocasa.com.br",
+        "telephone": "+55 67 3325-9999",
+        "email": "contato@estofattocasa.com.br",
+        "priceRange": "R$ 5000 - R$ 20000",
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "Rua 13 de Maio, 1459",
@@ -146,19 +152,15 @@
           "postalCode": "79004-422",
           "addressCountry": "BR"
         },
-        "telephone": "+55 67 3325-9999",
-        "url": "https://estofattocasa.com.br",
-        "priceRange": "R$ 5000 - R$ 20000",
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "-20.4428",
+          "longitude": "-55.4915"
+        },
         "openingHoursSpecification": [
           {
             "@type": "OpeningHoursSpecification",
-            "dayOfWeek": [
-              "Monday",
-              "Tuesday",
-              "Wednesday",
-              "Thursday",
-              "Friday"
-            ],
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
             "opens": "08:30",
             "closes": "18:00"
           },
@@ -178,7 +180,24 @@
         "sameAs": [
           "https://www.instagram.com/estofattocasacg/",
           "https://www.google.com/maps/place/Estofatto+Casa+-+Loja+de+m%C3%B3veis+em+Campo+Grande+MS/data=!4m2!3m1!1s0x0:0x1c49450723dbd5b3?sa=X&ved=1t:2428&ictx=111&cshid=1780340855246497"
-        ]
+        ],
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.8",
+          "reviewCount": "45"
+        },
+        "areaServed": {
+          "@type": "City",
+          "name": "Campo Grande",
+          "addressRegion": "MS",
+          "addressCountry": "BR"
+        },
+        "serviceArea": {
+          "@type": "City",
+          "name": "Campo Grande",
+          "addressRegion": "MS",
+          "addressCountry": "BR"
+        }
       }
     </script>
   </head>
