@@ -6,7 +6,7 @@ Allow: /
 Disallow: 
 
 # Sitemap
-Sitemap: https://estofattocasa.com.br/sitemap.xml
+Sitemap: https://estofatto-9y4zod3a.manus.space/sitemap.xml
 
 # Crawl delay para evitar sobrecarga
 Crawl-delay: 1
