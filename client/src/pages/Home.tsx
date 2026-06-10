@@ -4,6 +4,7 @@ import { useUTMTracking } from "@/hooks/useUTMTracking";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
+import { Helmet } from "react-helmet-async";
 import { 
   ArrowRight, 
   ArrowUp,
@@ -321,7 +322,13 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
 
 
   return (
-    <div className="min-h-screen flex flex-col bg-background text-foreground font-sans">
+    <>
+      <Helmet>
+        <title>Móveis e Estofados Premium em Campo Grande | Estofatto Casa</title>
+        <meta name="description" content="Descubra móveis e estofados de alta qualidade em Campo Grande. Sofás, poltronas e móveis de design sofisticado com conforto garantido. Visite nosso showroom!" />
+        <meta name="keywords" content="móveis Campo Grande, estofados Campo Grande, sofás Campo Grande, poltronas, móveis de design, móveis de qualidade, móveis de luxo, decoração Campo Grande" />
+      </Helmet>
+      <div className="min-h-screen flex flex-col bg-background text-foreground font-sans">
       
       {/* HEADER SOFISTICADO */}
       <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/40 transition-all duration-300">
@@ -1064,5 +1071,6 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
       )}
 
     </div>
+    </>
   );
 }
