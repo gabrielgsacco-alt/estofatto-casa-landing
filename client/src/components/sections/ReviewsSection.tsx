@@ -1,10 +1,20 @@
 import React, { useEffect, useRef, useState } from "react";
-import { ShieldCheck } from "lucide-react";
+import { Star, ShieldCheck } from "lucide-react";
 import { REVIEWS } from "@/const";
+
+// Declare global for Google Business Card
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      'g:businesscard': any;
+    }
+  }
+}
 
 export const ReviewsSection: React.FC = () => {
   const reviewsRef = useRef<HTMLDivElement>(null);
   const [visibleReviews, setVisibleReviews] = useState<Set<number>>(new Set());
+  const googleWidgetRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -19,7 +29,7 @@ export const ReviewsSection: React.FC = () => {
           }
         });
       },
-      { threshold: 0.1, rootMargin: "0px 0px -80px 0px" }
+      { threshold: 0.1, rootMargin: "0px 0px -100px 0px" }
     );
 
     if (reviewsRef.current) {
@@ -31,20 +41,28 @@ export const ReviewsSection: React.FC = () => {
     return () => observer.disconnect();
   }, []);
 
-  return (
-    <div className="space-y-8">
-      {/* Selo de autenticidade */}
-      <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
-        <ShieldCheck size={18} className="text-secondary" aria-hidden="true" />
-        <span className="font-semibold tracking-wide">
-          Conversas reais de clientes via WhatsApp
-        </span>
-      </div>
+  // Carregar widget oficial do Google Meu Negócio
+  useEffect(() => {
+    if (!(window as any).gapi) {
+      const script = document.createElement("script");
+      script.src = "https://www.gstatic.com/business-card/js/client.js";
+      script.async = true;
+      script.defer = true;
+      script.onload = () => {
+        if ((window as any).gapi && (window as any).gapi.businesscard) {
+          (window as any).gapi.businesscard.go();
+        }
+      };
+      document.body.appendChild(script);
+    }
+  }, []);
 
-      {/* Grid de Prints de WhatsApp - 4 colunas */}
+  return (
+    <div className="space-y-12">
+      {/* Grid de Avaliações */}
       <div
         ref={reviewsRef}
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-7xl mx-auto"
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8"
       >
         {REVIEWS.map(review => {
           const isVisible = visibleReviews.has(review.id);
@@ -52,23 +70,52 @@ export const ReviewsSection: React.FC = () => {
             <article
               key={review.id}
               data-review-id={review.id}
-              className={`flex flex-col bg-card border border-border rounded-lg overflow-hidden shadow-sm hover:shadow-lg hover:border-primary transition-all duration-500 ${
+              className={`bg-card border-2 border-border p-6 flex flex-col justify-between space-y-4 relative group hover:border-primary hover:shadow-lg transition-all duration-500 ${
                 isVisible
                   ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-4"
+                  : "opacity-0 translate-y-8"
               }`}
               style={{
-                transitionDelay: isVisible ? `${(review.id % 4) * 80}ms` : "0ms",
+                transitionDelay: isVisible ? `${review.id * 100}ms` : "0ms",
               }}
             >
-              {/* Print real do WhatsApp - sem cabeçalho, apenas a imagem */}
-              <div className="w-full h-full overflow-hidden">
-                <img
-                  src={review.whatsappImage}
-                  alt={`Depoimento real de cliente da Estofatto Casa enviado por WhatsApp - ${review.author}`}
-                  loading="lazy"
-                  className="w-full h-full object-cover"
-                />
+              {/* Estrelas com role="img" para acessibilidade */}
+              <div 
+                className="flex space-x-1 text-secondary"
+                role="img"
+                aria-label={`Avaliação: ${review.rating} de 5 estrelas`}
+              >
+                {[...Array(5)].map((_, i) => (
+                  <Star 
+                    key={i} 
+                    size={14} 
+                    fill={i < review.rating ? "currentColor" : "none"}
+                    className={i < review.rating ? "stroke-secondary" : "stroke-border"}
+                    aria-hidden="true"
+                  />
+                ))}
+              </div>
+
+              {/* Texto do depoimento com contraste melhorado */}
+              <p className="text-sm text-foreground leading-relaxed font-medium">
+                "{review.text}"
+              </p>
+
+              {/* Informações do autor */}
+              <div className="pt-4 border-t-2 border-border flex flex-col justify-between space-y-2">
+                <div>
+                  <h3 className="text-sm font-black tracking-wider uppercase text-foreground">
+                    {review.author}
+                  </h3>
+                  {review.role && (
+                    <p className="text-xs text-muted-foreground font-semibold">
+                      {review.role}
+                    </p>
+                  )}
+                </div>
+                <span className="text-xs text-muted-foreground tracking-widest uppercase font-semibold">
+                  {review.date}
+                </span>
               </div>
             </article>
           );
