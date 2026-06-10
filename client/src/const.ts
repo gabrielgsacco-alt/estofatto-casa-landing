@@ -102,6 +102,42 @@ export const REVIEWS = [
     rating: 5,
     text: "Procurava peças de destaque para a recepção da minha clínica e encontrei na Estofatto. A qualidade dos estofados salta aos olhos de qualquer um que entra no ambiente. O processo de compra foi muito ágil e os entregadores tiveram muito cuidado na montagem. Recomendo de olhos fechados para quem exige qualidade superior.",
     date: "Há 2 meses"
+  },
+  {
+    id: 5,
+    author: "Elisabete",
+    role: "Cliente - Depoimento WhatsApp",
+    rating: 5,
+    text: "Ficou lindo! Moramos em uma cidade distante e que aqui não temos muita opção.. então nos atendimentos me senti como se estivesse na loja.. tirei todas minhas dúvidas e estou bem contente com o meu produto!",
+    date: "Há 2 semanas",
+    whatsappImage: "/manus-storage/pasted_file_fNPv4Y_image_14b31646.png"
+  },
+  {
+    id: 6,
+    author: "Camila",
+    role: "Cliente - Depoimento WhatsApp",
+    rating: 5,
+    text: "Quero agradecer de coração por todo o carinho e a atenção durante o atendimento. Tudo o que combinamos foi entregue com pontualidade britânica. Entrega em pouco tempo e com flexibilidade de horário. É raro encontrar um atendimento tão acolhedor e humano!",
+    date: "Há 1 semana",
+    whatsappImage: "/manus-storage/pasted_file_RMWedD_image_b526b34b.png"
+  },
+  {
+    id: 7,
+    author: "Alyne",
+    role: "Cliente - Depoimento WhatsApp",
+    rating: 5,
+    text: "Essas mensagens que fazem o nosso trabalho ser tão gratificante! Você sonha a Estofatto realiza! Obrigada pelo carinho e pela confiança em nosso trabalho!",
+    date: "Há 3 dias",
+    whatsappImage: "/manus-storage/pasted_file_G7K7zE_image_c649be35.png"
+  },
+  {
+    id: 8,
+    author: "Cliente Satisfeito",
+    role: "Cliente - Depoimento WhatsApp",
+    rating: 5,
+    text: "Boa tarde! Gostamos da gentileza. De sempre tentarem encontrar soluções para o que precisamos. A preocupação de realmente adquirirmos uma peça que vai ser compatível com o ambiente, que vai se ajustar. As formas de pagamento. Entrega em pouco tempo e com flexibilidade de horário.",
+    date: "Há 5 dias",
+    whatsappImage: "/manus-storage/pasted_file_2PlZUx_image_05f307c0.png"
   }
 ];
 
@@ -146,3 +182,7 @@ export function getLoginUrl(returnPath?: string): string {
   
   return `${portalUrl}/oauth/authorize?client_id=${appId}&redirect_uri=${encodeURIComponent(origin)}/api/oauth/callback&state=${state}&response_type=code`;
 }
+
+export const AXIOS_TIMEOUT_MS = 30_000;
+export const UNAUTHED_ERR_MSG = 'Please login (10001)';
+export const NOT_ADMIN_ERR_MSG = 'You do not have required permission (10002)';

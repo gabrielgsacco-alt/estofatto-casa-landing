@@ -96,10 +96,23 @@ export const ReviewsSection: React.FC = () => {
                 ))}
               </div>
 
+              {/* Imagem do WhatsApp se disponível */}
+              {review.whatsappImage && (
+                <div className="my-4 rounded-lg overflow-hidden border-2 border-border">
+                  <img 
+                    src={review.whatsappImage} 
+                    alt={`Depoimento de ${review.author} no WhatsApp`}
+                    className="w-full h-auto object-cover max-h-96"
+                  />
+                </div>
+              )}
+
               {/* Texto do depoimento com contraste melhorado */}
-              <p className="text-sm text-foreground leading-relaxed font-medium">
-                "{review.text}"
-              </p>
+              {!review.whatsappImage && (
+                <p className="text-sm text-foreground leading-relaxed font-medium">
+                  "{review.text}"
+                </p>
+              )}
 
               {/* Informações do autor */}
               <div className="pt-4 border-t-2 border-border flex flex-col justify-between space-y-2">

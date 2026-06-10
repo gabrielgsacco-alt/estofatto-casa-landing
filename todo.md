@@ -30,6 +30,10 @@
 - [x] Integração tRPC com banco de dados
 - [x] OAuth Manus implementado
 
+## Funcionalidades em Desenvolvimento
+
+- [x] Adicionar 4 depoimentos de clientes com prints de WhatsApp na seção de depoimentos
+
 ## Funcionalidades Futuras (Backlog)
 
 - [ ] Integração com CRM (Pipedrive, HubSpot)
