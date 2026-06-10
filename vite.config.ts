@@ -260,7 +260,9 @@ export default defineConfig({
     } as any,
   },
   server: {
-    host: true,
+    middlewareMode: false,
+    host: '0.0.0.0',
+    port: 5173,
     allowedHosts: [
       ".manuspre.computer",
       ".manus.computer",
@@ -270,13 +272,10 @@ export default defineConfig({
       "localhost",
       "127.0.0.1",
     ],
-    hmr: {
-      protocol: 'wss',
-      host: 'auto',
-      port: 443,
-    },
+    hmr: false,
     fs: {
-      strict: true,
+      strict: false,
+      allow: ["."],
       deny: ["**/.*"],
     },
   },
