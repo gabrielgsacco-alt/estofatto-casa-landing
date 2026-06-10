@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { ShieldCheck, MessageCircle } from "lucide-react";
+import { ShieldCheck } from "lucide-react";
 import { REVIEWS } from "@/const";
 
 export const ReviewsSection: React.FC = () => {
@@ -32,7 +32,7 @@ export const ReviewsSection: React.FC = () => {
   }, []);
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-8">
       {/* Selo de autenticidade */}
       <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
         <ShieldCheck size={18} className="text-secondary" aria-hidden="true" />
@@ -41,10 +41,10 @@ export const ReviewsSection: React.FC = () => {
         </span>
       </div>
 
-      {/* Grid de Prints de WhatsApp */}
+      {/* Grid de Prints de WhatsApp - 4 colunas */}
       <div
         ref={reviewsRef}
-        className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 max-w-4xl mx-auto"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-7xl mx-auto"
       >
         {REVIEWS.map(review => {
           const isVisible = visibleReviews.has(review.id);
@@ -52,48 +52,23 @@ export const ReviewsSection: React.FC = () => {
             <article
               key={review.id}
               data-review-id={review.id}
-              className={`flex flex-col bg-card border-2 border-border rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:border-primary transition-all duration-500 ${
+              className={`flex flex-col bg-card border border-border rounded-lg overflow-hidden shadow-sm hover:shadow-lg hover:border-primary transition-all duration-500 ${
                 isVisible
                   ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-8"
+                  : "opacity-0 translate-y-4"
               }`}
               style={{
-                transitionDelay: isVisible ? `${(review.id % 4) * 100}ms` : "0ms",
+                transitionDelay: isVisible ? `${(review.id % 4) * 80}ms` : "0ms",
               }}
             >
-              {/* Cabeçalho estilo WhatsApp */}
-              <div className="flex items-center gap-3 bg-[#075E54] px-4 py-3">
-                <div className="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center shrink-0">
-                  <MessageCircle size={18} className="text-white" aria-hidden="true" />
-                </div>
-                <div className="flex flex-col min-w-0">
-                  <span className="text-white text-sm font-bold truncate">
-                    {review.author}
-                  </span>
-                  <span className="text-white/70 text-xs truncate">
-                    {review.role}
-                  </span>
-                </div>
-              </div>
-
-              {/* Print real do WhatsApp */}
-              <div className="bg-[#ECE5DD] p-3">
+              {/* Print real do WhatsApp - sem cabeçalho, apenas a imagem */}
+              <div className="w-full h-full overflow-hidden">
                 <img
                   src={review.whatsappImage}
                   alt={`Depoimento real de cliente da Estofatto Casa enviado por WhatsApp - ${review.author}`}
                   loading="lazy"
-                  className="w-full h-auto rounded-lg shadow-md"
+                  className="w-full h-full object-cover"
                 />
-              </div>
-
-              {/* Rodapé com a transcrição do depoimento */}
-              <div className="p-5 flex flex-col gap-2 border-t-2 border-border">
-                <p className="text-sm text-foreground leading-relaxed italic">
-                  "{review.text}"
-                </p>
-                <span className="text-xs text-muted-foreground tracking-widest uppercase font-semibold pt-2">
-                  {review.date}
-                </span>
               </div>
             </article>
           );
