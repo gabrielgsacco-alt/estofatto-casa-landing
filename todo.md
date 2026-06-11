@@ -47,3 +47,12 @@
 - [x] Adicionado efeito de zoom ao passar o mouse em imagens clicáveis
 - [x] OptimizedImage atualizado para suportar onClick, style e data-* attributes
 - [x] Todos os testes continuam passando (9/9)
+
+## Favicon e Portabilidade para Hostinger
+
+- [x] Processar logo enviada e gerar favicons (recortar, otimizar, gerar tamanhos 16/32/48/180/192/512 + .ico)
+- [x] Colocar favicons em client/public/ com caminhos relativos
+- [x] Atualizar index.html para usar favicon local (sem /manus-storage/) - tambem og:image e schema
+- [x] Revisar todos os arquivos garantindo portabilidade total (zero referencias a /manus-storage/)
+- [x] Build de producao validado: imagens e favicons incluidos em dist/public/
+- [x] Favicon servido com HTTP 200 e tipos corretos
