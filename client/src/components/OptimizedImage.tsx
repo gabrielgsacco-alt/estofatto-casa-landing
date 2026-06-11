@@ -7,6 +7,9 @@ interface OptimizedImageProps {
   loading?: "lazy" | "eager";
   fetchPriority?: "high" | "low" | "auto";
   decoding?: "sync" | "async" | "auto";
+  onClick?: () => void;
+  style?: React.CSSProperties;
+  [key: string]: any;
 }
 
 /**
@@ -20,6 +23,9 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = ({
   loading = "lazy",
   fetchPriority = "auto",
   decoding = "async",
+  onClick,
+  style,
+  ...rest
 }) => {
   // Se a URL já é WebP, usar como está
   const isWebP = src.endsWith(".webp");
@@ -44,6 +50,9 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = ({
         loading={loading}
         fetchPriority={fetchPriority}
         decoding={decoding}
+        onClick={onClick}
+        style={style}
+        {...rest}
       />
     </picture>
   );

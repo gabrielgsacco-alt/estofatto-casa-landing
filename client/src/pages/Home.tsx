@@ -29,6 +29,9 @@ import { Textarea } from "@/components/ui/textarea";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { OptimizedImage } from "@/components/OptimizedImage";
+
+import { Dialog, DialogContent, DialogClose } from "@/components/ui/dialog";
+import { X as XIcon } from "lucide-react";
 const LazyQualificationForm = lazy(() => import('@/components/sections/QualificationForm'));
 const LazyReviewsSection = lazy(() => import('@/components/sections/ReviewsSection'));
 import { 
@@ -94,8 +97,38 @@ export default function Home() {
   const [formSuccess, setFormSuccess] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
   const [cookieConsent, setCookieConsent] = useState<boolean | null>(null);
+  const [lightboxImage, setLightboxImage] = useState<string | null>(null);
+  const [visibleImages, setVisibleImages] = useState<Set<string>>(new Set());
   const reviewsRef = useRef<HTMLDivElement>(null);
   const formRef = useRef<HTMLDivElement>(null);
+
+  // Lazy loading e fade-in para imagens
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const imageId = entry.target.getAttribute('data-image-id');
+          if (imageId) {
+            setVisibleImages(prev => {const newSet = new Set(prev); newSet.add(imageId); return newSet;});
+            // Aplicar classe de fade-in
+            entry.target.classList.add('loaded');
+          }
+        }
+      });
+    }, { threshold: 0.1 });
+
+    // Observar todas as imagens com data-image-id
+    document.querySelectorAll('[data-image-id]').forEach(el => {
+      observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  // Função para abrir lightbox
+  const openLightbox = (imageSrc: string) => {
+    setLightboxImage(imageSrc);
+  };
 
   const {
     register,
@@ -320,6 +353,28 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
   };
 
 
+  // Renderizar Lightbox
+  const renderLightbox = () => {
+    if (!lightboxImage) return null;
+    
+    return (
+      <Dialog open={!!lightboxImage} onOpenChange={(open) => !open && setLightboxImage(null)}>
+        <DialogContent className="max-w-4xl w-full h-auto p-0 bg-black/95 border-0">
+          <DialogClose className="absolute top-4 right-4 z-50 bg-white/10 hover:bg-white/20 rounded-full p-2">
+            <XIcon size={24} className="text-white" />
+          </DialogClose>
+          <div className="relative w-full">
+            <img 
+              src={lightboxImage} 
+              alt="Lightbox view" 
+              className="w-full h-auto"
+            />
+          </div>
+        </DialogContent>
+      </Dialog>
+    );
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground font-sans">
       
@@ -452,7 +507,8 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
               <div className="absolute inset-0 border-2 border-secondary/40 translate-x-4 translate-y-4 -z-10 transition-transform duration-500 group-hover:translate-x-2 group-hover:translate-y-2" />
               <div className="w-full h-full overflow-hidden border-2 border-border relative">
                 <OptimizedImage
-                  src={IMAGES.heroSofa} 
+                  src={IMAGES.heroSofa}
+                  data-image-id="hero-sofa" 
                   alt="Sofá de luxo de 2.40m perfeitamente escalado em living monumental com parede de 3.90m em Campo Grande" 
                   className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
                   loading="eager"
@@ -486,7 +542,10 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
                 <div className="absolute inset-0 border-2 border-secondary/40 -translate-x-4 translate-y-4 -z-10" />
                 <div className="aspect-square w-full overflow-hidden border-2 border-border relative">
                    <OptimizedImage
-                     src={IMAGES.textureDetail} 
+                     src={IMAGES.textureDetail}
+                     data-image-id="texture-detail"
+                     onClick={() => openLightbox(IMAGES.textureDetail)}
+                     style={{ cursor: "pointer" }} 
                      alt="Close-up macro de texturas premium, linho nobre e encaixes de madeira maciça na Estofatto Casa" 
                      className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                      loading="lazy"
@@ -582,6 +641,7 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
                 <div className="relative overflow-hidden border border-border aspect-[3/4]">
                    <OptimizedImage
                       src={IMAGES.collection.living}
+                      data-image-id="collection-living"
                      alt="Coleção de Living e Estofados de luxo Estofatto Casa" 
                      className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
                      loading="lazy"
@@ -605,7 +665,10 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
               <div className="group space-y-6 md:translate-y-8 transition-transform duration-500">
                 <div className="relative overflow-hidden border border-border aspect-[3/4]">
                    <OptimizedImage
-                     src={IMAGES.collection.jantar} 
+                     src={IMAGES.collection.jantar}
+                     data-image-id="collection-jantar"
+                     onClick={() => openLightbox(IMAGES.collection.jantar)}
+                     style={{ cursor: "pointer" }} 
                      alt="Coleção de Jantar Estofatto Casa" 
                      className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
                      loading="lazy"
@@ -629,7 +692,10 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
               <div className="group space-y-6">
                 <div className="relative overflow-hidden border border-border aspect-[3/4]">
                    <OptimizedImage
-                     src={IMAGES.collection.autor} 
+                     src={IMAGES.collection.autor}
+                     data-image-id="collection-autor"
+                     onClick={() => openLightbox(IMAGES.collection.autor)}
+                     style={{ cursor: "pointer" }} 
                      alt="Mobiliário com design contemporâneo na Estofatto Casa" 
                      className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
                      loading="lazy"
@@ -721,7 +787,8 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
                 <div className="absolute inset-0 border-2 border-secondary/40 translate-x-4 translate-y-4 -z-10" />
                 <div className="aspect-[4/3] w-full overflow-hidden border-2 border-border relative">
                    <OptimizedImage
-                     src={IMAGES.showroom} 
+                     src={IMAGES.showroom}
+                     data-image-id="showroom" 
                      alt="Showroom monumental da Estofatto Casa em Campo Grande, MS" 
                      className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                      loading="lazy"
@@ -909,6 +976,7 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
           />
         </section>
 
+      {renderLightbox()}
       </main>
 
       {/* FOLD 7: INSTITUTIONAL FOOTER */}

@@ -37,3 +37,13 @@
 - [ ] Segmentação de leads por faixa de investimento
 - [ ] Relatórios de ROI das campanhas
 - [ ] A/B testing de formulário e CTA
+
+## Melhorias de UX Implementadas
+
+- [x] Atualizado código com novas imagens reais nas seções hero, fechada e detalhes
+- [x] Implementado lightbox/zoom para imagens de textura e design com Dialog Radix
+- [x] Implementado lazy loading com IntersectionObserver para todas as imagens
+- [x] Adicionadas animações fade-in com classes CSS para revelação suave
+- [x] Adicionado efeito de zoom ao passar o mouse em imagens clicáveis
+- [x] OptimizedImage atualizado para suportar onClick, style e data-* attributes
+- [x] Todos os testes continuam passando (9/9)
