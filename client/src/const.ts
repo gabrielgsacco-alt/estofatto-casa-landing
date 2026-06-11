@@ -6,20 +6,20 @@
 
 export const IMAGES = {
   // FOLD 1: Showroom real da Estofatto Casa com sofá cinza claro, móveis de madeira e acabamento premium
-  heroSofa: "/manus-storage/IMG_3140_a28f3515.jpg",
+  heroSofa: "/images/IMG_3140_a28f3515.jpg",
 
   // FOLD 2: Detalhe de acabamento - poltronas de couro marrom e sofá cinza com ambientação sofisticada
-  textureDetail: "/manus-storage/IMG_1659_a556da71.JPG",
+  textureDetail: "/images/IMG_1659_a556da71.JPG",
 
   // FOLD 3: The Curated Collection
   collection: {
-    living: "/manus-storage/IMG_3140_a28f3515.jpg", // Living & Estofados - foto real do showroom
-    jantar: "/manus-storage/26f033d6-e9d4-4940-9fd6-00a98c6d18ad_9f2001dc.webp", // Jantar & Recepção - mesa de madeira com cadeiras estofadas
-    autor: "/manus-storage/IMG_9715_0c33e132.webp",  // Design de Autor - detalhe da poltrona com tecido e madeira
+    living: "/images/IMG_3140_a28f3515.jpg", // Living & Estofados - foto real do showroom
+    jantar: "/images/jantar.webp", // Jantar & Recepção - mesa de madeira com cadeiras estofadas
+    autor: "/images/IMG_9715_0c33e132.webp",  // Design de Autor - detalhe da poltrona com tecido e madeira
   },
 
   // FOLD 4: Fachada real do showroom Estofatto Casa
-  showroom: "/manus-storage/IMG_0641_95710857.JPG",
+  showroom: "/images/IMG_0641_95710857.JPG",
 };
 
 // Informações de contato e localização do showroom
