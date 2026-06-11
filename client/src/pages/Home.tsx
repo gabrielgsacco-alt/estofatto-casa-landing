@@ -532,7 +532,7 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
                   src={IMAGES.heroSofa}
                   data-image-id="hero-sofa" 
                   alt="Sofá de luxo de 2.40m perfeitamente escalado em living monumental com parede de 3.90m em Campo Grande" 
-                  className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
+                  className="w-full h-full object-cover transition-[transform] duration-[1800ms] ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:scale-105"
                   loading="eager"
                   fetchPriority="high"
                   decoding="async"
@@ -569,7 +569,7 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
                      onClick={() => openLightbox(IMAGES.textureDetail)}
                      style={{ cursor: "pointer" }} 
                      alt="Close-up macro de texturas premium, linho nobre e encaixes de madeira maciça na Estofatto Casa" 
-                     className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                     className="w-full h-full object-cover transition-[transform] duration-[1600ms] ease-[cubic-bezier(0.25,0.46,0.45,0.94)] hover:scale-105"
                      loading="lazy"
                      decoding="async"
                    />
@@ -665,7 +665,7 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
                       src={IMAGES.collection.living}
                       data-image-id="collection-living"
                      alt="Coleção de Living e Estofados de luxo Estofatto Casa" 
-                     className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
+                     className="w-full h-full object-cover transition-[transform] duration-[1800ms] ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:scale-105"
                      loading="lazy"
                      decoding="async"
                    />
@@ -692,7 +692,7 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
                      onClick={() => openLightbox(IMAGES.collection.jantar)}
                      style={{ cursor: "pointer" }} 
                      alt="Coleção de Jantar Estofatto Casa" 
-                     className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
+                     className="w-full h-full object-cover transition-[transform] duration-[1800ms] ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:scale-105"
                      loading="lazy"
                      decoding="async"
                    />
@@ -719,7 +719,7 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
                      onClick={() => openLightbox(IMAGES.collection.autor)}
                      style={{ cursor: "pointer" }} 
                      alt="Mobiliário com design contemporâneo na Estofatto Casa" 
-                     className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
+                     className="w-full h-full object-cover transition-[transform] duration-[1800ms] ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:scale-105"
                      loading="lazy"
                      decoding="async"
                    />
@@ -812,7 +812,7 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
                      src={IMAGES.showroom}
                      data-image-id="showroom" 
                      alt="Showroom monumental da Estofatto Casa em Campo Grande, MS" 
-                     className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                     className="w-full h-full object-cover transition-[transform] duration-[1600ms] ease-[cubic-bezier(0.25,0.46,0.45,0.94)] hover:scale-105"
                      loading="lazy"
                      decoding="async"
                    />
