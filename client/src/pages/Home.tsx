@@ -104,25 +104,47 @@ export default function Home() {
 
   // Lazy loading e fade-in para imagens
   useEffect(() => {
+    const elements = Array.from(document.querySelectorAll('[data-image-id]'));
+
+    // Se o navegador não suportar IntersectionObserver, mostrar tudo imediatamente
+    if (typeof IntersectionObserver === 'undefined') {
+      elements.forEach(el => el.classList.add('loaded'));
+      return;
+    }
+
+    // Marcar as imagens com estado inicial transparente apenas quando o JS roda,
+    // assim o fade-in acontece, mas sem risco de imagens ficarem invisíveis se o JS falhar.
+    elements.forEach(el => el.classList.add('fade-init'));
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           const imageId = entry.target.getAttribute('data-image-id');
           if (imageId) {
             setVisibleImages(prev => {const newSet = new Set(prev); newSet.add(imageId); return newSet;});
-            // Aplicar classe de fade-in
+            // Aplicar classe de fade-in e remover estado inicial
+            entry.target.classList.remove('fade-init');
             entry.target.classList.add('loaded');
+            observer.unobserve(entry.target);
           }
         }
       });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.1, rootMargin: '0px 0px 200px 0px' });
 
-    // Observar todas as imagens com data-image-id
-    document.querySelectorAll('[data-image-id]').forEach(el => {
-      observer.observe(el);
-    });
+    elements.forEach(el => observer.observe(el));
 
-    return () => observer.disconnect();
+    // Fallback de segurança: após 1.2s, revelar qualquer imagem ainda não carregada
+    const fallbackTimer = window.setTimeout(() => {
+      document.querySelectorAll('[data-image-id].fade-init').forEach(el => {
+        el.classList.remove('fade-init');
+        el.classList.add('loaded');
+      });
+    }, 1200);
+
+    return () => {
+      observer.disconnect();
+      window.clearTimeout(fallbackTimer);
+    };
   }, []);
 
   // Função para abrir lightbox

@@ -336,12 +336,25 @@ body {
   animation: imageReveal 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
 }
 
+/* Imagens começam levemente transparentes mas com fallback de segurança */
 [data-image-id] {
+  opacity: 1;
+}
+
+/* Quando suportado, animamos a entrada via classe .loaded */
+[data-image-id].fade-init {
   opacity: 0;
 }
 
 [data-image-id].loaded {
   animation: imageReveal 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+/* Fallback: se JS/observer não rodar, garante visibilidade após carregamento */
+@media (prefers-reduced-motion: no-preference) {
+  [data-image-id]:not(.loaded):not(.fade-init) {
+    opacity: 1;
+  }
 }
 
 /* Efeito de zoom ao passar o mouse em imagens clicáveis */
