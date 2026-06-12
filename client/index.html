@@ -55,6 +55,14 @@
         rel="stylesheet"
       />
     </noscript>
+    <!-- Preload de Recursos Críticos -->
+    <link rel="preload" as="script" href="/src/main.tsx" />
+    <link rel="prefetch" href="/images/IMG_3140_a28f3515.jpg" />
+    <link rel="prefetch" href="/images/IMG_1659_a556da71.JPG" />
+    <link rel="prefetch" href="/images/IMG_0641_95710857.JPG" />
+    <link rel="prefetch" href="/images/IMG_9715_0c33e132.webp" />
+    <link rel="prefetch" href="/images/jantar.webp" />
+    
     <!-- Lazy Loading Avançado de Scripts de Terceiros (GA4 & Facebook Pixel) -->
     <script>
       (function() {
@@ -212,9 +220,10 @@
         alt=""
     /></noscript>
     <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <script type="module" src="/src/main.tsx" defer></script>
     <script
       defer
+      async
       src="%VITE_ANALYTICS_ENDPOINT%/umami"
       data-website-id="%VITE_ANALYTICS_WEBSITE_ID%"
     ></script>

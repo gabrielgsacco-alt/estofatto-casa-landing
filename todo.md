@@ -63,3 +63,10 @@
 - [x] Restaurar zoom suave e elegante nas imagens (duration 2000ms, cubic-bezier natural, scale 1.06)
 - [x] Implementar animações de surgimento (fade-in + slide-up) nas seções ao rolar (hook useScrollReveal + CSS reveal-section)
 - [x] Encaixar molduras douradas em todas as 6 fotos (hero, textura, Living, Jantar, Design, showroom) com alinhamento consistente (-inset-2, border-secondary/60)
+
+## Otimizacao de Performance (PageSpeed Insights)
+
+- [x] Adicionar headers de cache eficientes (1 ano para assets, 24h para HTML, sem cache para API)
+- [x] Remover render-blocking resources (defer/async em scripts, preload de main.tsx)
+- [x] Validar otimizacao de entrega de imagens (lazy loading com IntersectionObserver)
+- [x] Otimizar arvore de dependencia da rede (prefetch de imagens, compressao Gzip/Brotli)
