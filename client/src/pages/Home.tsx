@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, lazy, Suspense } from "react";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { useUTMTracking } from "@/hooks/useUTMTracking";
+import { useScrollReveal, useScrollRevealStagger } from "@/hooks/useScrollReveal";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -101,6 +102,16 @@ export default function Home() {
   const [visibleImages, setVisibleImages] = useState<Set<string>>(new Set());
   const reviewsRef = useRef<HTMLDivElement>(null);
   const formRef = useRef<HTMLDivElement>(null);
+
+  // Refs para animações de surgimento nas seções
+  const revealHero = useScrollReveal();
+  const revealFold2 = useScrollReveal();
+  const revealFold3Header = useScrollReveal();
+  const revealFold3Grid = useScrollRevealStagger();
+  const revealFold4 = useScrollReveal();
+  const revealFold5 = useScrollReveal();
+  const revealFold6 = useScrollReveal({ threshold: 0.08 });
+  const revealFaq = useScrollReveal();
 
   // Lazy loading e fade-in para imagens
   useEffect(() => {
@@ -492,7 +503,7 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
       <main className="flex-grow">
         
         {/* FOLD 1: HERO SECTION (Attention & Positioning) */}
-        <section className="relative min-h-[90vh] flex items-center py-16 md:py-24 overflow-hidden border-b border-border/40">
+        <section ref={revealHero} className="reveal-section relative min-h-[90vh] flex items-center py-16 md:py-24 overflow-hidden border-b border-border/40">
           <div className="container grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
             {/* Texto do Hero */}
@@ -532,7 +543,7 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
                   src={IMAGES.heroSofa}
                   data-image-id="hero-sofa" 
                   alt="Sofá de luxo de 2.40m perfeitamente escalado em living monumental com parede de 3.90m em Campo Grande" 
-                  className="w-full h-full object-cover transition-[transform] duration-[1800ms] ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:scale-105"
+                  className="w-full h-full object-cover transition-transform duration-[2000ms] [transition-timing-function:cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:scale-[1.06]"
                   loading="eager"
                   fetchPriority="high"
                   decoding="async"
@@ -555,7 +566,7 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
 
 
         {/* FOLD 2: VALUE PROPOSITION & EXCLUSIVITY (Interest) */}
-        <section id="exclusividade" className="py-20 md:py-32 bg-card border-b border-border/40">
+        <section id="exclusividade" ref={revealFold2} className="reveal-section py-20 md:py-32 bg-card border-b border-border/40">
           <div className="container">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
               
@@ -569,7 +580,7 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
                      onClick={() => openLightbox(IMAGES.textureDetail)}
                      style={{ cursor: "pointer" }} 
                      alt="Close-up macro de texturas premium, linho nobre e encaixes de madeira maciça na Estofatto Casa" 
-                     className="w-full h-full object-cover transition-[transform] duration-[1600ms] ease-[cubic-bezier(0.25,0.46,0.45,0.94)] hover:scale-105"
+                     className="w-full h-full object-cover transition-transform duration-[2000ms] [transition-timing-function:cubic-bezier(0.25,0.46,0.45,0.94)] hover:scale-[1.06]"
                      loading="lazy"
                      decoding="async"
                    />
@@ -645,7 +656,7 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
           <div className="container">
             
             {/* Header do Acervo */}
-            <div className="text-center max-w-2xl mx-auto space-y-4 mb-16 md:mb-24">
+            <div ref={revealFold3Header} className="reveal-section text-center max-w-2xl mx-auto space-y-4 mb-16 md:mb-24">
               <div className="text-xs tracking-[0.2em] uppercase text-primary font-semibold">
                 Nossas Coleções
               </div>
@@ -656,7 +667,7 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
             </div>
 
             {/* Grid Minimalista com Amplo Espaço em Branco */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
+            <div ref={revealFold3Grid} className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
               
               {/* Categoria 1: Living & Estofados */}
               <div className="group space-y-6">
@@ -665,7 +676,7 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
                       src={IMAGES.collection.living}
                       data-image-id="collection-living"
                      alt="Coleção de Living e Estofados de luxo Estofatto Casa" 
-                     className="w-full h-full object-cover transition-[transform] duration-[1800ms] ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:scale-105"
+                     className="w-full h-full object-cover transition-transform duration-[2000ms] [transition-timing-function:cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:scale-[1.06]"
                      loading="lazy"
                      decoding="async"
                    />
@@ -692,7 +703,7 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
                      onClick={() => openLightbox(IMAGES.collection.jantar)}
                      style={{ cursor: "pointer" }} 
                      alt="Coleção de Jantar Estofatto Casa" 
-                     className="w-full h-full object-cover transition-[transform] duration-[1800ms] ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:scale-105"
+                     className="w-full h-full object-cover transition-transform duration-[2000ms] [transition-timing-function:cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:scale-[1.06]"
                      loading="lazy"
                      decoding="async"
                    />
@@ -719,7 +730,7 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
                      onClick={() => openLightbox(IMAGES.collection.autor)}
                      style={{ cursor: "pointer" }} 
                      alt="Mobiliário com design contemporâneo na Estofatto Casa" 
-                     className="w-full h-full object-cover transition-[transform] duration-[1800ms] ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:scale-105"
+                     className="w-full h-full object-cover transition-transform duration-[2000ms] [transition-timing-function:cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:scale-[1.06]"
                      loading="lazy"
                      decoding="async"
                    />
@@ -755,7 +766,7 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
 
 
         {/* FOLD 4: 30 YEARS OF TRADITION & LOGISTICS (Trust & Security) */}
-        <section id="tradicao" className="py-20 md:py-32 bg-card border-b border-border/40">
+        <section id="tradicao" ref={revealFold4} className="reveal-section py-20 md:py-32 bg-card border-b border-border/40">
           <div className="container">
 
 
@@ -812,7 +823,7 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
                      src={IMAGES.showroom}
                      data-image-id="showroom" 
                      alt="Showroom monumental da Estofatto Casa em Campo Grande, MS" 
-                     className="w-full h-full object-cover transition-[transform] duration-[1600ms] ease-[cubic-bezier(0.25,0.46,0.45,0.94)] hover:scale-105"
+                     className="w-full h-full object-cover transition-transform duration-[2000ms] [transition-timing-function:cubic-bezier(0.25,0.46,0.45,0.94)] hover:scale-[1.06]"
                      loading="lazy"
                      decoding="async"
                    />
@@ -831,7 +842,7 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
 
 
         {/* FOLD 5: AUTHORITY & SOCIAL PROOF (Desire) */}
-        <section id="depoimentos" className="py-20 md:py-32 border-b border-border/40">
+        <section id="depoimentos" ref={revealFold5} className="reveal-section py-20 md:py-32 border-b border-border/40">
           <div className="container">
             
             {/* Faixa do Google no Topo (Destaque Principal) */}
@@ -915,7 +926,7 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
 
 
         {/* FOLD 6: THE HIGH-TICKET QUALIFICATION FORM (Action / Conversion) */}
-        <section id="qualificar" className="py-20 md:py-32 bg-card relative">
+        <section id="qualificar" ref={revealFold6} className="reveal-section py-20 md:py-32 bg-card relative">
           
           {/* Fundo Decorativo Sutil de Arquitetura */}
           <div className="absolute inset-0 opacity-[0.015] pointer-events-none bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:16px_16px]" />
@@ -952,7 +963,7 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
         </section>
 
         {/* FOLD 6.5: FAQ (Objeções e SEO) */}
-        <section id="faq" className="py-20 md:py-32 border-b border-border/40">
+        <section id="faq" ref={revealFaq} className="reveal-section py-20 md:py-32 border-b border-border/40">
           <div className="container max-w-3xl">
             <div className="text-center space-y-4 mb-12 md:mb-16">
               <div className="text-xs tracking-[0.2em] uppercase text-primary font-semibold">
@@ -1103,11 +1114,11 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
         </div>
       )}
 
-      {/* BOTAO DE VOLTAR AO TOPO */}
+      {/* BOTAO DE VOLTAR AO TOPO - posicionado acima do botão WhatsApp */}
       {showScrollTop && (
         <button
           onClick={scrollToTop}
-          className="fixed bottom-6 right-6 z-40 p-3 bg-primary text-primary-foreground border border-primary/40 hover:bg-primary/90 transition-all duration-300 opacity-100 animate-fade-in shadow-lg"
+          className="fixed bottom-[9.5rem] right-6 z-40 p-3 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-all duration-300 opacity-100 animate-fade-in shadow-lg hover:shadow-xl hover:scale-110"
           aria-label="Voltar ao topo da página"
           title="Voltar ao topo"
         >

@@ -105,7 +105,7 @@ export function SupportChat() {
       <button
         onClick={() => setIsOpen(!isOpen)}
         className={cn(
-          'fixed bottom-24 right-6 z-40 p-4 rounded-full shadow-lg transition-all duration-300',
+          'fixed bottom-[5.5rem] right-6 z-40 p-4 rounded-full shadow-lg transition-all duration-300',
           'bg-primary text-primary-foreground hover:bg-primary/90',
           'flex items-center justify-center w-14 h-14',
           isOpen && 'hidden'

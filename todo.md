@@ -56,3 +56,9 @@
 - [x] Revisar todos os arquivos garantindo portabilidade total (zero referencias a /manus-storage/)
 - [x] Build de producao validado: imagens e favicons incluidos em dist/public/
 - [x] Favicon servido com HTTP 200 e tipos corretos
+
+## Correções e Melhorias de Animação
+
+- [x] Corrigir bug do quadrado vermelho embaixo do botão WhatsApp (botão voltar ao topo + SupportChat reposicionados)
+- [x] Restaurar zoom suave e elegante nas imagens (duration 2000ms, cubic-bezier natural, scale 1.06)
+- [x] Implementar animações de surgimento (fade-in + slide-up) nas seções ao rolar (hook useScrollReveal + CSS reveal-section)

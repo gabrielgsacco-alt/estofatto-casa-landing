@@ -357,24 +357,84 @@ body {
   }
 }
 
-/* Efeito de zoom ao passar o mouse em imagens clicáveis */
-[data-image-id][style*="cursor: pointer"] {
-  transition: transform 0.3s ease-out, filter 0.3s ease-out;
-}
-
-[data-image-id][style*="cursor: pointer"]:hover {
-  transform: scale(1.02);
-  filter: brightness(1.05);
-}
-
 /* Reduzir animações em dispositivos com prefers-reduced-motion */
 @media (prefers-reduced-motion: reduce) {
   [data-image-id].loaded {
     animation: none;
     opacity: 1;
   }
-  
-  [data-image-id][style*="cursor: pointer"] {
+}
+
+/* ============================================================
+   SCROLL REVEAL — Animações de surgimento nas seções
+   ============================================================ */
+
+/* Estado inicial: invisível e deslocado */
+.reveal-section {
+  opacity: 0;
+  transform: translateY(40px);
+  transition:
+    opacity 0.75s cubic-bezier(0.23, 1, 0.32, 1),
+    transform 0.75s cubic-bezier(0.23, 1, 0.32, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-section-left {
+  opacity: 0;
+  transform: translateX(-48px);
+  transition:
+    opacity 0.75s cubic-bezier(0.23, 1, 0.32, 1),
+    transform 0.75s cubic-bezier(0.23, 1, 0.32, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-section-right {
+  opacity: 0;
+  transform: translateX(48px);
+  transition:
+    opacity 0.75s cubic-bezier(0.23, 1, 0.32, 1),
+    transform 0.75s cubic-bezier(0.23, 1, 0.32, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-section-scale {
+  opacity: 0;
+  transform: scale(0.95) translateY(24px);
+  transition:
+    opacity 0.7s cubic-bezier(0.23, 1, 0.32, 1),
+    transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+  will-change: opacity, transform;
+}
+
+/* Filhos para stagger */
+.reveal-child {
+  opacity: 0;
+  transform: translateY(32px);
+  transition:
+    opacity 0.65s cubic-bezier(0.23, 1, 0.32, 1),
+    transform 0.65s cubic-bezier(0.23, 1, 0.32, 1);
+  will-change: opacity, transform;
+}
+
+/* Estado visível — aplicado pelo IntersectionObserver */
+.reveal-section.reveal-visible,
+.reveal-section-left.reveal-visible,
+.reveal-section-right.reveal-visible,
+.reveal-section-scale.reveal-visible,
+.reveal-child.reveal-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Respeitar preferência de movimento reduzido */
+@media (prefers-reduced-motion: reduce) {
+  .reveal-section,
+  .reveal-section-left,
+  .reveal-section-right,
+  .reveal-section-scale,
+  .reveal-child {
+    opacity: 1;
+    transform: none;
     transition: none;
   }
 }
