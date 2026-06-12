@@ -62,3 +62,4 @@
 - [x] Corrigir bug do quadrado vermelho embaixo do botão WhatsApp (botão voltar ao topo + SupportChat reposicionados)
 - [x] Restaurar zoom suave e elegante nas imagens (duration 2000ms, cubic-bezier natural, scale 1.06)
 - [x] Implementar animações de surgimento (fade-in + slide-up) nas seções ao rolar (hook useScrollReveal + CSS reveal-section)
+- [x] Encaixar molduras douradas em todas as 6 fotos (hero, textura, Living, Jantar, Design, showroom) com alinhamento consistente (-inset-2, border-secondary/60)
