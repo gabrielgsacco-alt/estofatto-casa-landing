@@ -61,3 +61,4 @@ function AppWithRouter() {
 }
 
 export default AppWithRouter;
+// Versão final pronta para publicação
