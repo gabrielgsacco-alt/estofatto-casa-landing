@@ -220,7 +220,7 @@ export default defineConfig({
     outDir: path.resolve(import.meta.dirname, "dist/public"),
     emptyOutDir: true,
     minify: 'esbuild',
-    cssCodeSplit: true,
+    cssCodeSplit: false,
     chunkSizeWarningLimit: 500,
     reportCompressedSize: false,
     sourcemap: false,
