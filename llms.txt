@@ -1,0 +1,21 @@
+# Estofatto Casa - Landing Page
+
+Bem-vindo ao site oficial da Estofatto Casa, especializada em móveis e estofados de alta qualidade em Campo Grande, Mato Grosso do Sul.
+
+## Navegação Principal
+
+- [Home](https://estofattocasa.com.br)
+- [Diferenciais](https://estofattocasa.com.br#diferenciais)
+- [Produtos](https://estofattocasa.com.br#produtos)
+- [Tradição & Logística](https://estofattocasa.com.br#tradicao)
+- [Depoimentos](https://estofattocasa.com.br#depoimentos)
+- [FAQ](https://estofattocasa.com.br#faq)
+- [Falar com Consultor](https://estofattocasa.com.br#contato)
+
+## Sobre Nós
+
+A Estofatto Casa oferece design assinado e conforto sob medida em Campo Grande. Móveis e estofados selecionados com excelente acabamento, durabilidade e o conforto que sua família merece.
+
+## Contato
+
+Para mais informações, entre em contato conosco através do site ou visite nossa loja em Campo Grande, MS.
