@@ -3,10 +3,15 @@
 
 User-agent: *
 Allow: /
-Disallow: 
+Disallow: /.env
+Disallow: /.git
+Disallow: /node_modules/
+Disallow: /dist/
+Disallow: /server/
+Disallow: /__manus__/
 
 # Sitemap
-Sitemap: https://estofatto-9y4zod3a.manus.space/sitemap.xml
+Sitemap: https://estofattocasa.com.br/sitemap.xml
 
 # Crawl delay para evitar sobrecarga
 Crawl-delay: 1
@@ -15,8 +20,19 @@ Crawl-delay: 1
 User-agent: Googlebot
 Allow: /
 Crawl-delay: 0
+Request-rate: 10/1s
 
 # Regras específicas para Bing
 User-agent: Bingbot
 Allow: /
 Crawl-delay: 1
+
+# Regras para outros bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
