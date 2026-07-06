@@ -899,6 +899,18 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
                     Ver no Google Maps
                   </a>
                 </div>
+                
+                {/* Google Meu Negócio - Localizador */}
+                <div className="w-full h-96 mt-12 border border-border rounded overflow-hidden">
+                  <iframe 
+                    src="https://storage.googleapis.com/maps-solutions-pqc37h0fbo/locator-plus/05qk/locator-plus.html"
+                    width="100%" 
+                    height="100%"
+                    style={{border: 'none'}}
+                    loading="lazy"
+                    title="Localizador de Lojas Estofatto Casa"
+                  />
+                </div>
               </div>
             </div>
 
