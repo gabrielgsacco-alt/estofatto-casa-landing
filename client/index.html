@@ -76,81 +76,42 @@
     <link rel="prefetch" href="/images/IMG_9715_0c33e132.webp" />
     <link rel="prefetch" href="/images/jantar.webp" />
     
-    <!-- Lazy Loading Avançado de Scripts de Terceiros (GA4 & Facebook Pixel) -->
+    <!-- Google Analytics - Carregado imediatamente para evitar cloaking -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
     <script>
-      (function() {
-        var scriptsLoaded = false;
-        
-        function loadThirdPartyScripts() {
-          if (scriptsLoaded) return;
-          scriptsLoaded = true;
-          
-          // Remover listeners de eventos para evitar chamadas duplicadas
-          cleanupListeners();
-          
-          // 1. Carregar Google Analytics 4
-          var gaScript = document.createElement('script');
-          gaScript.async = true;
-          gaScript.src = "https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX";
-          document.head.appendChild(gaScript);
-          
-          window.dataLayer = window.dataLayer || [];
-          window.gtag = function() { dataLayer.push(arguments); };
-          gtag("js", new Date());
-          gtag("config", "G-XXXXXXXXXX");
-          
-          // 2. Carregar Facebook Pixel
-          !(function (f, b, e, v, n, t, s) {
-            if (f.fbq) return;
-            n = f.fbq = function () {
-              n.callMethod
-                ? n.callMethod.apply(n, arguments)
-                : n.queue.push(arguments);
-            };
-            if (!f._fbq) f._fbq = n;
-            n.push = n;
-            n.loaded = !0;
-            n.version = "2.0";
-            n.queue = [];
-            t = b.createElement(e);
-            t.async = !0;
-            t.src = v;
-            s = b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t, s);
-          })(
-            window,
-            document,
-            "script",
-            "https://connect.facebook.net/en_US/fbevents.js"
-          );
-          fbq("init", "1698423457965661");
-          fbq("track", "PageView");
-        }
-        
-        // Listeners para carregar ao menor sinal de interação real
-        var events = ['click', 'mousedown', 'touchstart', 'scroll', 'keydown'];
-        
-        function cleanupListeners() {
-          events.forEach(function(event) {
-            window.removeEventListener(event, loadThirdPartyScripts, { passive: true });
-          });
-        }
-        
-        events.forEach(function(event) {
-          window.addEventListener(event, loadThirdPartyScripts, { passive: true });
-        });
-        
-        // Carregamento de fallback via requestIdleCallback (se suportado) ou setTimeout longo de 3.5 segundos
-        if ('requestIdleCallback' in window) {
-          requestIdleCallback(function() {
-            setTimeout(loadThirdPartyScripts, 3500);
-          });
-        } else {
-          window.addEventListener('load', function() {
-            setTimeout(loadThirdPartyScripts, 3500);
-          });
-        }
-      })();
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+    
+    <!-- Facebook Pixel - Carregado imediatamente para evitar cloaking -->
+    <script>
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+          n.callMethod
+            ? n.callMethod.apply(n, arguments)
+            : n.queue.push(arguments);
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = "2.0";
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s);
+      })(
+        window,
+        document,
+        "script",
+        "https://connect.facebook.net/en_US/fbevents.js"
+      );
+      fbq("init", "1698423457965661");
+      fbq("track", "PageView");
     </script>
     <!-- Schema Markup LocalBusiness com Rich Snippets -->
     <script type="application/ld+json">
