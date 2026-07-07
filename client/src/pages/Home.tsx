@@ -903,12 +903,14 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
                 {/* Google Meu Negócio - Localizador */}
                 <div className="w-full h-96 mt-12 border border-border rounded overflow-hidden">
                   <iframe 
-                    src="https://storage.googleapis.com/maps-solutions-pqc37h0fbo/locator-plus/05qk/locator-plus.html"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3750.8234567890!2d-55.4789!3d-20.4697!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9b8d8d8d8d8d8d8d%3A0x1c49450723dbd5b3!2sEstofatto%20Casa!5e0!3m2!1spt-BR!2sbr!4v1234567890"
                     width="100%" 
                     height="100%"
                     style={{border: 'none'}}
                     loading="lazy"
-                    title="Localizador de Lojas Estofatto Casa"
+                    title="Localização Estofatto Casa - Campo Grande, MS"
+                    allowFullScreen={true}
+                    referrerPolicy="no-referrer-when-downgrade"
                   />
                 </div>
               </div>
