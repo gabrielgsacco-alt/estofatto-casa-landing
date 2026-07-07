@@ -901,42 +901,22 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
                 </div>
                 
                 {/* Google Meu Negócio - Localizador */}
-                <div className="w-full h-96 mt-12 border border-border rounded overflow-hidden relative" style={{
-                  position: 'relative',
-                  width: '100%',
-                  height: '100%'
+                <div className="w-full h-96 mt-12 border border-border rounded overflow-hidden" style={{
+                  clipPath: 'inset(0 0 0 280px)',
+                  marginLeft: '-280px',
+                  paddingLeft: '280px'
                 }}>
-                  <div style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
-                    overflow: 'hidden'
-                  }}>
-                    <iframe 
-                      src="https://storage.googleapis.com/maps-solutions-pqc37h0fbo/locator-plus/05qk/locator-plus.html"
-                      width="100%" 
-                      height="100%"
-                      style={{
-                        border: 'none',
-                        display: 'block',
-                        pointerEvents: 'auto'
-                      }}
-                      loading="lazy"
-                      title="Localização Estofatto Casa - Campo Grande, MS"
-                    />
-                  </div>
-                  <div style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    width: '280px',
-                    height: '100%',
-                    backgroundColor: 'white',
-                    zIndex: 10,
-                    pointerEvents: 'none'
-                  }} />
+                  <iframe 
+                    src="https://storage.googleapis.com/maps-solutions-pqc37h0fbo/locator-plus/05qk/locator-plus.html"
+                    width="100%" 
+                    height="100%"
+                    style={{
+                      border: 'none',
+                      display: 'block'
+                    }}
+                    loading="lazy"
+                    title="Localização Estofatto Casa - Campo Grande, MS"
+                  />
                 </div>
               </div>
             </div>
