@@ -900,16 +900,27 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
                   </a>
                 </div>
                 
-                {/* Google Meu Negócio - Localizador */}
-                <div className="w-full h-96 mt-12 border border-border rounded overflow-hidden">
-                  <iframe 
-                    src="https://storage.googleapis.com/maps-solutions-pqc37h0fbo/locator-plus/05qk/locator-plus.html"
-                    width="100%" 
-                    height="100%"
-                    style={{border: 'none'}}
-                    loading="lazy"
-                    title="Localizador de Lojas Estofatto Casa"
-                  />
+                {/* Google Meu Negócio - Localizador com Melhorias Visuais */}
+                <div className="mt-16 space-y-6">
+                  <div className="text-center space-y-2">
+                    <h3 className="text-2xl md:text-3xl font-serif font-light text-foreground">
+                      Visite nosso <span className="italic font-normal text-primary">showroom</span>
+                    </h3>
+                    <p className="text-sm text-muted-foreground max-w-2xl mx-auto">
+                      Localizado em Campo Grande, MS. Aberto de segunda a sábado para visitação e atendimento consultivo.
+                    </p>
+                  </div>
+                  
+                  <div className="w-full h-96 rounded-lg overflow-hidden border-2 border-border shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <iframe 
+                      src="https://storage.googleapis.com/maps-solutions-pqc37h0fbo/locator-plus/05qk/locator-plus.html?utm_source=estofatto&utm_medium=website"
+                      width="100%" 
+                      height="100%"
+                      style={{border: 'none'}}
+                      loading="lazy"
+                      title="Localizador de Lojas Estofatto Casa"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
