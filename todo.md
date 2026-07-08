@@ -73,10 +73,10 @@
 
 ## Correções de Responsividade Mobile
 
-- [x] Corrigir responsividade do mapa em dispositivos móveis (revertido para código simples padrão)
-- [x] Testar mapa em breakpoints: 375px (mobile), 768px (tablet), 1024px (desktop)
-- [x] Verificar se o mapa carrega corretamente em todos os tamanhos
-- [x] Validar que a barra lateral do Google Meu Negócio está oculta em todos os breakpoints
+- [x] Corrigir responsividade do mapa em dispositivos móveis (clip-path dinâmico com calc(min()))
+- [ ] Testar mapa em breakpoints: 375px (mobile), 768px (tablet), 1024px (desktop)
+- [ ] Verificar se o mapa carrega corretamente em todos os tamanhos
+- [ ] Validar que a barra lateral do Google Meu Negócio está oculta em todos os breakpoints
 
 ## SEO e Compliance
 
@@ -98,6 +98,6 @@
 
 ## Itens Finais
 
-- [x] Salvar checkpoint final com todas as correções (2f0cc98d)
+- [x] Salvar checkpoint final com todas as correções (993210c4)
 - [x] Gerar ZIP final atualizado para Hostinger (estofatto-casa-final.zip)
 - [x] Documentar todas as mudanças para o usuário (RESUMO_FINAL_MUDANCAS.md)
