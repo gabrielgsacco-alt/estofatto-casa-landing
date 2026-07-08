@@ -45,8 +45,10 @@ export default function Home() {
               </p>
 
               <div className="pt-4">
-                <Link href="#form" className="inline-block px-8 py-4 bg-secondary text-primary-foreground text-xs font-bold tracking-widest uppercase hover:bg-secondary/90 transition-all duration-200 shadow-md hover:shadow-lg active:scale-95">
-                  Falar com Consultor de Vendas
+                <Link href="#form">
+                  <a className="inline-block px-8 py-4 bg-secondary text-primary-foreground text-xs font-bold tracking-widest uppercase hover:bg-secondary/90 transition-all duration-200 shadow-md hover:shadow-lg active:scale-95">
+                    Falar com Consultor de Vendas
+                  </a>
                 </Link>
               </div>
             </div>
@@ -291,8 +293,10 @@ export default function Home() {
           </div>
 
           <div className="flex justify-center pt-12">
-            <Link href="#form" className="inline-block px-8 py-4 bg-secondary text-primary-foreground text-xs font-bold tracking-widest uppercase hover:bg-secondary/90 transition-all duration-200 shadow-md hover:shadow-lg active:scale-95">
-              Falar com Consultor de Vendas
+            <Link href="#form">
+              <a className="inline-block px-8 py-4 bg-secondary text-primary-foreground text-xs font-bold tracking-widest uppercase hover:bg-secondary/90 transition-all duration-200 shadow-md hover:shadow-lg active:scale-95">
+                Falar com Consultor de Vendas
+              </a>
             </Link>
           </div>
         </div>
