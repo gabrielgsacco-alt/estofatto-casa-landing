@@ -98,6 +98,6 @@
 
 ## Itens Finais
 
-- [x] Salvar checkpoint final com todas as correções (993210c4)
+- [x] Salvar checkpoint final com todas as correções (2f0cc98d)
 - [x] Gerar ZIP final atualizado para Hostinger (estofatto-casa-final.zip)
 - [x] Documentar todas as mudanças para o usuário (RESUMO_FINAL_MUDANCAS.md)
