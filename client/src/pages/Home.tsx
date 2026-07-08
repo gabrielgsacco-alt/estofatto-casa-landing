@@ -875,8 +875,8 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
                 </a>
               </div>
               
-              {/* Mapa Simples Embaixo */}
-              <div className="w-full h-96 rounded overflow-hidden border border-border">
+              {/* Mapa Simples Embaixo com Quadrado Vermelho */}
+              <div className="w-full h-96 rounded overflow-hidden border-4 border-secondary shadow-lg">
                 <iframe 
                   src="https://storage.googleapis.com/maps-solutions-pqc37h0fbo/locator-plus/cxlu/locator-plus.html"
                   width="100%" 
