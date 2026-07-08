@@ -73,10 +73,10 @@
 
 ## Correções de Responsividade Mobile
 
-- [x] Corrigir responsividade do mapa em dispositivos móveis (clip-path dinâmico com calc(min()))
-- [ ] Testar mapa em breakpoints: 375px (mobile), 768px (tablet), 1024px (desktop)
-- [ ] Verificar se o mapa carrega corretamente em todos os tamanhos
-- [ ] Validar que a barra lateral do Google Meu Negócio está oculta em todos os breakpoints
+- [x] Corrigir responsividade do mapa em dispositivos móveis (revertido para código simples padrão)
+- [x] Testar mapa em breakpoints: 375px (mobile), 768px (tablet), 1024px (desktop)
+- [x] Verificar se o mapa carrega corretamente em todos os tamanhos
+- [x] Validar que a barra lateral do Google Meu Negócio está oculta em todos os breakpoints
 
 ## SEO e Compliance
 
