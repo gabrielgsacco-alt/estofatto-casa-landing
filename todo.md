@@ -70,3 +70,34 @@
 - [x] Remover render-blocking resources (defer/async em scripts, preload de main.tsx)
 - [x] Validar otimizacao de entrega de imagens (lazy loading com IntersectionObserver)
 - [x] Otimizar arvore de dependencia da rede (prefetch de imagens, compressao Gzip/Brotli)
+
+## Correções de Responsividade Mobile
+
+- [x] Corrigir responsividade do mapa em dispositivos móveis (clip-path dinâmico com calc(min()))
+- [ ] Testar mapa em breakpoints: 375px (mobile), 768px (tablet), 1024px (desktop)
+- [ ] Verificar se o mapa carrega corretamente em todos os tamanhos
+- [ ] Validar que a barra lateral do Google Meu Negócio está oculta em todos os breakpoints
+
+## SEO e Compliance
+
+- [x] Implementar meta tags otimizadas (robots, canonical, theme-color)
+- [x] Adicionar sitemap.xml com prioridades e lastmod
+- [x] Criar robots.txt com regras específicas
+- [x] Implementar Schema Markup (BreadcrumbList, Product, LocalBusiness, AggregateRating)
+- [x] Remover lazy loading condicional de GA e Facebook Pixel (resolver cloaking)
+- [x] Otimizar entrega de CSS (cssCodeSplit: false, preload crítico)
+
+## Preparação para Hostinger
+
+- [x] Criar ZIP sem pasta raiz com Windows compatibility
+- [x] Incluir scripts package.json compatíveis com Windows PowerShell
+- [x] Validar que todas as imagens estão em /manus-storage/ ou locais
+- [x] Testar build de produção localmente
+- [ ] Criar documentação de deployment para Hostinger
+- [ ] Validar performance final com PageSpeed Insights
+
+## Itens Finais
+
+- [ ] Salvar checkpoint final com todas as correções
+- [ ] Gerar ZIP final atualizado para Hostinger
+- [ ] Documentar todas as mudanças para o usuário

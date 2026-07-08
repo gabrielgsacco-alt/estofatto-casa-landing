@@ -902,9 +902,9 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
                 
                 {/* Google Meu Negócio - Localizador */}
                 <div className="w-full h-96 mt-12 border border-border rounded overflow-hidden" style={{
-                  clipPath: 'inset(0 0 0 280px)',
-                  marginLeft: '-280px',
-                  paddingLeft: '280px'
+                  clipPath: 'inset(0 0 0 calc(min(280px, 40vw)))',
+                  marginLeft: 'calc(-min(280px, 40vw))',
+                  paddingLeft: 'calc(min(280px, 40vw))'
                 }}>
                   <iframe 
                     src="https://storage.googleapis.com/maps-solutions-pqc37h0fbo/locator-plus/05qk/locator-plus.html"
