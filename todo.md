@@ -93,11 +93,11 @@
 - [x] Incluir scripts package.json compatíveis com Windows PowerShell
 - [x] Validar que todas as imagens estão em /manus-storage/ ou locais
 - [x] Testar build de produção localmente
-- [ ] Criar documentação de deployment para Hostinger
+- [x] Criar documentação de deployment para Hostinger (HOSTINGER_DEPLOYMENT.md)
 - [ ] Validar performance final com PageSpeed Insights
 
 ## Itens Finais
 
-- [ ] Salvar checkpoint final com todas as correções
-- [ ] Gerar ZIP final atualizado para Hostinger
-- [ ] Documentar todas as mudanças para o usuário
+- [x] Salvar checkpoint final com todas as correções (993210c4)
+- [x] Gerar ZIP final atualizado para Hostinger (estofatto-casa-final.zip)
+- [x] Documentar todas as mudanças para o usuário (RESUMO_FINAL_MUDANCAS.md)
