@@ -287,8 +287,8 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
   };
 
   const scrollToForm = () => {
-    // Rastrear clique no botao de scroll para formulario
-    trackEvent('scroll_to_form_click', {
+    // Rastrear clique no botao de WhatsApp
+    trackEvent('whatsapp_click', {
       event_category: 'engagement',
       event_label: 'cta_button',
       value: 1
@@ -300,10 +300,9 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
       content_type: 'product'
     });
     
-    const element = document.getElementById("qualificar");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+    // Abrir WhatsApp diretamente
+    const whatsappUrl = `https://wa.me/${CONTACT_INFO.whatsapp}?text=Olá! Gostaria de saber mais sobre os móveis da Estofatto Casa.`;
+    window.open(whatsappUrl, '_blank');
     setMobileMenuOpen(false);
   };
 

@@ -89,15 +89,15 @@ export const QualificationForm: React.FC = () => {
         });
       }
 
-      // Submeter lead ao backend
-      await submitLeadMutation.mutateAsync({
+      // Submeter lead ao backend (sem aguardar resposta, apenas enviar para WhatsApp)
+      submitLeadMutation.mutateAsync({
         nome: data.nome,
         whatsapp: data.telefone,
         faseProjeto: data.fase,
         arquiteto: "nao",
         investimento: data.investimento,
         descricao: data.descricao,
-      });
+      }).catch(err => console.error('Erro ao registrar lead:', err));
 
       const whatsappMessage = `Olá! Meu nome é ${data.nome}. Estou interessado em móveis para ${data.fase}. Meu investimento previsto é de ${data.investimento}. ${data.descricao}. Meu email é ${data.email} e meu telefone é ${data.telefone}.`;
       const whatsappUrl = `https://wa.me/${CONTACT_INFO.whatsapp}?text=${encodeURIComponent(whatsappMessage)}`;
