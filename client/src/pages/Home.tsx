@@ -1039,6 +1039,15 @@ _Solicitação enviada via Landing Page Estofatto Casa_`;
                 Campo Grande - MS • CEP 79004-422<br />
                 <span className="text-primary font-semibold">Venha nos visitar ou agende um horário com nossos consultores.</span>
               </p>
+              <a
+                href="https://www.google.com/maps/place/Estofatto+Casa+-+Loja+de+m%C3%B3veis+em+Campo+Grande+MS/data=!4m2!3m1!1s0x0:0x1c49450723dbd5b3?sa=X&ved=1t:2428&ictx=111&cshid=1780340855246497"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block mt-4 px-4 py-2 bg-primary text-primary-foreground text-xs font-bold tracking-widest uppercase hover:bg-primary/90 transition-all duration-200 shadow-md hover:shadow-lg active:scale-95"
+                aria-label="Como chegar ao showroom Estofatto Casa no Google Maps"
+              >
+                Como Chegar
+              </a>
             </div>
 
             {/* Coluna 3: Horários e Contato */}
